@@ -435,6 +435,15 @@ export default function LandingPage() {
           PROBLEMA / DOR
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg">
+        
+        {/* MICRO-GRAFISMOS (Elementos flutuantes perfeitamente visíveis no celular) */}
+        <div className="absolute top-16 right-6 md:right-24 animate-float opacity-50">
+          <Sparkles size={28} style={{ color: "var(--gold)" }} />
+        </div>
+        <div className="absolute bottom-24 left-4 md:left-20 animate-float-slow opacity-40">
+          <Star size={16} style={{ fill: "var(--gold)", color: "var(--gold)" }} />
+        </div>
+
         <div className="relative z-10 max-w-4xl mx-auto text-center reveal">
           <div className="ornament-center mb-8">
             <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
@@ -581,33 +590,77 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Lista de módulos */}
-            <div className="space-y-4 reveal-right">
-              {MODULES.map(({ num, title, text, tags }, i) => (
-                <div key={i} className="flex gap-5 p-6 rounded-2xl transition-all duration-300 group hover:bg-white hover:shadow-lg"
-                  style={{ border: "1px solid rgba(191,161,136,0.18)", transitionDelay: `${i*60}ms` }}>
-                  <div className="flex-shrink-0">
-                    <span style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 800, color: "var(--gold)", opacity: 0.75, letterSpacing: "-0.02em" }}>
-                      {num}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1rem", color: "var(--brown-deep)", marginBottom: "0.35rem" }}>
-                      {title}
-                    </h3>
-                    <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.7, fontSize: "0.88rem", marginBottom: tags.length ? "0.6rem" : 0 }}>{text}</p>
-                    {tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {tags.map((tag) => (
-                          <span key={tag} style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.04em", padding: "0.2rem 0.6rem", borderRadius: "9999px", background: "rgba(201,168,76,0.1)", color: "var(--brown-deep)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                            {tag}
-                          </span>
-                        ))}
+            {/* Lista de módulos com efeito Timeline (Versão Tailwind Puro) */}
+            <div className="relative reveal-right">
+              
+              {/* Linha vertical pontilhada (Desenhada direto no Tailwind) */}
+              <div 
+                className="absolute border-l-2 border-dashed z-0" 
+                style={{ 
+                  left: "23px", /* Alinhado exato no centro do círculo de 48px */
+                  top: "24px", 
+                  bottom: "24px", 
+                  borderColor: "rgba(201,168,76,0.4)" 
+                }} 
+              />
+
+              <div className="space-y-12 relative z-10">
+                {MODULES.map(({ num, title, text, tags }, i) => (
+                  <div key={i} className="flex gap-6 md:gap-10 relative group">
+                    
+                    {/* Indicador Numérico (Fica por cima da linha) */}
+                    <div className="flex-shrink-0 relative z-10">
+                      <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm relative z-20"
+                        style={{ 
+                          border: "1.5px solid rgba(201,168,76,0.5)",
+                          boxShadow: "0 4px 15px rgba(107,79,58,0.06)" 
+                        }}>
+                        <span style={{ 
+                          fontFamily: "var(--font-serif)", 
+                          fontSize: "1rem", 
+                          fontWeight: 800, 
+                          color: "var(--gold-warm)" 
+                        }}>
+                          {num}
+                        </span>
                       </div>
-                    )}
+                    </div>
+
+                    {/* Conteúdo do Card */}
+                    <div className="flex-grow pt-1">
+                      <h3 style={{ 
+                        fontFamily: "var(--font-serif)", 
+                        fontWeight: 700, 
+                        fontSize: "1.1rem", 
+                        color: "var(--brown-deep)", 
+                        marginBottom: "0.5rem" 
+                      }}>
+                        {title}
+                      </h3>
+                      <p style={{ 
+                        fontFamily: "var(--font-sans)", 
+                        color: "var(--muted)", 
+                        lineHeight: 1.7, 
+                        fontSize: "0.92rem", 
+                        marginBottom: tags.length ? "0.8rem" : 0 
+                      }}>
+                        {text}
+                      </p>
+                      
+                      {tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {tags.map((tag) => (
+                            <span key={tag} className="badge-gold" style={{ fontSize: "0.65rem", padding: "0.3rem 0.8rem" }}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

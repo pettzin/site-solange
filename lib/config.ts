@@ -38,5 +38,7 @@ export const PROVA_SOCIAL_IMAGES = [
   "/prova1.jpg", 
   "/prova2.jpg",
   "/prova3.jpg",
-  "/prova4.jpg"
+  "/prova4.jpg",
+  "/prova5.jpg",
+  "/prova6.jpg"
 ]
