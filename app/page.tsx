@@ -482,10 +482,21 @@ export default function LandingPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          PARA QUEM É — ICP
+          PARA QUEM É — ICP (AJUSTADO PARA MOBILE)
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-32 px-5 md:px-10" style={{ background: "rgba(250,235,230,0.4)" }}>
-        <div className="max-w-4xl mx-auto">
+      <section className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg relative overflow-hidden">
+        
+        {/* ELEMENTOS DECORATIVOS COM POSICIONAMENTO SEGURO */}
+        <div className="absolute top-10 -left-12 opacity-[0.04] rotate-12 pointer-events-none">
+          <Scissors size={180} style={{ color: "var(--brown-deep)" }} />
+        </div>
+        
+        {/* Estrela movida para a extrema direita e com z-index baixo para não cobrir texto */}
+        <div className="absolute bottom-10 -right-8 opacity-[0.06] -rotate-12 pointer-events-none z-0">
+          <Sparkles size={130} style={{ color: "var(--gold)" }} />
+        </div>
+
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-14 reveal">
             <div className="ornament-center mb-6">
               <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
@@ -500,22 +511,34 @@ export default function LandingPage() {
 
           <div className="grid md:grid-cols-2 gap-4 reveal">
             {ICP_BULLETS.map((bullet, i) => (
-              <div key={i} className="flex items-start gap-3 p-5 rounded-xl transition-all hover:shadow-md"
-                style={{ background: "white", border: "1px solid rgba(191,161,136,0.2)" }}>
-                <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
-                  <Check size={13} style={{ color: "white", strokeWidth: 3 }} />
+              <div key={i} 
+                className="flex items-start gap-4 p-6 rounded-2xl transition-all duration-300 sm:hover:-translate-y-1"
+                style={{ 
+                  background: "white", 
+                  border: "1px solid rgba(201,168,76,0.15)",
+                  boxShadow: "0 4px 12px rgba(107,79,58,0.03)" 
+                }}>
+                <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                  style={{ background: "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))" }}>
+                  <Check size={12} style={{ color: "white", strokeWidth: 4 }} />
                 </div>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.92rem", lineHeight: 1.65, color: "var(--brown-deep)" }}>
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", lineHeight: 1.6, color: "var(--brown-deep)", fontWeight: 500 }}>
                   {bullet}
                 </p>
               </div>
             ))}
           </div>
-
-          <p className="text-center mt-10 reveal" style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 600, color: "var(--brown-deep)" }}>
-            Se você se identificou com pelo menos um desses pontos... esse método foi feito pra você!
-          </p>
+          
+          {/* Badge final ajustada */}
+          <div className="flex justify-center mt-12 reveal">
+            <div className="py-4 px-6 sm:px-10 rounded-2xl sm:rounded-full w-full sm:w-auto" 
+                 style={{ background: "rgba(255,255,255,0.5)", border: "1px dashed rgba(201,168,76,0.3)" }}>
+              <p style={{ fontFamily: "var(--font-serif)", fontSize: "1rem", fontWeight: 600, color: "var(--brown-deep)", textAlign: "center", lineHeight: 1.4 }}>
+                Se você se identificou com pelo menos um desses pontos... <br className="sm:hidden" />
+                <span style={{ color: "var(--gold-warm)" }}>este método é para você!</span>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
