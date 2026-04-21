@@ -30,3 +30,13 @@ export function buildFormWhatsAppURL(nome: string) {
     `Olá, meu nome é ${nome}, tenho interesse no curso de loiros e gostaria de mais informações.`
   )}`
 }
+
+// ─── IMAGENS DE PROVA SOCIAL (CARROSSEL) ──────────────────────────────────────
+// Coloque os arquivos de imagem dentro da pasta "public" na raiz do projeto.
+// Ex: se o arquivo for "public/aluna1.jpg", escreva apenas "/aluna1.jpg"
+export const PROVA_SOCIAL_IMAGES = [
+  "/prova1.jpg", 
+  "/prova2.jpg",
+  "/prova3.jpg",
+  "/prova4.jpg"
+]

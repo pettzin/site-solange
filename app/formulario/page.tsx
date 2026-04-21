@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { Check, Lock, AlertCircle, MessageCircle, Sparkles, ArrowLeft, Star } from "lucide-react"
 
@@ -8,7 +8,7 @@ import { Check, Lock, AlertCircle, MessageCircle, Sparkles, ArrowLeft, Star } fr
 const WHATSAPP_NUMBER = "5511999999999"  // ← altere aqui
 
 function buildWhatsAppURL(nome: string) {
-  const msg = `Olá, meu nome é ${nome}, tenho interesse no curso de loiros e gostaria de mais informações.`
+  const msg = `Oi, meu nome é ${nome} e quero saber mais sobre o Método MSM`
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`
 }
 
@@ -43,7 +43,8 @@ function SuccessScreen({ nome, whatsappUrl }: { nome: string; whatsappUrl: strin
     <main className="min-h-[100svh] flex items-center justify-center px-5 py-12 dark-luxury">
       <div className="relative z-10 max-w-md w-full text-center">
         {/* Check animado */}
-        <div className="w-24 h-24 mx-auto mb-8 rounded-full flex items-center justify-center animate-pulse-gold" style={{ background: "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))" }}>
+        <div className="w-24 h-24 mx-auto mb-8 rounded-full flex items-center justify-center animate-pulse-gold"
+          style={{ background: "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))" }}>
           <Check size={44} style={{ color: "white", strokeWidth: 2.5 }} />
         </div>
 
@@ -58,7 +59,9 @@ function SuccessScreen({ nome, whatsappUrl }: { nome: string; whatsappUrl: strin
           Sua mensagem está <span className="gold-text-dark">pronta para enviar</span>
         </h2>
         <p style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, fontSize: "0.92rem", marginBottom: "2.5rem" }}>
-          Você será redirecionada para o WhatsApp em <strong style={{ color: "var(--gold-light)" }}>{redirect}</strong> segundos. Nossa equipe irá te atender e compartilhar todos os detalhes do curso.
+          Você será redirecionada para o WhatsApp em{" "}
+          <strong style={{ color: "var(--gold-light)" }}>{redirect}</strong> segundos.
+          Nossa equipe vai te atender e tirar todas as suas dúvidas sobre o Método MSM.
         </p>
 
         <a
@@ -88,11 +91,12 @@ function SuccessScreen({ nome, whatsappUrl }: { nome: string; whatsappUrl: strin
           </p>
           {[
             "Nossa equipe recebe sua mensagem no WhatsApp",
-            "Você recebe todas as informações sobre o curso",
-            "Garanta sua vaga com condição especial",
+            "Você recebe todas as informações sobre o Método MSM",
+            "Garanta sua vaga com segurança — 7 dias de garantia",
           ].map((text, i) => (
             <div key={i} className="flex gap-3 mb-3 last:mb-0">
-              <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(201,168,76,0.2)" }}>
+              <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                style={{ background: "rgba(201,168,76,0.2)" }}>
                 <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", fontWeight: 700, color: "var(--gold)" }}>{i + 1}</span>
               </div>
               <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.87rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.65 }}>{text}</span>
@@ -118,12 +122,10 @@ function FloatingField({
 
   return (
     <div className="relative">
-      {/* Label flutuante */}
       <label
         htmlFor={id}
         style={{
-          position: "absolute",
-          left: "1.1rem",
+          position: "absolute", left: "1.1rem",
           top: isActive ? "0.45rem" : "50%",
           transform: isActive ? "translateY(0) scale(0.78)" : "translateY(-50%) scale(1)",
           transformOrigin: "left",
@@ -132,8 +134,7 @@ function FloatingField({
           fontWeight: isActive ? 700 : 400,
           color: error ? "#dc2626" : focused ? "var(--gold)" : "var(--tan)",
           transition: "all 0.25s cubic-bezier(0.22,1,0.36,1)",
-          pointerEvents: "none",
-          zIndex: 1,
+          pointerEvents: "none", zIndex: 1,
           background: isActive ? "white" : "transparent",
           padding: isActive ? "0 0.25rem" : "0",
           letterSpacing: isActive ? "0.05em" : "normal",
@@ -144,10 +145,7 @@ function FloatingField({
       </label>
 
       <input
-        id={id}
-        type={type}
-        value={value}
-        disabled={disabled}
+        id={id} type={type} value={value} disabled={disabled}
         placeholder={isActive ? placeholder : ""}
         onChange={onChange}
         onFocus={() => setFocused(true)}
@@ -172,13 +170,13 @@ function FloatingField({
 
 /* ─── PÁGINA PRINCIPAL ───────────────────────────────────────────────────────── */
 export default function FormularioPage() {
-  const [mounted, setMounted] = useState(false)
-  const [nome, setNome]       = useState("")
-  const [phone, setPhone]     = useState("")
-  const [email, setEmail]     = useState("")
-  const [errors, setErrors]   = useState<{ nome?: string; phone?: string; email?: string }>({})
-  const [submitting, setSubmitting] = useState(false)
-  const [submitted, setSubmitted]   = useState(false)
+  const [mounted, setMounted]         = useState(false)
+  const [nome, setNome]               = useState("")
+  const [phone, setPhone]             = useState("")
+  const [email, setEmail]             = useState("")
+  const [errors, setErrors]           = useState<{ nome?: string; phone?: string; email?: string }>({})
+  const [submitting, setSubmitting]   = useState(false)
+  const [submitted, setSubmitted]     = useState(false)
   const [whatsappUrl, setWhatsappUrl] = useState("")
 
   useEffect(() => { setMounted(true) }, [])
@@ -220,7 +218,10 @@ export default function FormularioPage() {
 
             {/* Voltar */}
             <div className={`mb-10 transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
-              <Link href="/" className="inline-flex items-center gap-2 transition-colors" style={{ fontFamily: "var(--font-sans)", fontSize: "0.82rem", color: "rgba(255,255,255,0.4)", textDecoration: "none" }}
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 transition-colors"
+                style={{ fontFamily: "var(--font-sans)", fontSize: "0.82rem", color: "rgba(255,255,255,0.4)", textDecoration: "none" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--gold-light)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
               >
@@ -231,11 +232,12 @@ export default function FormularioPage() {
 
             {/* Logo */}
             <div className={`flex items-center gap-3 mb-10 transition-all duration-700 delay-75 ${mounted ? "opacity-100" : "opacity-0"}`}>
-              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--tan), var(--gold))" }}>
-                <span style={{ fontFamily: "var(--font-great-vibes), cursive", color: "white", fontSize: "1.3rem" }}>L</span>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center"
+                style={{ background: "linear-gradient(135deg, var(--tan), var(--gold))" }}>
+                <span style={{ fontFamily: "var(--font-great-vibes), cursive", color: "white", fontSize: "1.3rem" }}>S</span>
               </div>
               <span style={{ fontFamily: "var(--font-serif)", fontSize: "1rem", color: "rgba(255,255,255,0.65)" }}>
-                Loiros Impecáveis
+                Solange Jesus Academy
               </span>
             </div>
 
@@ -244,14 +246,14 @@ export default function FormularioPage() {
               className={`transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.5rem, 6vw, 4.5rem)", color: "var(--gold-light)", lineHeight: 1 }}
             >
-              Fale com nossa equipe
+              Tire suas dúvidas
             </p>
             <h1
               className={`transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.9rem, 4.5vw, 3rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: "1.25rem" }}
             >
-              e descubra como o curso vai{" "}
-              <span className="gold-text-dark">transformar sua carreira</span>
+              e descubra como o Método MSM vai{" "}
+              <span className="gold-text-dark">eliminar sua insegurança nas mechas</span>
             </h1>
 
             <p
@@ -265,12 +267,12 @@ export default function FormularioPage() {
             <div className={`space-y-3 mb-10 transition-all duration-700 delay-300 ${mounted ? "opacity-100" : "opacity-0"}`}>
               {[
                 "Resposta em até 5 minutos no horário comercial",
-                "Tire todas as dúvidas antes de decidir",
-                "Condições especiais para quem entra em contato",
+                "Tire todas as dúvidas sobre o Método MSM antes de decidir",
                 "Sem pressão — sem spam — sem enrolação",
               ].map((p, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(201,168,76,0.18)" }}>
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ background: "rgba(201,168,76,0.18)" }}>
                     <Check size={11} style={{ color: "var(--gold)" }} />
                   </div>
                   <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.92rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.6 }}>{p}</span>
@@ -279,10 +281,14 @@ export default function FormularioPage() {
             </div>
 
             {/* Avaliações */}
-            <div className={`flex items-center gap-3 pt-7 transition-all duration-700 delay-400 ${mounted ? "opacity-100" : "opacity-0"}`} style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+            <div
+              className={`flex items-center gap-3 pt-7 transition-all duration-700 delay-400 ${mounted ? "opacity-100" : "opacity-0"}`}
+              style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+            >
               <div className="flex -space-x-2">
                 {["M","P","F","J"].map((l, i) => (
-                  <div key={i} className="w-9 h-9 rounded-full border-2 flex items-center justify-center text-white text-xs font-bold" style={{ borderColor: "rgba(107,79,58,0.5)", background: `linear-gradient(135deg, var(--tan), var(--brown-deep))` }}>
+                  <div key={i} className="w-9 h-9 rounded-full border-2 flex items-center justify-center text-white text-xs font-bold"
+                    style={{ borderColor: "rgba(107,79,58,0.5)", background: "linear-gradient(135deg, var(--tan), var(--brown-deep))" }}>
                     {l}
                   </div>
                 ))}
@@ -292,7 +298,7 @@ export default function FormularioPage() {
                   {[...Array(5)].map((_, i) => <Star key={i} size={12} style={{ fill: "var(--gold)", color: "var(--gold)" }} />)}
                 </div>
                 <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "rgba(255,255,255,0.45)" }}>
-                  <strong style={{ color: "rgba(255,255,255,0.7)" }}>+3.500</strong> alunas satisfeitas
+                  <strong style={{ color: "rgba(255,255,255,0.7)" }}>19 anos</strong> de experiência · Solange Jesus Academy
                 </p>
               </div>
             </div>
@@ -305,7 +311,8 @@ export default function FormularioPage() {
               style={{ background: "var(--cream)", color: "var(--fg)", boxShadow: "0 24px 64px rgba(0,0,0,0.35)" }}
             >
               {/* Header do card */}
-              <div className="rounded-t-2xl px-8 pt-8 pb-6" style={{ background: "linear-gradient(135deg, var(--brown-deep) 0%, rgba(107,79,58,0.85) 100%)", borderBottom: "1px solid rgba(201,168,76,0.2)" }}>
+              <div className="rounded-t-2xl px-8 pt-8 pb-6"
+                style={{ background: "linear-gradient(135deg, var(--brown-deep) 0%, rgba(107,79,58,0.85) 100%)", borderBottom: "1px solid rgba(201,168,76,0.2)" }}>
                 <div className="flex items-center gap-2 mb-3">
                   <MessageCircle size={16} style={{ color: "var(--gold-light)" }} />
                   <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, color: "var(--gold-light)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
@@ -325,44 +332,21 @@ export default function FormularioPage() {
               <div className="px-8 py-7">
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <FloatingField
-                    id="nome"
-                    label="Seu nome completo"
-                    value={nome}
-                    placeholder="Ex: Maria Silva"
-                    error={errors.nome}
-                    disabled={submitting}
-                    onChange={(e) => {
-                      setNome(e.target.value)
-                      if (errors.nome) setErrors((prev) => ({ ...prev, nome: undefined }))
-                    }}
+                    id="nome" label="Seu nome completo" value={nome}
+                    placeholder="Ex: Maria Silva" error={errors.nome} disabled={submitting}
+                    onChange={(e) => { setNome(e.target.value); if (errors.nome) setErrors((prev) => ({ ...prev, nome: undefined })) }}
                   />
 
                   <FloatingField
-                    id="phone"
-                    label="Seu WhatsApp"
-                    type="tel"
-                    value={phone}
-                    placeholder="(11) 99999-9999"
-                    error={errors.phone}
-                    disabled={submitting}
-                    onChange={(e) => {
-                      setPhone(formatPhone(e.target.value))
-                      if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined }))
-                    }}
+                    id="phone" label="Seu WhatsApp" type="tel" value={phone}
+                    placeholder="(11) 99999-9999" error={errors.phone} disabled={submitting}
+                    onChange={(e) => { setPhone(formatPhone(e.target.value)); if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined })) }}
                   />
 
                   <FloatingField
-                    id="email"
-                    label="Seu melhor e-mail"
-                    type="email"
-                    value={email}
-                    placeholder="exemplo@email.com"
-                    error={errors.email}
-                    disabled={submitting}
-                    onChange={(e) => {
-                      setEmail(e.target.value)
-                      if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }))
-                    }}
+                    id="email" label="Seu melhor e-mail" type="email" value={email}
+                    placeholder="exemplo@email.com" error={errors.email} disabled={submitting}
+                    onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((prev) => ({ ...prev, email: undefined })) }}
                   />
 
                   {/* Preview da mensagem */}
@@ -372,7 +356,7 @@ export default function FormularioPage() {
                         Preview da mensagem:
                       </p>
                       <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.83rem", color: "#2d6a4f", lineHeight: 1.6, fontStyle: "italic" }}>
-                        &quot;Olá, meu nome é <strong>{nome.trim().split(" ")[0]}</strong>, tenho interesse no curso de loiros e gostaria de mais informações.&quot;
+                        &quot;Oi, meu nome é <strong>{nome.trim().split(" ")[0]}</strong> e quero saber mais sobre o Método MSM&quot;
                       </p>
                     </div>
                   )}
@@ -391,18 +375,20 @@ export default function FormularioPage() {
                     ) : (
                       <>
                         <MessageCircle size={18} />
-                        Enviar pelo WhatsApp
+                        Falar sobre o Método MSM
                       </>
                     )}
                   </button>
                 </form>
 
-                <p className="flex items-center justify-center gap-1.5 mt-4" style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", color: "var(--muted)", textAlign: "center" }}>
+                <p className="flex items-center justify-center gap-1.5 mt-4"
+                  style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", color: "var(--muted)", textAlign: "center" }}>
                   <Lock size={10} /> Seus dados estão seguros. Não enviamos spam.
                 </p>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
