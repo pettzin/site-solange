@@ -1275,8 +1275,6 @@ export default function LandingPage() {
                 className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
                 style={{
                   background: "white",
-                  border: "1px solid rgba(201,168,76,0.3)",
-                  boxShadow: "0 2px 12px rgba(107,79,58,0.08)",
                 }}
                 aria-label="Anterior"
               >
@@ -1290,8 +1288,6 @@ export default function LandingPage() {
                 className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
                 style={{
                   background: "white",
-                  border: "1px solid rgba(201,168,76,0.3)",
-                  boxShadow: "0 2px 12px rgba(107,79,58,0.08)",
                 }}
                 aria-label="Próximo"
               >
@@ -1967,16 +1963,22 @@ export default function LandingPage() {
           <div className="hidden sm:flex justify-center gap-4 mt-6">
             <button 
               onClick={() => scrollCarousel("left")}
-              className="w-12 h-12 rounded-full flex items-center justify-center shadow-md bg-white border border-gold/30 hover:scale-110 active:scale-95 transition-all"
-            >
-              <ChevronLeft size={24} className="text-brown-deep" />
+              className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 "
+            style={{
+                  background: "white",
+                }}
+                aria-label="Anterior">
+              <ChevronLeft size={20} style={{ color: "var(--brown-deep)" }} />
             </button>
 
             <button 
               onClick={() => scrollCarousel("right")}
-              className="w-12 h-12 rounded-full flex items-center justify-center shadow-md bg-white border border-gold/30 hover:scale-110 active:scale-95 transition-all"
-            >
-              <ChevronRight size={24} className="text-brown-deep" />
+              className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 "
+            style={{
+                  background: "white",
+                }}
+                aria-label="Próximo">
+              <ChevronRight size={20} style={{ color: "var(--brown-deep)" }} />
             </button>
           </div>
         </div>
