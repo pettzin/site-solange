@@ -40,5 +40,21 @@ export const PROVA_SOCIAL_IMAGES = [
   "/prova3.jpg",
   "/prova4.jpg",
   "/prova5.jpg",
-  "/prova6.jpg"
+  "/prova6.jpg",
+  "/prova7.jpg",
+  "/prova8.jpg",
+  "/prova9.jpg",
+  "/prova10.jpg",
+]
+
+// ─── IMAGENS DE RAÍZES (CARROSSEL TÉCNICO) ────────────────────────────────────
+export const RAIZES_IMAGES = [
+  { src: "/raiz-1.jpg", caption: "Loiro platinado — sem nenhuma marca" },
+  { src: "/raiz-2.jpg", caption: "Mechas finas — transição perfeita" },
+  { src: "/raiz-3.jpg", caption: "Balayage — raiz integrada com precisão" },
+  { src: "/raiz-4.jpg", caption: "Loiro dourado — borda a borda" },
+  { src: "/raiz-5.jpg", caption: "Free Hands — sem sobreposição" },
+  { src: "/raiz-6.jpg", caption: "Luminous Slice — execução limpa" },
+  { src: "/raiz-7.jpg", caption: "Soft Blond — zero marcação" },
+  { src: "/raiz-8.jpg", caption: "Blond Diamond — resultado impecável" },
 ]
