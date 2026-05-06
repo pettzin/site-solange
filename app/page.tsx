@@ -69,7 +69,6 @@ const BENEFITS = [
 
 const ICP_BULLETS = [
   "Você que já atende no salão, mas sente medo de manchar o cabelo da cliente ou causar corte químico",
-  "Quem já fez outros cursos, mas ainda trava na hora de executar e sente que sempre falta alguma coisa",
   "Você que trabalha o dia inteiro, fica em pé, se dedica... mas no fim sente que ganha menos do que merece",
   "Quem quer aprender mechas com segurança para cobrar mais caro e ser reconhecida como especialista",
   "Você que sonha em ter agenda cheia, clientes de valor e mais liberdade para viver sua vida",
@@ -117,24 +116,6 @@ const MODULES = [
 ];
 
 const TESTIMONIALS = [
-  {
-    name: "Mariana Costa",
-    role: "Cabeleireira • São Paulo",
-    text: "Fiz outros cursos e ainda travava na execução. Com o Método MSM finalmente entendi o porquê de cada passo. Nunca mais tive medo de manchar.",
-    stars: 5,
-  },
-  {
-    name: "Patricia Oliveira",
-    role: "Proprietária de Salão • Rio",
-    text: "Aumentei meu ticket em 40% nas mechas logo no primeiro mês. Minha cliente percebeu a diferença na segurança com que eu executei.",
-    stars: 5,
-  },
-  {
-    name: "Fernanda Lima",
-    role: "Colorista • Curitiba",
-    text: "O módulo de diagnóstico mudou tudo. Agora faço a anamnese certa, o teste de mecha e nunca mais pego o cabelo sem saber o que vai acontecer.",
-    stars: 5,
-  },
   {
     name: "Juliana Ramos",
     role: "Cabeleireira • Belo Horizonte",
@@ -368,338 +349,94 @@ export default function LandingPage() {
           HERO
       ══════════════════════════════════════════════════════════════════════ */}
       <section
-        ref={heroRef}
-        className="relative min-h-[100svh] flex items-center gold-texture-bg overflow-hidden"
-      >
-        {/* Partículas decorativas */}
-        {mounted && (
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full"
-                style={{
-                  width: `${[8, 5, 10, 6, 9, 4][i]}px`,
-                  height: `${[8, 5, 10, 6, 9, 4][i]}px`,
-                  left: `${[15, 35, 60, 75, 85, 50][i]}%`,
-                  top: `${[20, 60, 25, 70, 40, 80][i]}%`,
-                  background:
-                    "linear-gradient(135deg, var(--gold), var(--gold-light))",
-                  opacity: 0.35,
-                  animation: `particleFloat ${[4, 6, 5, 7, 4.5, 6.5][i]}s ease-in-out infinite`,
-                  animationDelay: `${[0, 1, 2, 0.5, 1.5, 2.5][i]}s`,
-                }}
-              />
-            ))}
-            <div
-              className="absolute -right-32 top-1/4 w-[500px] h-[500px] rounded-full animate-blob opacity-20"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(201,168,76,0.4), rgba(191,161,136,0.15))",
-              }}
-            />
-            <div
-              className="absolute -left-20 bottom-1/4 w-[350px] h-[350px] rounded-full animate-blob opacity-15"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(169,117,98,0.3), rgba(250,235,230,0.2))",
-                animationDelay: "-5s",
-              }}
-            />
-          </div>
-        )}
-
+  ref={heroRef}
+  className="relative min-h-[100svh] flex items-center gold-texture-bg overflow-hidden"
+>
+  {/* Partículas decorativas mantidas */}
+  {mounted && (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {[...Array(6)].map((_, i) => (
         <div
-          className="absolute top-0 left-0 right-0 h-[3px]"
+          key={i}
+          className="absolute rounded-full"
           style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, var(--gold-warm) 30%, var(--gold-shine) 50%, var(--gold-warm) 70%, transparent 100%)",
+            width: `${[8, 5, 10, 6, 9, 4][i]}px`,
+            height: `${[8, 5, 10, 6, 9, 4][i]}px`,
+            left: `${[15, 35, 60, 75, 85, 50][i]}%`,
+            top: `${[20, 60, 25, 70, 40, 80][i]}%`,
+            background: "linear-gradient(135deg, var(--gold), var(--gold-light))",
+            opacity: 0.35,
+            animation: `particleFloat ${[4, 6, 5, 7, 4.5, 6.5][i]}s ease-in-out infinite`,
+            animationDelay: `${[0, 1, 2, 0.5, 1.5, 2.5][i]}s`,
           }}
         />
+      ))}
+      <div className="absolute -right-32 top-1/4 w-[500px] h-[500px] rounded-full animate-blob opacity-20" style={{ background: "radial-gradient(circle, rgba(201,168,76,0.4), rgba(191,161,136,0.15))" }} />
+      <div className="absolute -left-20 bottom-1/4 w-[350px] h-[350px] rounded-full animate-blob opacity-15" style={{ background: "radial-gradient(circle, rgba(169,117,98,0.3), rgba(250,235,230,0.2))", animationDelay: "-5s" }} />
+    </div>
+  )}
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-10 py-20 md:py-28">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Lado esquerdo — copy */}
-            <div>
-              <div
-                className={`transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              >
-                <div className="badge-gold mb-7">
-                  <span
-                    className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{
-                      background: "var(--gold)",
-                      boxShadow: "0 0 6px var(--gold)",
-                    }}
-                  />
-                  Solange Jesus Academy
-                </div>
+  <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "linear-gradient(90deg, transparent 0%, var(--gold-warm) 30%, var(--gold-shine) 50%, var(--gold-warm) 70%, transparent 100%)" }} />
+
+  <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-10 py-20 md:py-28">
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      {/* Lado esquerdo — copy original */}
+      <div>
+        <div className={`transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <div className="badge-gold mb-7">Solange Jesus Academy</div>
+        </div>
+
+        <p className={`transition-all duration-700 delay-75 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ fontFamily: "var(--font-script)", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
+          Mechas com segurança
+        </p>
+
+        <h1 className={`transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 5vw, 3.6rem)", fontWeight: 800, lineHeight: 1.1, marginBottom: "1.5rem", color: "var(--fg)" }}>
+          Domine a técnica e <span className="gold-text-animated">nunca mais tenha medo de manchar</span> ou causar corte químico
+        </h1>
+
+        <p className={`transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-sans)", fontSize: "1.05rem", lineHeight: 1.8, color: "var(--muted)", maxWidth: "32rem", marginBottom: "0.75rem" }}>
+          Aprenda o Método MSM (Mechas Sem Medo) para executar mechas com confiança, cobrar o que seu trabalho merece e ser reconhecida como especialista.
+        </p>
+
+        <div className={`flex flex-col sm:flex-row gap-3 mb-10 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold animate-pulse-gold">
+            <Sparkles size={17} /> Quero aprender mechas sem medo
+          </a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ background: "transparent", color: "var(--brown-deep)", border: "1.5px solid rgba(107,79,58,0.3)", boxShadow: "none" }}>
+            <MessageCircle size={17} /> Falar pelo WhatsApp
+          </a>
+        </div>
+      </div>
+
+      {/* Lado direito — Card flutuante original */}
+      <div className={`hidden lg:flex justify-center items-center transition-all duration-1000 delay-400 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className="relative w-full max-w-sm">
+          <div className="absolute -inset-6 rounded-3xl animate-spin-slow opacity-30" style={{ background: "conic-gradient(from 0deg, var(--gold-warm), var(--gold-shine), var(--gold-light), var(--tan), var(--gold-warm))", filter: "blur(18px)" }} />
+          <div className="relative rounded-2xl p-8 z-10 bg-white shadow-2xl">
+            <div className="text-center mb-5">
+              <div className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--gold), var(--brown-deep))" }}>
+                <Scissors size={24} style={{ color: "white" }} />
               </div>
-
-              <p
-                className={`transition-all duration-700 delay-75 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-                style={{
-                  fontFamily: "var(--font-great-vibes), cursive",
-                  fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
-                  color: "var(--brown-warm)",
-                  lineHeight: 1.1,
-                  marginBottom: "0.25rem",
-                }}
-              >
-                Mechas com segurança
-              </p>
-
-              <h1
-                className={`transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontSize: "clamp(2rem, 5vw, 3.6rem)",
-                  fontWeight: 800,
-                  lineHeight: 1.1,
-                  marginBottom: "1.5rem",
-                  color: "var(--fg)",
-                }}
-              >
-                Domine a técnica e{" "}
-                <span className="gold-text-animated">
-                  nunca mais tenha medo de manchar
-                </span>{" "}
-                ou causar corte químico
-              </h1>
-
-              <p
-                className={`transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "1.05rem",
-                  lineHeight: 1.8,
-                  color: "var(--muted)",
-                  maxWidth: "32rem",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                Aprenda o Método MSM (Mechas Sem Medo) para executar mechas com confiança, cobrar
-                o que seu trabalho merece e ser reconhecida como especialista —{" "}
-                <strong style={{ color: "var(--brown-deep)" }}>
-                  mesmo que você ainda se sinta insegura hoje.
-                </strong>
-              </p>
-
-              <p
-                className={`transition-all duration-700 delay-175 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "0.9rem",
-                  color: "var(--muted)",
-                  marginBottom: "2.5rem",
-                }}
-              >
-                Com mais de{" "}
-                <strong style={{ color: "var(--brown-deep)" }}>
-                  19 anos de experiência
-                </strong>{" "}
-                na área da beleza e mechas.
-              </p>
-
-              <div
-                className={`flex flex-col sm:flex-row gap-3 mb-10 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              >
-                <a
-                  href={HOTMART_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gold animate-pulse-gold"
-                >
-                  <Sparkles size={17} />
-                  Quero aprender mechas sem medo
-                </a>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gold"
-                  style={{
-                    background: "transparent",
-                    color: "var(--brown-deep)",
-                    border: "1.5px solid rgba(107,79,58,0.3)",
-                    boxShadow: "none",
-                  }}
-                >
-                  <MessageCircle size={17} />
-                  Falar pelo WhatsApp
-                </a>
-              </div>
-
-              {/* Trust bar */}
-              <div
-                className={`transition-all duration-700 delay-300 ${mounted ? "opacity-100" : "opacity-0"}`}
-              >
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                  {[
-                    { icon: Lock, text: "Compra 100% segura" },
-                    { icon: Clock, text: "Acesso imediato" },
-                    { icon: Shield, text: "7 dias de garantia" },
-                  ].map(({ icon: Icon, text }) => (
-                    <div key={text} className="flex items-center gap-1.5">
-                      <Icon
-                        size={13}
-                        style={{ color: "var(--gold)", flexShrink: 0 }}
-                      />
-                      <span
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          fontSize: "0.8rem",
-                          color: "var(--muted)",
-                        }}
-                      >
-                        {text}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.2rem", color: "var(--fg)", marginBottom: "0.5rem" }}>Mechas <span className="gold-text">Sem Medo</span></h3>
+              <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.85rem", lineHeight: 1.6 }}>O método completo para executar mechas com segurança e confiança — do diagnóstico à finalização</p>
             </div>
-
-            {/* Lado direito — card flutuante */}
-            <div
-              className={`hidden lg:flex justify-center items-center transition-all duration-1000 delay-400 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            >
-              <div className="relative w-full max-w-sm">
-                <div
-                  className="absolute -inset-6 rounded-3xl animate-spin-slow opacity-30"
-                  style={{
-                    background:
-                      "conic-gradient(from 0deg, var(--gold-warm), var(--gold-shine), var(--gold-light), var(--tan), var(--gold-warm))",
-                    filter: "blur(18px)",
-                  }}
-                />
-
-                <div
-                  className="relative rounded-2xl p-8 z-10"
-                  style={{
-                    background: "white",
-                    boxShadow:
-                      "0 24px 64px rgba(107,79,58,0.18), 0 8px 24px rgba(107,79,58,0.1)",
-                  }}
-                >
-                  <div className="text-center mb-5">
-                    <div
-                      className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, var(--gold), var(--brown-deep))",
-                      }}
-                    >
-                      <Scissors size={24} style={{ color: "white" }} />
-                    </div>
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-serif)",
-                        fontWeight: 700,
-                        fontSize: "1.2rem",
-                        color: "var(--fg)",
-                        marginBottom: "0.5rem",
-                      }}
-                    >
-                      Mechas <span className="gold-text">Sem Medo</span>
-                    </h3>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        color: "var(--muted)",
-                        fontSize: "0.85rem",
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      O método completo para executar mechas com segurança e
-                      confiança — do diagnóstico à finalização
-                    </p>
-                  </div>
-
-                  {[
-                    "30+ Aulas em 5 módulos",
-                    "Diagnóstico e anamnese profissional",
-                    "Técnicas Free Hands e Balayage",
-                    "Suporte durante o aprendizado",
-                    "7 dias de garantia",
-                    "Bônus exclusivo de finalização",
-                  ].map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2.5 mb-2.5 last:mb-0"
-                    >
-                      <div
-                        className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, var(--gold), var(--gold-shine))",
-                        }}
-                      >
-                        <Check
-                          size={11}
-                          style={{ color: "white", strokeWidth: 3 }}
-                        />
-                      </div>
-                      <span
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          fontSize: "0.87rem",
-                          color: "var(--fg)",
-                        }}
-                      >
-                        {item}
-                      </span>
-                    </div>
-                  ))}
-
-                  <div
-                    className="mt-6 pt-5"
-                    style={{ borderTop: "1px solid rgba(191,161,136,0.2)" }}
-                  >
-                    <a
-                      href={HOTMART_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-gold w-full"
-                      style={{ display: "flex" }}
-                    >
-                      Garantir Minha Vaga
-                    </a>
-                  </div>
+            {[ "30+ Aulas em 5 módulos", "Diagnóstico profissional", "Técnicas Free Hands", "Suporte durante o aprendizado", "7 dias de garantia" ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2.5 mb-2.5 last:mb-0">
+                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
+                  <Check size={11} style={{ color: "white", strokeWidth: 3 }} />
                 </div>
-
-                <div
-                  className="absolute -top-4 -right-4 w-20 h-20 rounded-full flex flex-col items-center justify-center animate-float"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, var(--brown-deep), var(--gold))",
-                    boxShadow: "0 8px 24px rgba(107,79,58,0.35)",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: "var(--font-serif)",
-                      color: "white",
-                      fontWeight: 800,
-                      fontSize: "0.7rem",
-                      textAlign: "center",
-                      lineHeight: 1.1,
-                    }}
-                  >
-                    7 dias
-                    <br />
-                    garantia
-                  </p>
-                </div>
+                <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.87rem", color: "var(--fg)" }}>{item}</span>
               </div>
+            ))}
+            <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(191,161,136,0.2)" }}>
+              <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full">Garantir Minha Vaga</a>
             </div>
           </div>
         </div>
-
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown size={26} style={{ color: "rgba(201,168,76,0.5)" }} />
-        </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ══════════════════════════════════════════════════════════════════════
           FAIXA DE CREDIBILIDADE
@@ -1158,67 +895,32 @@ export default function LandingPage() {
 
             {/* Stat cards de autoridade */}
             <div className="reveal-right">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="relative w-full rounded-3xl overflow-hidden mb-0 shadow-2xl border border-[rgba(201,168,76,0.3)] bg-white">
+              <img 
+                src="/cliente-autoridade.jpg" 
+                alt="Solange Jesus Academy" 
+                className="w-full h-auto block" 
+              />
+            </div>
+
+              <div className="grid grid-cols-3 gap-4 w-full mt-4">
                 {[
-                  {
-                    num: "0",
-                    unit: "manchas",
-                    desc: "quando o método é seguido corretamente",
-                  },
-                  {
-                    num: "19",
-                    unit: "anos",
-                    desc: "formando profissionais mais seguras",
-                  },
-                  {
-                    num: "30+",
-                    unit: "aulas",
-                    desc: "cobrindo cada detalhe técnico do início ao fim",
-                  },
-                  {
-                    num: "100%",
-                    unit: "prático",
-                    desc: "aplicável no salão no mesmo dia",
-                  },
+                  { num: "0", unit: "manchas", desc: "no método" },
+                  { num: "19", unit: "anos", desc: "de história" },
+                  { num: "100%", unit: "prático", desc: "no salão" },
                 ].map(({ num, unit, desc }, i) => (
                   <div
                     key={i}
-                    className="card p-6 text-center"
+                    className="card p-6 text-center flex flex-col justify-center min-h-[140px]"
                     style={{ transitionDelay: `${i * 80}ms` }}
                   >
-                    <p
-                      style={{
-                        fontFamily: "var(--font-serif)",
-                        fontSize: "2rem",
-                        fontWeight: 800,
-                        lineHeight: 1,
-                        marginBottom: "2px",
-                      }}
-                      className="gold-text"
-                    >
+                    <p className="gold-text font-serif text-3xl md:text-4xl font-extrabold leading-none mb-1">
                       {num}
                     </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        fontSize: "0.72rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        color: "var(--brown-warm)",
-                        marginBottom: "8px",
-                      }}
-                    >
+                    <p className="font-sans text-[11px] md:text-[12px] uppercase font-bold text-[var(--brown-warm)] tracking-wider">
                       {unit}
                     </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        fontSize: "0.8rem",
-                        color: "var(--muted)",
-                        lineHeight: 1.5,
-                      }}
-                    >
+                    <p className="font-sans text-[10px] md:text-[11px] text-[var(--muted)] leading-tight mt-2">
                       {desc}
                     </p>
                   </div>
@@ -1621,58 +1323,17 @@ export default function LandingPage() {
                 <div
                   className="relative rounded-2xl overflow-hidden"
                   style={{
-                    background: "rgba(107,79,58,0.06)",
-                    border: "1px solid rgba(201,168,76,0.2)",
-                    aspectRatio: "4/5",
+                   background: "rgba(107,79,58,0.06)",
+                   border: "1px solid rgba(201,168,76,0.2)",
+                   aspectRatio: "4/5",
                   }}
                 >
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                    <div
-                      className="w-28 h-28 rounded-full flex items-center justify-center mb-5"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, var(--tan), var(--gold))",
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontFamily: "var(--font-great-vibes), cursive",
-                          fontSize: "3rem",
-                          color: "white",
-                        }}
-                      >
-                        S
-                      </span>
-                    </div>
-                    <p
-                      className="gold-text"
-                      style={{
-                        fontFamily: "var(--font-great-vibes), cursive",
-                        fontSize: "2.2rem",
-                        marginBottom: "0.3rem",
-                      }}
-                    >
-                      Solange Jesus
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        color: "var(--muted)",
-                        fontSize: "0.88rem",
-                      }}
-                    >
-                      Especialista em Mechas · 19 anos de experiência
-                    </p>
-                    <div className="flex gap-1 mt-3">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          size={14}
-                          style={{ fill: "var(--gold)", color: "var(--gold)" }}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                  <img 
+                    src="/cliente-bio.jpg" 
+                    alt="Solange Jesus" 
+                    className="w-full h-full object-cover"
+                  />
+                  
                 </div>
 
                 <div
