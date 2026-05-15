@@ -7,7 +7,7 @@
 
 // ─── LINKS ────────────────────────────────────────────────────────────────────
 export const HOTMART_URL    = "https://pay.hotmart.com/SEULINK" // ← checkout
-export const WHATSAPP_NUMBER = "5511999999999"                   // ← com DDI, sem +
+export const WHATSAPP_NUMBER = "5511978111150"                   // ← com DDI, sem +
 
 // ─── CONTEÚDO ─────────────────────────────────────────────────────────────────
 export const SITE_NAME   = "Loiros Impecáveis"

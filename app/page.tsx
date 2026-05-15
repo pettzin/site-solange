@@ -80,7 +80,7 @@ const MODULES = [
   {
     num: "00",
     title: "Boas-vindas e direcionamento profissional",
-    text: "Comece com clareza: como funciona o método, como aproveitar melhor as aulas, suporte, mentalidade e como a Solange construiu sua autoridade.",
+    text: "Comece com clareza: como funciona o método, como aproveitar melhor as aulas, suporte, mentalidade e como a Sol construiu sua autoridade.",
     tags: [],
   },
   {
@@ -115,26 +115,7 @@ const MODULES = [
   },
 ];
 
-const TESTIMONIALS = [
-  {
-    name: "Juliana Ramos",
-    role: "Cabeleireira • Belo Horizonte",
-    text: "Era exatamente o que eu precisava: um método claro, sem enrolação, que dá pra aplicar no salão no mesmo dia. Recomendo pra toda cabeleireira.",
-    stars: 5,
-  },
-  {
-    name: "Camila Santos",
-    role: "Freelancer • Brasília",
-    text: "Fiz o curso com medo de corte químico. Depois de concluir o Módulo 2 já me senti segura para atender. O suporte também é incrível.",
-    stars: 5,
-  },
-  {
-    name: "Rafaela Mendes",
-    role: "Colorista Profissional • Salvador",
-    text: "As técnicas do Módulo 3 me salvaram. Hoje executo Free Hands e Luminous Slice com total confiança e cobro o que meu trabalho merece.",
-    stars: 5,
-  },
-];
+
 
 const FAQS = [
   {
@@ -800,7 +781,7 @@ export default function LandingPage() {
                   marginBottom: "1.75rem",
                 }}
               >
-                A Solange ensina com precisão onde cada profissional erra:
+                A Sol ensina com precisão onde cada profissional erra:
                 divisão incorreta, OX errado, tempo de processamento impreciso.
                 Com o Método MSM, você aprende a eliminar cada variável que
                 causa mancha — e executa com a segurança de quem sabe exatamente
@@ -1400,7 +1381,7 @@ export default function LandingPage() {
                   marginBottom: "0.5rem",
                 }}
               >
-                Conheça a história da Solange Jesus
+                Conheça a história da Sol
               </p>
 
               <h2
@@ -1425,10 +1406,10 @@ export default function LandingPage() {
                 }}
               >
                 {[
-                  "Solange Jesus é especialista em mechas e fundadora da Solange Jesus Academy, com mais de 19 anos de experiência na área da beleza.",
+                  "Sol é especialista em mechas e fundadora da Solange Jesus Academy, com mais de 19 anos de experiência na área da beleza.",
                   "Sua trajetória começou muito cedo, aos 13 anos, passando por diferentes trabalhos até encontrar na profissão de cabeleireira sua verdadeira vocação.",
                   "Ao longo da carreira, enfrentou desafios, inseguranças e momentos decisivos que a levaram a buscar conhecimento de forma intensa — estudando e aperfeiçoando técnicas para entregar resultados cada vez mais seguros e profissionais.",
-                  "Hoje, Solange ajuda outras cabeleireiras a dominarem mechas com segurança, evitando erros como manchas e corte químico, através de um método claro, direto e aplicável no dia a dia do salão.",
+                  "Hoje, Sol ajuda outras cabeleireiras a dominarem mechas com segurança, evitando erros como manchas e corte químico, através de um método claro, direto e aplicável no dia a dia do salão.",
                 ].map((p, i) => (
                   <p key={i} style={{ marginBottom: "1rem" }}>
                     {p}
@@ -1510,82 +1491,7 @@ export default function LandingPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {TESTIMONIALS.map(({ name, role, text, stars }, i) => (
-              <div
-                key={i}
-                className="card p-7 reveal-scale"
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                <div
-                  className="mb-4"
-                  style={{
-                    fontFamily: "Georgia, serif",
-                    fontSize: "3.5rem",
-                    lineHeight: 0.8,
-                    color: "var(--gold-light)",
-                  }}
-                >
-                  &ldquo;
-                </div>
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.93rem",
-                    lineHeight: 1.8,
-                    color: "var(--fg)",
-                    marginBottom: "1.5rem",
-                  }}
-                >
-                  {text}
-                </p>
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(stars)].map((_, j) => (
-                    <Star
-                      key={j}
-                      size={14}
-                      style={{ fill: "var(--gold)", color: "var(--gold)" }}
-                    />
-                  ))}
-                </div>
-                <div
-                  className="flex items-center gap-3 pt-4"
-                  style={{ borderTop: "1px solid rgba(191,161,136,0.2)" }}
-                >
-                  <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, var(--tan), var(--brown-deep))",
-                    }}
-                  >
-                    {name.charAt(0)}
-                  </div>
-                  <div>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-serif)",
-                        fontWeight: 600,
-                        fontSize: "0.93rem",
-                        color: "var(--brown-deep)",
-                      }}
-                    >
-                      {name}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        color: "var(--tan)",
-                        fontSize: "0.78rem",
-                      }}
-                    >
-                      {role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          
         </div>
 
         {/* ── CARROSSEL DE IMAGENS (PROVA SOCIAL) ── */}
