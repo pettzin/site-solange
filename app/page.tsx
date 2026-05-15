@@ -23,15 +23,19 @@ import {
   ChevronLeft,
   ChevronRight, 
 } from "lucide-react";
-import { PROVA_SOCIAL_IMAGES, RAIZES_IMAGES } from "../lib/config";
+import {
+  PROVA_SOCIAL_IMAGES,
+  RAIZES_IMAGES,
+  HOTMART_URL,
+  WHATSAPP_NUMBER,
+  PRECO_DE,
+  PRECO_POR,
+  PARCELAMENTO,
+  buildWhatsAppURL,
+} from "../lib/config";
 
 /* ─── CONFIG ────────────────────────────────────────────────────────────────── */
-const HOTMART_URL = "https://pay.hotmart.com/SEULINK"; // ← altere aqui
-const WHATSAPP_NUMBER = "5511999999999"; // ← altere aqui
-const WHATSAPP_MSG = encodeURIComponent(
-  "Oi, quero saber mais sobre o Método MSM",
-);
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
+const WHATSAPP_URL = buildWhatsAppURL();
 
 /* ─── CONTEÚDO ──────────────────────────────────────────────────────────────── */
 const BENEFITS = [
@@ -144,7 +148,7 @@ const FAQS = [
   },
   {
     q: "Posso parcelar o pagamento?",
-    a: "Sim. O pagamento pode ser parcelado no cartão de crédito, conforme as condições disponíveis na plataforma no momento da compra. Também aceita Pix e boleto.",
+    a: `Sim. O pagamento pode ser parcelado em até ${PARCELAMENTO} no cartão de crédito. À vista, o valor é ${PRECO_POR},00. Também aceita Pix e boleto.`,
   },
 ];
 
@@ -410,6 +414,11 @@ export default function LandingPage() {
               </div>
             ))}
             <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(191,161,136,0.2)" }}>
+              <div className="text-center mb-3">
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "2px" }}>de {PRECO_DE}</p>
+                <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-warm)" }}>{PRECO_POR}</p>
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--muted)", marginTop: "2px" }}>ou {PARCELAMENTO}</p>
+              </div>
               <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full">Garantir Minha Vaga</a>
             </div>
           </div>
@@ -1286,6 +1295,87 @@ export default function LandingPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
+          OFERTA / PREÇO
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section id="oferta" className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg">
+        <div className="max-w-2xl mx-auto text-center reveal">
+          <div className="ornament-center mb-6">
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
+              Oferta especial — primeira semana
+            </span>
+          </div>
+          <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem, 5vw, 3.2rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.5rem" }}>
+            Invista na sua evolução
+          </p>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "2.5rem" }}>
+            Acesso completo ao{" "}
+            <span className="gold-text">Método Mechas Sem Medo</span>
+          </h2>
+
+          <div className="card p-10 md:p-14 reveal-scale">
+            {/* Preço riscado */}
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "0.25rem" }}>
+              de {PRECO_DE}
+            </p>
+
+            {/* Preço principal */}
+            <div className="flex items-end justify-center gap-2 mb-1">
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "1.1rem", fontWeight: 700, color: "var(--brown-deep)", alignSelf: "flex-start", paddingTop: "0.8rem" }}>R$</span>
+              <span style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(4rem, 12vw, 6rem)", fontWeight: 800, lineHeight: 1, color: "var(--gold-warm)" }}>397</span>
+            </div>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem", color: "var(--muted)", marginBottom: "0.5rem" }}>à vista</p>
+
+            <div className="gold-divider my-5" />
+
+            {/* Parcelamento */}
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "1rem", color: "var(--brown-deep)", marginBottom: "0.25rem" }}>
+              ou <strong>{PARCELAMENTO}</strong> no cartão
+            </p>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "var(--muted)", marginBottom: "2.5rem" }}>
+              Também aceita Pix e boleto
+            </p>
+
+            {/* Incluídos */}
+            <div className="grid sm:grid-cols-2 gap-3 mb-8 text-left">
+              {[
+                "30+ aulas em vídeo HD",
+                "5 módulos completos + bônus",
+                "Diagnóstico profissional",
+                "Técnicas Free Hands, Balayage e mais",
+                "Suporte durante o aprendizado",
+                "7 dias de garantia total",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))" }}>
+                    <Check size={11} style={{ color: "white", strokeWidth: 4 }} />
+                  </div>
+                  <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem", color: "var(--brown-deep)", fontWeight: 500 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold animate-glow w-full" style={{ fontSize: "1rem", padding: "1.2rem 2rem" }}>
+              <Sparkles size={18} />
+              Quero aprender mechas com segurança
+            </a>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mt-6">
+              {[
+                { icon: Shield, text: "7 dias de garantia" },
+                { icon: Lock, text: "Compra 100% segura" },
+                { icon: Clock, text: "Acesso imediato" },
+              ].map(({ icon: Icon, text }) => (
+                <div key={text} className="flex items-center gap-2">
+                  <Icon size={14} style={{ color: "var(--gold)", flexShrink: 0 }} />
+                  <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "var(--muted)" }}>{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
           MENTORA
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg">
@@ -1501,14 +1591,18 @@ export default function LandingPage() {
             className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden" 
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {PROVA_SOCIAL_IMAGES.map((imgSrc, index) => (
-              <div key={index} className="flex-none w-[280px] snap-center">
-                <div className="rounded-2xl overflow-hidden relative shadow-md" 
-                    style={{ background: "white", border: "1px solid rgba(201,168,76,0.2)", aspectRatio: "4/5" }}>
-                  <img src={imgSrc} alt="Depoimento" className="w-full h-full object-cover" />
+            {PROVA_SOCIAL_IMAGES.map((imgSrc, index) => {
+              const containImages = ["conceicao.jpg", "ingrid_lira.jpg", "milene_araujo.jpg", "monica.jpg", "talita.jpg"];
+              const isContain = containImages.some(name => imgSrc.includes(name));
+              return (
+                <div key={index} className="flex-none w-[280px] snap-center">
+                  <div className="rounded-2xl overflow-hidden relative shadow-md" 
+                      style={{ background: "black", border: "1px solid var(--bg)", aspectRatio: "4/5" }}>
+                    <img src={imgSrc} alt="Depoimento" className="w-full h-full" style={{ objectFit: isContain ? "contain" : "cover" }} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* MOBILE: Texto Informativo (Aparece apenas em telas pequenas) */}
@@ -1682,7 +1776,7 @@ export default function LandingPage() {
               fontSize: "1.05rem",
               lineHeight: 1.8,
               maxWidth: "28rem",
-              margin: "0 auto 3rem",
+              margin: "0 auto 1.5rem",
             }}
           >
             Você não precisa mais trabalhar com medo de errar nas mechas. Com um
@@ -1690,6 +1784,13 @@ export default function LandingPage() {
             melhor e aumentar o valor do seu trabalho. Sem risco — 7 dias de
             garantia total.
           </p>
+
+          {/* Preço resumido */}
+          <div className="inline-flex flex-col items-center mb-8 px-8 py-5 rounded-2xl" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", textDecoration: "line-through", marginBottom: "2px" }}>de {PRECO_DE}</p>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: "2.4rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-light)" }}>{PRECO_POR}</p>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "rgba(255,255,255,0.45)", marginTop: "4px" }}>ou {PARCELAMENTO}</p>
+          </div>
 
           <a
             href={HOTMART_URL}

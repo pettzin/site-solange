@@ -15,9 +15,9 @@ export const MENTORA     = "Solange Jesus"
 export const INSTAGRAM   = "https://instagram.com/loirosimpecaveis"
 
 // ─── OFERTA ───────────────────────────────────────────────────────────────────
-export const PRECO_DE   = "R$ 597,00"
-export const PRECO_POR  = "R$ 297"
-export const PARCELAMENTO = "12x R$ 29,70"
+export const PRECO_DE   = "R$ 997,00"
+export const PRECO_POR  = "R$ 397"
+export const PARCELAMENTO = "12x R$ 41,06"
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
 export function buildWhatsAppURL(mensagem?: string) {
@@ -36,15 +36,23 @@ export function buildFormWhatsAppURL(nome: string) {
 // Ex: se o arquivo for "public/aluna1.jpg", escreva apenas "/aluna1.jpg"
 export const PROVA_SOCIAL_IMAGES = [
   "/prova1.jpg", 
+  "/conceicao.jpg",
   "/prova2.jpg",
+  "/ingrid_lira.jpg",
   "/prova3.jpg",
+  "/milene_araujo.jpg",
   "/prova4.jpg",
+  "/monica.jpg",
   "/prova5.jpg",
+  "/talita.jpg",
   "/prova6.jpg",
   "/prova7.jpg",
   "/prova8.jpg",
   "/prova9.jpg",
   "/prova10.jpg",
+  "/prova11.jpg",
+  "/prova12.jpg",
+  "/prova13.jpg",
 ]
 
 // ─── IMAGENS DE RAÍZES (CARROSSEL TÉCNICO) ────────────────────────────────────
