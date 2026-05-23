@@ -464,13 +464,13 @@ export default function LandingPage() {
           <div className="relative" style={{ minHeight: "420px" }}>
             <img
               src="/prova2.jpg"
-              alt="Resultado loiro platinado — mechas impecáveis"
+              alt="Resultado Intense Blond — mechas impecáveis"
               className="w-full h-full object-cover"
               style={{ minHeight: "420px" }}
             />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.55) 0%, transparent 50%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-6">
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Loiro platinado</p>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Intense Blond</p>
               <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Transição impecável — zero marcação na raiz</p>
             </div>
           </div>
@@ -719,7 +719,7 @@ export default function LandingPage() {
               { src: "/prova6.jpg",  tecnica: "Luminous Slice",     desc: "Mechas iluminadas — movimento natural" },
               { src: "/prova9.jpg",  tecnica: "Loiro dourado",      desc: "Raiz integrada — sem esfumaçado" },
               { src: "/prova7.jpg",  tecnica: "Free Hands",         desc: "Balayage livre — zero sobreposição" },
-              { src: "/prova11.jpg", tecnica: "Loiro perolado",     desc: "Brilho uniforme — fio saudável" },
+              { src: "/prova11.jpg", tecnica: "Soft Blond",         desc: "Brilho uniforme — fio saudável" },
               { src: "/prova5.jpg",  tecnica: "Loiro cinza",        desc: "Mechas finas — luminosidade total" },
             ].map(({ src, tecnica, desc }) => (
               <div key={src} className="group relative overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(201,168,76,0.18)" }}>
