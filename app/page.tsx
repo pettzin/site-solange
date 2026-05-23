@@ -25,7 +25,6 @@ import {
 } from "lucide-react";
 import {
   PROVA_SOCIAL_IMAGES,
-  RAIZES_IMAGES,
   HOTMART_URL,
   WHATSAPP_NUMBER,
   PRECO_DE,
@@ -443,6 +442,42 @@ export default function LandingPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
+          FOTO SPLASH — Sol em ação (pós-stats)
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="w-full overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* Foto grande: Sol atendendo balayage */}
+          <div className="relative" style={{ minHeight: "420px" }}>
+            <img
+              src="/prova1.jpg"
+              alt="Solange Jesus aplicando técnica de balayage"
+              className="w-full h-full object-cover"
+              style={{ minHeight: "420px" }}
+            />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.55) 0%, transparent 50%)" }} />
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Balayage mel</p>
+              <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Sol em atendimento — mechas sem marcação</p>
+            </div>
+          </div>
+          {/* Foto: resultado loiro platinado curto */}
+          <div className="relative" style={{ minHeight: "420px" }}>
+            <img
+              src="/prova2.jpg"
+              alt="Resultado loiro platinado — mechas impecáveis"
+              className="w-full h-full object-cover"
+              style={{ minHeight: "420px" }}
+            />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.55) 0%, transparent 50%)" }} />
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Loiro platinado</p>
+              <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Transição impecável — zero marcação na raiz</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
           PROBLEMA / DOR
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg">
@@ -665,6 +700,60 @@ export default function LandingPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
+          GALERIA DE RESULTADOS — mosaico com captions
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-14 md:py-20 px-5 md:px-10" style={{ background: "var(--cream)" }}>
+        <div className="max-w-7xl mx-auto">
+          {/* Label topo */}
+          <div className="text-center mb-8 reveal">
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
+              Resultados reais — técnicas do método
+            </span>
+          </div>
+
+          {/* Grade mobile: 2 colunas · desktop: layout mosaico 3 colunas */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 reveal">
+
+            {[
+              { src: "/prova4.jpg",  tecnica: "Velvet Blast",       desc: "Degradê suave — transição sem marcação" },
+              { src: "/prova6.jpg",  tecnica: "Luminous Slice",     desc: "Mechas iluminadas — movimento natural" },
+              { src: "/prova9.jpg",  tecnica: "Loiro dourado",      desc: "Raiz integrada — sem esfumaçado" },
+              { src: "/prova7.jpg",  tecnica: "Free Hands",         desc: "Balayage livre — zero sobreposição" },
+              { src: "/prova11.jpg", tecnica: "Loiro perolado",     desc: "Brilho uniforme — fio saudável" },
+              { src: "/prova5.jpg",  tecnica: "Loiro cinza",        desc: "Mechas finas — luminosidade total" },
+            ].map(({ src, tecnica, desc }) => (
+              <div key={src} className="group relative overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(201,168,76,0.18)" }}>
+                {/* Proporção fixa — foto não corta */}
+                <div className="w-full" style={{ aspectRatio: "3/4" }}>
+                  <img
+                    src={src}
+                    alt={tecnica}
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                {/* Overlay + caption */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.78) 0%, rgba(26,16,8,0.1) 50%, transparent 70%)" }} />
+                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "2px" }}>{tecnica}</p>
+                  <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.8rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>{desc}</p>
+                </div>
+              </div>
+            ))}
+
+          </div>
+
+          {/* Linha dourada + frase */}
+          <div className="flex items-center gap-4 mt-8 reveal">
+            <div className="gold-divider flex-1" />
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontStyle: "italic", color: "var(--brown-warm)", textAlign: "center", flexShrink: 0 }}>
+              Resultados reais de alunas do Método MSM
+            </p>
+            <div className="gold-divider flex-1" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
           BENEFÍCIOS
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="py-20 md:py-32 px-5 md:px-10">
@@ -871,6 +960,23 @@ export default function LandingPage() {
                 ))}
               </div>
 
+              {/* Foto raiz-1 — prova visual da técnica sem manchas */}
+              <div className="relative rounded-2xl overflow-hidden mb-8 reveal-scale" style={{ border: "1px solid rgba(201,168,76,0.3)" }}>
+                <img
+                  src="/raiz-1.jpg"
+                  alt="Técnica de mechas sem manchas — aplicação precisa"
+                  className="w-full object-cover"
+                  style={{ maxHeight: "320px", objectPosition: "center 20%" }}
+                />
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.75) 0%, transparent 50%)" }} />
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end gap-3">
+                  <div className="flex-1">
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "3px" }}>Aplicação em processo</p>
+                    <p style={{ fontFamily: "var(--font-serif)", fontSize: "1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Zero manchas · zero esfumaçado — é isso que o método garante</p>
+                  </div>
+                </div>
+              </div>
+
               <a
                 href={HOTMART_URL}
                 target="_blank"
@@ -916,78 +1022,21 @@ export default function LandingPage() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
 
-          {/* ── Carrossel de imagens — raízes impecáveis ── */}
-          <div className="reveal">
-            <div 
-              className="flex gap-4 overflow-x-auto pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden" 
-              id="raizes-carousel"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-              {RAIZES_IMAGES.map(({ src, caption }, i) => (
-                <div key={i} className="flex-shrink-0 group" style={{ width: "260px" }}>
-                  <div className="relative overflow-hidden rounded-2xl mb-3"
-                    style={{ height: "340px", border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 4px 20px rgba(107,79,58,0.1)" }}>
-                    <img 
-                      src={src} 
-                      alt={caption} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                    />
-                  </div>
-                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "var(--brown-deep)", fontWeight: 500, textAlign: "center" }}>
-                    {caption}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* MOBILE: Texto Informativo (Aparece apenas em telas pequenas) */}
-            <div className="flex sm:hidden items-center justify-center mt-2 py-2">
-              <span 
-                style={{ 
-                  fontFamily: "var(--font-sans)", 
-                  fontSize: "0.75rem", 
-                  fontWeight: 500, 
-                  letterSpacing: "0.05em",
-                  color: "#9ca3af" 
-                }}
-              >
-                ← Deslize para os lados →
-              </span>
-            </div>
-
-            {/* Botões de navegação desktop (Aparece apenas em telas maiores) */}
-            <div className="hidden sm:flex justify-center gap-3 mt-6">
-              <button
-                onClick={() => {
-                  const el = document.getElementById("raizes-carousel");
-                  if (el) el.scrollBy({ left: -580, behavior: "smooth" });
-                }}
-                className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
-                style={{
-                  background: "white",
-                }}
-                aria-label="Anterior"
-              >
-                <ChevronLeft size={20} style={{ color: "var(--brown-deep)" }} />
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById("raizes-carousel");
-                  if (el) el.scrollBy({ left: 580, behavior: "smooth" });
-                }}
-                className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
-                style={{
-                  background: "white",
-                }}
-                aria-label="Próximo"
-              >
-                <ChevronRight
-                  size={20}
-                  style={{ color: "var(--brown-deep)" }}
+              {/* Foto de processo — papel alumínio mostrando técnica */}
+              <div className="relative rounded-2xl overflow-hidden mt-4 reveal-scale" style={{ border: "1px solid rgba(201,168,76,0.25)" }}>
+                <img
+                  src="/prova8.jpg"
+                  alt="Técnica de mechas com papel alumínio — separação precisa"
+                  className="w-full object-cover object-top"
+                  style={{ maxHeight: "240px" }}
                 />
-              </button>
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.72) 0%, transparent 50%)" }} />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "2px" }}>Processo em aula</p>
+                  <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.9rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Divisão de mechas precisa — sem sobrepor na raiz</p>
+                </div>
+              </div>
             </div>
           </div>
           </div>
@@ -1391,24 +1440,41 @@ export default function LandingPage() {
                       "linear-gradient(135deg, var(--gold), var(--gold-light))",
                   }}
                 />
+                {/* Foto principal — maior presença */}
                 <div
                   className="relative rounded-2xl overflow-hidden"
                   style={{
                    background: "rgba(107,79,58,0.06)",
                    border: "1px solid rgba(201,168,76,0.2)",
-                   aspectRatio: "4/5",
+                   aspectRatio: "3/4",
                   }}
                 >
                   <img 
                     src="/cliente-bio.jpg" 
                     alt="Solange Jesus" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
-                  
+                </div>
+
+                {/* Foto secundária flutuante — Sol com modelo de fio */}
+                <div
+                  className="absolute -bottom-4 -right-4 rounded-xl overflow-hidden animate-float-slow"
+                  style={{
+                    width: "130px",
+                    aspectRatio: "1/1",
+                    border: "3px solid white",
+                    boxShadow: "0 10px 30px rgba(107,79,58,0.25)",
+                  }}
+                >
+                  <img
+                    src="/cliente-autoridade.jpg"
+                    alt="Solange Jesus com modelo de estrutura do fio"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
 
                 <div
-                  className="absolute -bottom-5 -right-5 rounded-2xl px-5 py-3 animate-float"
+                  className="absolute -bottom-5 -left-5 rounded-2xl px-5 py-3 animate-float"
                   style={{
                     background: "white",
                     boxShadow: "0 10px 30px rgba(107,79,58,0.2)",
@@ -1496,10 +1562,8 @@ export default function LandingPage() {
                 }}
               >
                 {[
-                  "Sol é especialista em mechas e fundadora da Solange Jesus Academy, com mais de 19 anos de experiência na área da beleza.",
-                  "Sua trajetória começou muito cedo, aos 13 anos, passando por diferentes trabalhos até encontrar na profissão de cabeleireira sua verdadeira vocação.",
-                  "Ao longo da carreira, enfrentou desafios, inseguranças e momentos decisivos que a levaram a buscar conhecimento de forma intensa — estudando e aperfeiçoando técnicas para entregar resultados cada vez mais seguros e profissionais.",
-                  "Hoje, Sol ajuda outras cabeleireiras a dominarem mechas com segurança, evitando erros como manchas e corte químico, através de um método claro, direto e aplicável no dia a dia do salão.",
+                  "Sol é especialista em mechas e fundadora da Solange Jesus Academy, com mais de 19 anos de experiência na área da beleza. Começou aos 13 anos e encontrou na profissão de cabeleireira sua verdadeira vocação.",
+                  "Hoje, ajuda outras cabeleireiras a dominarem mechas com segurança — evitando manchas e corte químico — através de um método claro, direto e aplicável no dia a dia do salão.",
                 ].map((p, i) => (
                   <p key={i} style={{ marginBottom: "1rem" }}>
                     {p}
@@ -1542,6 +1606,30 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          FOTO SPLASH — transição (Sol no salão)
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="relative w-full overflow-hidden reveal" style={{ minHeight: "380px" }}>
+        <img
+          src="/sol.png"
+          alt="Solange Jesus — Solange Jesus Academy"
+          className="w-full h-full object-cover object-top absolute inset-0"
+          style={{ minHeight: "380px" }}
+        />
+        {/* overlay escuro gradiente */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(26,16,8,0.78) 0%, rgba(107,79,58,0.55) 60%, rgba(26,16,8,0.4) 100%)" }} />
+        {/* Conteúdo centrado */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-5" style={{ minHeight: "380px", padding: "60px 20px" }}>
+          <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem, 7vw, 3.8rem)", color: "var(--gold-light)", lineHeight: 1.1, marginBottom: "0.5rem" }}>
+            Confiança que se vê no resultado
+          </p>
+          <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.95rem, 3vw, 1.2rem)", fontWeight: 600, color: "rgba(255,255,255,0.85)", maxWidth: "32rem", lineHeight: 1.6 }}>
+            Mais de 19 anos formando profissionais que atendemncom segurança e cobram o que merecem
+          </p>
+          <div className="gold-divider mt-6" style={{ width: "80px" }} />
         </div>
       </section>
 
