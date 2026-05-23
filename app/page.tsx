@@ -1627,7 +1627,7 @@ export default function LandingPage() {
             Confiança que se vê no resultado
           </p>
           <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.95rem, 3vw, 1.2rem)", fontWeight: 600, color: "rgba(255,255,255,0.85)", maxWidth: "32rem", lineHeight: 1.6 }}>
-            Mais de 19 anos formando profissionais que atendemncom segurança e cobram o que merecem
+            Mais de 19 anos formando profissionais que atendem com segurança e cobram o que merecem
           </p>
           <div className="gold-divider mt-6" style={{ width: "80px" }} />
         </div>
