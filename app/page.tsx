@@ -56,12 +56,12 @@ const BENEFITS = [
   {
     icon: Users,
     title: "Agenda cheia de valor",
-    text: "Clientes que buscam especialistas em mechas voltam toda semana e indicam. Construa sua reputação de referência.",
+    text: "Clientes que te indicam sem ao menos você pedir - é aquela cliente que vai sair na rua e ser abordada pra saber onde ela fez o cabelo.",
   },
   {
     icon: Award,
     title: "Técnicas que o mercado pede",
-    text: "Free Hands, Balayage, Luminous Slice, Soft Blond, Beach Waves — o portfólio completo para qualquer cliente.",
+    text: "Free Hands, Balayage, Luminous Slice, Soft Blond — o portfólio completo para qualquer cliente.",
   },
   {
     icon: Zap,
@@ -890,8 +890,8 @@ export default function LandingPage() {
               <div className="space-y-3 mb-8">
                 {[
                   {
-                    label: "Divisão de mecha precisa",
-                    desc: "sem sobrepor produto na raiz já processada",
+                    label: "Divisões para cada técnica",
+                    desc: "sem sobrepor produto na raiz",
                   },
                   {
                     label: "OX e descolorante corretos",
@@ -899,11 +899,11 @@ export default function LandingPage() {
                   },
                   {
                     label: "Controle de tempo e calor",
-                    desc: "sem queima, sem corte químico, sem surpresa",
+                    desc: "sem manchas, sem corte químico, sem surpresa",
                   },
                   {
-                    label: "Técnica de aplicação borda a borda",
-                    desc: "resultado uniforme do couro ao fio",
+                    label: "Técnica de Aplicação Perfeita",
+                    desc: "Aprenda como fazer uma aplicação perfeita sem precisar reaplicar o pó descolorante,  economia de tempo e dinheiro.",
                   },
                 ].map(({ label, desc }, i) => (
                   <div
@@ -1562,7 +1562,7 @@ export default function LandingPage() {
                 }}
               >
                 {[
-                  "Sol é especialista em mechas e fundadora da Solange Jesus Academy, com mais de 19 anos de experiência na área da beleza. Começou aos 13 anos e encontrou na profissão de cabeleireira sua verdadeira vocação.",
+                  "Sol é especialista em mechas e fundadora da Solange Jesus Academy, com mais de 19 anos de experiência na área da beleza. Começou aos 19 anos e encontrou na profissão de cabeleireira sua verdadeira vocação.",
                   "Hoje, ajuda outras cabeleireiras a dominarem mechas com segurança — evitando manchas e corte químico — através de um método claro, direto e aplicável no dia a dia do salão.",
                 ].map((p, i) => (
                   <p key={i} style={{ marginBottom: "1rem" }}>
@@ -1577,7 +1577,7 @@ export default function LandingPage() {
               >
                 {[
                   { v: "19+", l: "Anos de mercado" },
-                  { v: "13", l: "Anos quando começou" },
+                  { v: "19", l: "Anos quando começou" },
                   { v: "MSM", l: "Método exclusivo" },
                 ].map(({ v, l }) => (
                   <div key={l} className="text-center">
