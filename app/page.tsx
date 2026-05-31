@@ -71,6 +71,7 @@ const BENEFITS = [
 ];
 
 const ICP_BULLETS = [
+  "Você que ja atende no salão, mas sente medo de manchar o cabelo da cliente ou causar corte químico",
   "Iniciantes que fizeram o curso profissionalizante de cabeleireiro e sentem que não aprenderam quase nada e tem insegurança em fazer mechas",
   "Você que trabalha o dia inteiro, fica em pé, se dedica... mas no fim sente que ganha menos do que merece",
   "Quem quer aprender mechas com segurança para cobrar mais caro e ser reconhecida como especialista",
