@@ -21,7 +21,7 @@ export const PARCELAMENTO = "12x R$ 41,06"
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
 export function buildWhatsAppURL(mensagem?: string) {
-  const texto = mensagem ?? `Olá! Tenho interesse no ${SITE_NAME} e gostaria de mais informações.`
+  const texto = mensagem ?? `Olá, tenho dúvidas do curso de Mechas MSM com a Sol.`
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`
 }
 
