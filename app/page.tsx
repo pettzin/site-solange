@@ -383,13 +383,43 @@ export default function LandingPage() {
           Aprenda o Método MSM (Mechas Sem Medo) para executar mechas com confiança, cobrar o que seu trabalho merece e ser reconhecida como especialista.
         </p>
 
-        <div className={`flex flex-col sm:flex-row gap-3 mb-10 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className={`flex flex-col sm:flex-row gap-3 mb-6 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold animate-pulse-gold">
             <Sparkles size={17} /> Quero aprender mechas sem medo
           </a>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ background: "transparent", color: "var(--brown-deep)", border: "1.5px solid rgba(107,79,58,0.3)", boxShadow: "none" }}>
             <MessageCircle size={17} /> Falar pelo WhatsApp
           </a>
+        </div>
+
+        {/* ── Mini-card de preço: só mobile ── */}
+        <div className={`lg:hidden transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <div className="rounded-2xl p-5 bg-white" style={{ border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 4px 20px rgba(107,79,58,0.1)" }}>
+            <div className="flex items-center justify-between gap-4">
+              {/* Preço */}
+              <div>
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "1px" }}>de {PRECO_DE}</p>
+                <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.9rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-warm)" }}>{PRECO_POR}</p>
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "var(--muted)", marginTop: "2px" }}>ou {PARCELAMENTO}</p>
+              </div>
+              {/* Divisor */}
+              <div style={{ width: "1px", alignSelf: "stretch", background: "rgba(201,168,76,0.2)" }} />
+              {/* Itens inclusos resumidos */}
+              <div className="flex-1">
+                {["+30 aulas HD", "5 módulos", "7 dias garantia"].map((item) => (
+                  <div key={item} className="flex items-center gap-1.5 mb-1 last:mb-0">
+                    <div className="w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
+                      <Check size={9} style={{ color: "white", strokeWidth: 3 }} />
+                    </div>
+                    <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "var(--fg)" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full mt-4" style={{ fontSize: "0.8rem", padding: "0.85rem 1.5rem" }}>
+              Garantir Minha Vaga
+            </a>
+          </div>
         </div>
       </div>
 
