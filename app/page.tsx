@@ -712,35 +712,27 @@ export default function LandingPage() {
             </span>
           </div>
 
-          {/* Grade mobile: 2 colunas · desktop: layout mosaico 3 colunas */}
+          {/* Grade mobile: 2 colunas · desktop: 3 colunas */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 reveal">
-
             {[
-              { src: "/prova4.jpg",  tecnica: "Velvet Blast",       desc: "Degradê suave — transição sem marcação" },
-              { src: "/prova6.jpg",  tecnica: "Luminous Slice",     desc: "Mechas iluminadas — movimento natural" },
-              { src: "/prova9.jpg",  tecnica: "Loiro dourado",      desc: "Raiz integrada — sem esfumaçado" },
-              { src: "/prova7.jpg",  tecnica: "Free Hands",         desc: "Balayage livre — zero sobreposição" },
-              { src: "/prova11.jpg", tecnica: "Soft Blond",         desc: "Brilho uniforme — fio saudável" },
-              { src: "/prova5.jpg",  tecnica: "Loiro cinza",        desc: "Mechas finas — luminosidade total" },
+              { src: "/prova4.jpg",                tecnica: "Velvet Blast",           desc: "Transição de raiz natural com explosão de pontas sem marcação" },
+              { src: "/prova7.jpg",                tecnica: "Free Hands",             desc: "Mechas ao ar livre — sem marcação, sem esfumado" },
+              { src: "/blonddiamond.jpeg",         tecnica: "Blond Diamond",          desc: "Mechas coladas na raiz sem esfumado" },
+              { src: "/luminousslice.jpeg",        tecnica: "Luminous Slice",         desc: "Explosão de cor nas pontas — inclusive em cabelos cacheados" },
+              { src: "/intenseblond.jpeg",         tecnica: "Intense Blond",          desc: "Intensidade de cor e movimento — Power Blond" },
+              { src: "/prova11.jpg",               tecnica: "Soft Blond",             desc: "Luz & Sombra — mechas com profundidade" },
             ].map(({ src, tecnica, desc }) => (
               <div key={src} className="group relative overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(201,168,76,0.18)" }}>
-                {/* Proporção fixa — foto não corta */}
                 <div className="w-full" style={{ aspectRatio: "3/4" }}>
-                  <img
-                    src={src}
-                    alt={tecnica}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
+                  <img src={src} alt={tecnica} className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
                 </div>
-                {/* Overlay + caption */}
-                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.78) 0%, rgba(26,16,8,0.1) 50%, transparent 70%)" }} />
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.82) 0%, rgba(26,16,8,0.1) 55%, transparent 75%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "2px" }}>{tecnica}</p>
+                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "3px" }}>{tecnica}</p>
                   <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.8rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>{desc}</p>
                 </div>
               </div>
             ))}
-
           </div>
 
           {/* Linha dourada + frase */}
@@ -1492,7 +1484,7 @@ export default function LandingPage() {
                           color: "var(--brown-deep)",
                         }}
                       >
-                        19+ anos
+                        +19 anos
                       </p>
                       <p
                         style={{
@@ -1577,7 +1569,7 @@ export default function LandingPage() {
                 style={{ borderTop: "1px solid rgba(191,161,136,0.25)" }}
               >
                 {[
-                  { v: "19+", l: "Anos de mercado" },
+                  { v: "+19", l: "Anos de mercado" },
                   { v: "19", l: "Anos quando começou" },
                   { v: "MSM", l: "Método exclusivo" },
                 ].map(({ v, l }) => (
