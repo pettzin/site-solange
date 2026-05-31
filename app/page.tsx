@@ -1473,9 +1473,10 @@ export default function LandingPage() {
                   }}
                 >
                   <img 
-                    src="/cliente-bio.jpg" 
+                    src="/sol.png" 
                     alt="Solange Jesus" 
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: "center 15%" }}
                   />
                 </div>
 
@@ -1637,10 +1638,10 @@ export default function LandingPage() {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="relative w-full overflow-hidden reveal" style={{ minHeight: "380px" }}>
         <img
-          src="/sol.png"
+          src="/cliente-bio.jpg"
           alt="Solange Jesus — Solange Jesus Academy"
-          className="w-full h-full object-cover object-top absolute inset-0"
-          style={{ minHeight: "380px" }}
+          className="w-full h-full object-cover absolute inset-0"
+          style={{ minHeight: "380px", objectPosition: "center 25%" }}
         />
         {/* overlay escuro gradiente */}
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(26,16,8,0.78) 0%, rgba(107,79,58,0.55) 60%, rgba(26,16,8,0.4) 100%)" }} />
