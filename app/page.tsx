@@ -71,7 +71,7 @@ const BENEFITS = [
 ];
 
 const ICP_BULLETS = [
-  "Você que já atende no salão, mas sente medo de manchar o cabelo da cliente ou causar corte químico",
+  "Iniciantes que fizeram o curso profissionalizante de cabeleireiro e sentem que não aprenderam quase nada e tem insegurança em fazer mechas",
   "Você que trabalha o dia inteiro, fica em pé, se dedica... mas no fim sente que ganha menos do que merece",
   "Quem quer aprender mechas com segurança para cobrar mais caro e ser reconhecida como especialista",
   "Você que sonha em ter agenda cheia, clientes de valor e mais liberdade para viver sua vida",
@@ -404,7 +404,7 @@ export default function LandingPage() {
               <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.2rem", color: "var(--fg)", marginBottom: "0.5rem" }}>Mechas <span className="gold-text">Sem Medo</span></h3>
               <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.85rem", lineHeight: 1.6 }}>O método completo para executar mechas com segurança e confiança — do diagnóstico à finalização</p>
             </div>
-            {[ "30+ Aulas em 5 módulos", "Diagnóstico profissional", "Técnicas Free Hands", "Suporte durante o aprendizado", "7 dias de garantia" ].map((item, i) => (
+            {[ "+30 Aulas em 5 módulos", "Diagnóstico profissional", "Técnicas Free Hands", "Suporte durante o aprendizado", "7 dias de garantia" ].map((item, i) => (
               <div key={i} className="flex items-center gap-2.5 mb-2.5 last:mb-0">
                 <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
                   <Check size={11} style={{ color: "white", strokeWidth: 3 }} />
@@ -537,7 +537,7 @@ export default function LandingPage() {
             {[
               {
                 icon: AlertCircle,
-                pain: "Clientes chegam pedindo mechas e você hesita em aceitar — não tem confiança de que vai ficar sem manchas na raiz",
+                pain: "Clientes chegam pedindo mechas e você hesita em aceitar — não tem confiança e não sabe se vai conseguir entregar o resultado da foto de inspiração da cliente.",
               },
               {
                 icon: DollarSign,
@@ -1138,7 +1138,7 @@ export default function LandingPage() {
                       lineHeight: 1,
                     }}
                   >
-                    30+
+                    +30
                   </p>
                   <p
                     style={{
@@ -1387,7 +1387,7 @@ export default function LandingPage() {
             {/* Incluídos */}
             <div className="grid sm:grid-cols-2 gap-3 mb-8 text-left">
               {[
-                "30+ aulas em vídeo HD",
+                "+30 aulas em vídeo HD",
                 "5 módulos completos + bônus",
                 "Diagnóstico profissional",
                 "Técnicas Free Hands, Balayage e mais",
