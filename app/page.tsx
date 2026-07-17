@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { Check, Lock, AlertCircle, MessageCircle, Sparkles, Star, Scissors } from "lucide-react"
 
 /* ─── CONFIG ─────────────────────────────────────────────────────────────────── */
-const WHATSAPP_NUMBER = "5511999999999" 
+const WHATSAPP_NUMBER = "5511978111150" 
 
 function buildWhatsAppURL(nome: string) {
   const msg = `Oi, meu nome é ${nome} e quero saber mais sobre o Método MSM`
