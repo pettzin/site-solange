@@ -4,7 +4,7 @@
  * ║  Altere só a linha abaixo (true/false) e faça o deploy    ║
  * ╚══════════════════════════════════════════════════════════╝
  */
-const CURSO_LANCADO = true // false = mostra Formulário | true = mostra Vendas
+const CURSO_LANCADO = false // false = mostra Formulário | true = mostra Vendas
 
 import FormularioPage from "./formulario/forms"
 import LandingPage from "./formulario/venda"
