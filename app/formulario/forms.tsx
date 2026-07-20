@@ -162,6 +162,12 @@ export default function FormularioPage() {
     e.preventDefault()
     if (!validate()) return
     setSubmitting(true)
+
+    // Dispara o evento de Lead para o Meta Ads
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq('track', 'Lead')
+    }
+
     const url = buildWhatsAppURL(nome.trim())
     setWhatsappUrl(url)
     await new Promise((r) => setTimeout(r, 1200))
@@ -181,16 +187,23 @@ export default function FormularioPage() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 py-8 md:py-12">
         
-        {/* LOGO */}
+        {/* LOGO COM ÍCONE DA LOGO RECORTADO VIA CSS */}
         <div className={`flex items-center gap-3 mb-8 transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
-          <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
-            style={{ background: "linear-gradient(135deg, var(--tan), var(--gold))", border: "1px solid rgba(255,255,255,0.2)" }}>
-            <span style={{ fontFamily: "var(--font-great-vibes), cursive", color: "white", fontSize: "1.5rem" }}>S</span>
-          </div>
+          <div 
+            className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 shadow-md"
+            style={{
+              border: "1.5px solid var(--gold)",
+              backgroundImage: "url('/sol_favicon.ico')",
+              backgroundSize: "230%",
+              backgroundPosition: "center 28%",
+              backgroundRepeat: "no-repeat",
+              backgroundColor: "#FFFFFF"
+            }}
+          />
           <span style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", color: "rgba(255,255,255,0.9)", letterSpacing: "0.05em" }}>Solange Jesus Academy</span>
         </div>
 
-        {/* HERO SECTION - NO MOBILE O FORMULÁRIO FICA EM PRIMEIRO */}
+        {/* HERO SECTION */}
         <div className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-16 items-center">
 
           {/* ESQUERDA: APRESENTAÇÃO */}
@@ -229,7 +242,7 @@ export default function FormularioPage() {
               </div>
             </div>
 
-            {/* 3 OU 4 BENEFÍCIOS */}
+            {/* BENEFÍCIOS */}
             <div className="space-y-3.5 mb-6">
               {[
                 "100% Online e Gratuito",
@@ -282,7 +295,6 @@ export default function FormularioPage() {
                   </button>
                 </form>
 
-                {/* TEXTO PEQUENO ABAIXO DO FORMULÁRIO */}
                 <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col items-center gap-1.5 text-center">
                   <p className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "#6B4F3A", fontWeight: 600 }}>
                     <Lock size={12} /> Seus dados estão seguros.
@@ -297,7 +309,7 @@ export default function FormularioPage() {
 
         </div>
 
-        {/* ─── CONTEÚDO DETALHADO ─── */}
+        {/* CONTEÚDO DETALHADO */}
         <div className="mt-20 space-y-20 border-t border-white/10 pt-16">
 
           {/* O QUE VAI APRENDER */}
@@ -346,10 +358,8 @@ export default function FormularioPage() {
             </div>
           </div>
 
-          {/* SOBRE SOLANGE JESUS (COM ESPAÇO PARA FOTO) */}
+          {/* SOBRE SOLANGE JESUS */}
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
-            
-            {/* ESPAÇO DEDICADO À FOTO DA SOLANGE */}
             <div className="w-full md:w-1/2 flex justify-center">
               <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl" 
                 style={{ border: "2px solid var(--gold)" }}>
@@ -368,7 +378,7 @@ export default function FormularioPage() {
                 <span className="block">Sou conhecida como Sol e atuo há mais de 19 anos como cabeleireira.</span>
                 <span className="block">Comecei atendendo em um quartinho nos fundos da minha casa e transformei as mechas no serviço que me deu liberdade financeira e qualidade de vida.</span>
                 <span className="block">Hoje sou fundadora da Solange Jesus Academy, Colorista Master, Terapeuta Capilar e Especialista em Mechas.</span>
-                <span className="block mt-2 font-semibold style={{ color: 'var(--gold-pale)' }}">Minha missão é ajudar cabeleireiras a vencerem o medo de fazer mechas, ensinando exatamente o que faço na prática, da cadeira ao lavatório, sem esconder nenhuma etapa.</span>
+                <span className="block mt-2 font-semibold" style={{ color: 'var(--gold-pale)' }}>Minha missão é ajudar cabeleireiras a vencerem o medo de fazer mechas, ensinando exatamente o que faço na prática, da cadeira ao lavatório, sem esconder nenhuma etapa.</span>
               </p>
             </div>
           </div>
@@ -393,7 +403,7 @@ export default function FormularioPage() {
             </div>
           </div>
 
-          {/* BOTÃO PARA SUBIR A PÁGINA NA PARTE DO FORMULÁRIO */}
+          {/* BOTÃO PARA SUBIR A PÁGINA */}
           <div className="text-center pt-8 max-w-xl mx-auto">
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.3rem", color: "var(--gold-pale)", marginBottom: "0.5rem" }}>
               O medo não desaparece sozinho.

@@ -36,6 +36,13 @@ import {
 /* ─── CONFIG ────────────────────────────────────────────────────────────────── */
 const WHATSAPP_URL = buildWhatsAppURL();
 
+// Função para disparar o Pixel ao clicar em comprar
+function handleCheckoutClick(e: React.MouseEvent<HTMLAnchorElement>) {
+  if (typeof window !== "undefined" && (window as any).fbq) {
+    (window as any).fbq('track', 'InitiateCheckout');
+  }
+}
+
 /* ─── CONTEÚDO ──────────────────────────────────────────────────────────────── */
 const BENEFITS = [
   {
@@ -118,8 +125,6 @@ const MODULES = [
     tags: ["Bônus exclusivo"],
   },
 ];
-
-
 
 const FAQS = [
   {
@@ -316,7 +321,7 @@ export default function LandingPage() {
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {
-      const scrollAmount = window.innerWidth > 640 ? 320 : 250; // Pulo de 1 card
+      const scrollAmount = window.innerWidth > 640 ? 320 : 250;
       carouselRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -330,137 +335,142 @@ export default function LandingPage() {
 
   return (
     <main style={{ background: "var(--bg)", overflowX: "hidden" }}>
-      {/* ══════════════════════════════════════════════════════════════════════
-          HERO
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* HERO */}
       <section
-  ref={heroRef}
-  className="relative min-h-[100svh] flex items-center gold-texture-bg overflow-hidden"
->
-  {/* Partículas decorativas mantidas */}
-  {mounted && (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {[...Array(6)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute rounded-full"
-          style={{
-            width: `${[8, 5, 10, 6, 9, 4][i]}px`,
-            height: `${[8, 5, 10, 6, 9, 4][i]}px`,
-            left: `${[15, 35, 60, 75, 85, 50][i]}%`,
-            top: `${[20, 60, 25, 70, 40, 80][i]}%`,
-            background: "linear-gradient(135deg, var(--gold), var(--gold-light))",
-            opacity: 0.35,
-            animation: `particleFloat ${[4, 6, 5, 7, 4.5, 6.5][i]}s ease-in-out infinite`,
-            animationDelay: `${[0, 1, 2, 0.5, 1.5, 2.5][i]}s`,
-          }}
-        />
-      ))}
-      <div className="absolute -right-32 top-1/4 w-[500px] h-[500px] rounded-full animate-blob opacity-20" style={{ background: "radial-gradient(circle, rgba(201,168,76,0.4), rgba(191,161,136,0.15))" }} />
-      <div className="absolute -left-20 bottom-1/4 w-[350px] h-[350px] rounded-full animate-blob opacity-15" style={{ background: "radial-gradient(circle, rgba(169,117,98,0.3), rgba(250,235,230,0.2))", animationDelay: "-5s" }} />
-    </div>
-  )}
-
-  <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "linear-gradient(90deg, transparent 0%, var(--gold-warm) 30%, var(--gold-shine) 50%, var(--gold-warm) 70%, transparent 100%)" }} />
-
-  <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-10 py-20 md:py-28">
-    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      {/* Lado esquerdo — copy original */}
-      <div>
-        <div className={`transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <div className="badge-gold mb-7">Solange Jesus Academy</div>
-        </div>
-
-        <p className={`transition-all duration-700 delay-75 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ fontFamily: "var(--font-script)", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
-          Mechas com segurança
-        </p>
-
-        <h1 className={`transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 5vw, 3.6rem)", fontWeight: 800, lineHeight: 1.1, marginBottom: "1.5rem", color: "var(--fg)" }}>
-          Domine a técnica e <span className="gold-text-animated">nunca mais tenha medo de manchar</span> ou causar corte químico
-        </h1>
-
-        <p className={`transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-sans)", fontSize: "1.05rem", lineHeight: 1.8, color: "var(--muted)", maxWidth: "32rem", marginBottom: "0.75rem" }}>
-          Aprenda o Método MSM (Mechas Sem Medo) para executar mechas com confiança, cobrar o que seu trabalho merece e ser reconhecida como especialista.
-        </p>
-
-        <div className={`flex flex-col sm:flex-row gap-3 mb-6 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold animate-pulse-gold">
-            <Sparkles size={17} /> Quero aprender mechas sem medo
-          </a>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ background: "transparent", color: "var(--brown-deep)", border: "1.5px solid rgba(107,79,58,0.3)", boxShadow: "none" }}>
-            <MessageCircle size={17} /> Falar pelo WhatsApp
-          </a>
-        </div>
-
-        {/* ── Mini-card de preço: só mobile ── */}
-        <div className={`lg:hidden transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          <div className="rounded-2xl p-5 bg-white" style={{ border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 4px 20px rgba(107,79,58,0.1)" }}>
-            <div className="flex items-center justify-between gap-4">
-              {/* Preço */}
-              <div>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "1px" }}>de {PRECO_DE}</p>
-                <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.9rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-warm)" }}>{PRECO_POR}</p>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "var(--muted)", marginTop: "2px" }}>ou {PARCELAMENTO}</p>
-              </div>
-              {/* Divisor */}
-              <div style={{ width: "1px", alignSelf: "stretch", background: "rgba(201,168,76,0.2)" }} />
-              {/* Itens inclusos resumidos */}
-              <div className="flex-1">
-                {["+30 aulas HD", "5 módulos", "7 dias garantia"].map((item) => (
-                  <div key={item} className="flex items-center gap-1.5 mb-1 last:mb-0">
-                    <div className="w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
-                      <Check size={9} style={{ color: "white", strokeWidth: 3 }} />
-                    </div>
-                    <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "var(--fg)" }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full mt-4" style={{ fontSize: "0.8rem", padding: "0.85rem 1.5rem" }}>
-              Garantir Minha Vaga
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Lado direito — Card flutuante original */}
-      <div className={`hidden lg:flex justify-center items-center transition-all duration-1000 delay-400 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-        <div className="relative w-full max-w-sm">
-          <div className="absolute -inset-6 rounded-3xl animate-spin-slow opacity-30" style={{ background: "conic-gradient(from 0deg, var(--gold-warm), var(--gold-shine), var(--gold-light), var(--tan), var(--gold-warm))", filter: "blur(18px)" }} />
-          <div className="relative rounded-2xl p-8 z-10 bg-white shadow-2xl">
-            <div className="text-center mb-5">
-              <div className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--gold), var(--brown-deep))" }}>
-                <Scissors size={24} style={{ color: "white" }} />
-              </div>
-              <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.2rem", color: "var(--fg)", marginBottom: "0.5rem" }}>Mechas <span className="gold-text">Sem Medo</span></h3>
-              <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.85rem", lineHeight: 1.6 }}>O método completo para executar mechas com segurança e confiança — do diagnóstico à finalização</p>
-            </div>
-            {[ "+30 Aulas em 5 módulos", "Diagnóstico profissional", "Técnicas Free Hands", "Suporte durante o aprendizado", "7 dias de garantia" ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2.5 mb-2.5 last:mb-0">
-                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
-                  <Check size={11} style={{ color: "white", strokeWidth: 3 }} />
-                </div>
-                <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.87rem", color: "var(--fg)" }}>{item}</span>
-              </div>
+        ref={heroRef}
+        className="relative min-h-[100svh] flex items-center gold-texture-bg overflow-hidden"
+      >
+        {mounted && (
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full"
+                style={{
+                  width: `${[8, 5, 10, 6, 9, 4][i]}px`,
+                  height: `${[8, 5, 10, 6, 9, 4][i]}px`,
+                  left: `${[15, 35, 60, 75, 85, 50][i]}%`,
+                  top: `${[20, 60, 25, 70, 40, 80][i]}%`,
+                  background: "linear-gradient(135deg, var(--gold), var(--gold-light))",
+                  opacity: 0.35,
+                  animation: `particleFloat ${[4, 6, 5, 7, 4.5, 6.5][i]}s ease-in-out infinite`,
+                  animationDelay: `${[0, 1, 2, 0.5, 1.5, 2.5][i]}s`,
+                }}
+              />
             ))}
-            <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(191,161,136,0.2)" }}>
-              <div className="text-center mb-3">
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "2px" }}>de {PRECO_DE}</p>
-                <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-warm)" }}>{PRECO_POR}</p>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--muted)", marginTop: "2px" }}>ou {PARCELAMENTO}</p>
+            <div className="absolute -right-32 top-1/4 w-[500px] h-[500px] rounded-full animate-blob opacity-20" style={{ background: "radial-gradient(circle, rgba(201,168,76,0.4), rgba(191,161,136,0.15))" }} />
+            <div className="absolute -left-20 bottom-1/4 w-[350px] h-[350px] rounded-full animate-blob opacity-15" style={{ background: "radial-gradient(circle, rgba(169,117,98,0.3), rgba(250,235,230,0.2))", animationDelay: "-5s" }} />
+          </div>
+        )}
+
+        <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "linear-gradient(90deg, transparent 0%, var(--gold-warm) 30%, var(--gold-shine) 50%, var(--gold-warm) 70%, transparent 100%)" }} />
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-10 py-20 md:py-28">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Lado esquerdo */}
+            <div>
+              {/* LOGO COM SÍMBOLO DOURADO RECORTADO VIA CSS */}
+              <div className={`flex items-center gap-3 mb-7 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+                <div 
+                  className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 shadow-md"
+                  style={{
+                    border: "1.5px solid var(--gold)",
+                    backgroundImage: "url('/sol_favicon.ico')",
+                    backgroundSize: "230%",
+                    backgroundPosition: "center 28%",
+                    backgroundRepeat: "no-repeat",
+                    backgroundColor: "#FFFFFF"
+                  }}
+                />
+                <span className="badge-gold">Solange Jesus Academy</span>
               </div>
-              <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full">Garantir Minha Vaga</a>
+
+              <p className={`transition-all duration-700 delay-75 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ fontFamily: "var(--font-script)", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
+                Mechas com segurança
+              </p>
+
+              <h1 className={`transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 5vw, 3.6rem)", fontWeight: 800, lineHeight: 1.1, marginBottom: "1.5rem", color: "var(--fg)" }}>
+                Domine a técnica e <span className="gold-text-animated">nunca mais tenha medo de manchar</span> ou causar corte químico
+              </h1>
+
+              <p className={`transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-sans)", fontSize: "1.05rem", lineHeight: 1.8, color: "var(--muted)", maxWidth: "32rem", marginBottom: "0.75rem" }}>
+                Aprenda o Método MSM (Mechas Sem Medo) para executar mechas com confiança, cobrar o que seu trabalho merece e ser reconhecida como especialista.
+              </p>
+
+              <div className={`flex flex-col sm:flex-row gap-3 mb-6 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+                <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold animate-pulse-gold">
+                  <Sparkles size={17} /> Quero aprender mechas sem medo
+                </a>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ background: "transparent", color: "var(--brown-deep)", border: "1.5px solid rgba(107,79,58,0.3)", boxShadow: "none" }}>
+                  <MessageCircle size={17} /> Falar pelo WhatsApp
+                </a>
+              </div>
+
+              {/* Mini-card mobile */}
+              <div className={`lg:hidden transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+                <div className="rounded-2xl p-5 bg-white" style={{ border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 4px 20px rgba(107,79,58,0.1)" }}>
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "1px" }}>de {PRECO_DE}</p>
+                      <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.9rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-warm)" }}>{PRECO_POR}</p>
+                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "var(--muted)", marginTop: "2px" }}>ou {PARCELAMENTO}</p>
+                    </div>
+                    <div style={{ width: "1px", alignSelf: "stretch", background: "rgba(201,168,76,0.2)" }} />
+                    <div className="flex-1">
+                      {["+30 aulas HD", "5 módulos", "7 dias garantia"].map((item) => (
+                        <div key={item} className="flex items-center gap-1.5 mb-1 last:mb-0">
+                          <div className="w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
+                            <Check size={9} style={{ color: "white", strokeWidth: 3 }} />
+                          </div>
+                          <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "var(--fg)" }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold w-full mt-4" style={{ fontSize: "0.8rem", padding: "0.85rem 1.5rem" }}>
+                    Garantir Minha Vaga
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Lado direito */}
+            <div className={`hidden lg:flex justify-center items-center transition-all duration-1000 delay-400 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+              <div className="relative w-full max-w-sm">
+                <div className="absolute -inset-6 rounded-3xl animate-spin-slow opacity-30" style={{ background: "conic-gradient(from 0deg, var(--gold-warm), var(--gold-shine), var(--gold-light), var(--tan), var(--gold-warm))", filter: "blur(18px)" }} />
+                <div className="relative rounded-2xl p-8 z-10 bg-white shadow-2xl">
+                  <div className="text-center mb-5">
+                    <div className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--gold), var(--brown-deep))" }}>
+                      <Scissors size={24} style={{ color: "white" }} />
+                    </div>
+                    <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.2rem", color: "var(--fg)", marginBottom: "0.5rem" }}>Mechas <span className="gold-text">Sem Medo</span></h3>
+                    <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.85rem", lineHeight: 1.6 }}>O método completo para executar mechas com segurança e confiança — do diagnóstico à finalização</p>
+                  </div>
+                  {[ "+30 Aulas em 5 módulos", "Diagnóstico profissional", "Técnicas Free Hands", "Suporte durante o aprendizado", "7 dias de garantia" ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-2.5 mb-2.5 last:mb-0">
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
+                        <Check size={11} style={{ color: "white", strokeWidth: 3 }} />
+                      </div>
+                      <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.87rem", color: "var(--fg)" }}>{item}</span>
+                    </div>
+                  ))}
+                  <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(191,161,136,0.2)" }}>
+                    <div className="text-center mb-3">
+                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "2px" }}>de {PRECO_DE}</p>
+                      <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-warm)" }}>{PRECO_POR}</p>
+                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--muted)", marginTop: "2px" }}>ou {PARCELAMENTO}</p>
+                    </div>
+                    <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold w-full">Garantir Minha Vaga</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          FAIXA DE CREDIBILIDADE
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* CREDIBILIDADE */}
       <div className="dark-luxury py-14 px-5 md:px-10">
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 divide-x divide-white/10">
@@ -472,33 +482,19 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          FOTO SPLASH — Sol em ação (pós-stats)
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* FOTO SPLASH */}
       <section className="w-full overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Foto grande: Sol atendendo balayage */}
           <div className="relative" style={{ minHeight: "420px" }}>
-            <img
-              src="/prova1.jpg"
-              alt="Solange Jesus aplicando técnica de balayage"
-              className="w-full h-full object-cover"
-              style={{ minHeight: "420px" }}
-            />
+            <img src="/prova1.jpg" alt="Solange Jesus aplicando técnica de balayage" className="w-full h-full object-cover" style={{ minHeight: "420px" }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.55) 0%, transparent 50%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Balayage mel</p>
               <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Sol em atendimento — mechas sem marcação</p>
             </div>
           </div>
-          {/* Foto: resultado loiro platinado curto */}
           <div className="relative" style={{ minHeight: "420px" }}>
-            <img
-              src="/prova2.jpg"
-              alt="Resultado Intense Blond — mechas impecáveis"
-              className="w-full h-full object-cover"
-              style={{ minHeight: "420px" }}
-            />
+            <img src="/prova2.jpg" alt="Resultado Intense Blond — mechas impecáveis" className="w-full h-full object-cover" style={{ minHeight: "420px" }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.55) 0%, transparent 50%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Intense Blond</p>
@@ -508,126 +504,56 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          PROBLEMA / DOR
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* PROBLEMA / DOR */}
       <section className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg">
-        {/* MICRO-GRAFISMOS (Elementos flutuantes perfeitamente visíveis no celular) */}
         <div className="absolute top-16 right-6 md:right-24 animate-float opacity-50">
           <Sparkles size={28} style={{ color: "var(--gold)" }} />
         </div>
         <div className="absolute bottom-24 left-4 md:left-20 animate-float-slow opacity-40">
-          <Star
-            size={16}
-            style={{ fill: "var(--gold)", color: "var(--gold)" }}
-          />
+          <Star size={16} style={{ fill: "var(--gold)", color: "var(--gold)" }} />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center reveal">
           <div className="ornament-center mb-8">
-            <span
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--gold)",
-              }}
-            >
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
               A realidade de muitas cabeleireiras
             </span>
           </div>
 
-          <p
-            style={{
-              fontFamily: "var(--font-great-vibes), cursive",
-              fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
-              color: "var(--brown-warm)",
-              lineHeight: 1.1,
-              marginBottom: "1rem",
-            }}
-          >
+          <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.2rem, 5vw, 3.5rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "1rem" }}>
             Você já sentiu isso?
           </p>
 
-          <h2
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(1.8rem, 4vw, 3rem)",
-              fontWeight: 700,
-              lineHeight: 1.2,
-              marginBottom: "2.5rem",
-            }}
-          >
-            O medo de errar nas mechas te impede de{" "}
-            <span className="gold-text-animated">cobrar o que você merece</span>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "2.5rem" }}>
+            O medo de errar nas mechas te impede de <span className="gold-text-animated">cobrar o que você merece</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6 mt-12">
             {[
-              {
-                icon: AlertCircle,
-                pain: "Clientes chegam pedindo mechas e você hesita em aceitar — não tem confiança e não sabe se vai conseguir entregar o resultado da foto de inspiração da cliente.",
-              },
-              {
-                icon: DollarSign,
-                pain: "Vê colegas cobrando o dobro pelo mesmo serviço e não entende por quê — a diferença está na segurança da técnica",
-              },
-              {
-                icon: AlertTriangle,
-                pain: "Já teve medo de corte químico ou já viu uma mecha dar errado, e desde então o medo aumentou ainda mais",
-              },
+              { icon: AlertCircle, pain: "Clientes chegam pedindo mechas e você hesita em aceitar — não tem confiança e não sabe se vai conseguir entregar o resultado da foto de inspiração da cliente." },
+              { icon: DollarSign, pain: "Vê colegas cobrando o dobro pelo mesmo serviço e não entende por quê — a diferença está na segurança da técnica" },
+              { icon: AlertTriangle, pain: "Já teve medo de corte químico ou já viu uma mecha dar errado, e desde então o medo aumentou ainda mais" },
             ].map(({ icon: Icon, pain }, i) => (
-              <div
-                key={i}
-                className="card p-8 reveal text-left"
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                <div
-                  className="w-12 h-12 rounded-full mb-5 flex items-center justify-center"
-                  style={{ background: "rgba(169,117,98,0.12)" }}
-                >
+              <div key={i} className="card p-8 reveal text-left" style={{ transitionDelay: `${i * 100}ms` }}>
+                <div className="w-12 h-12 rounded-full mb-5 flex items-center justify-center" style={{ background: "rgba(169,117,98,0.12)" }}>
                   <Icon size={24} style={{ color: "var(--brown-warm)" }} />
                 </div>
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "var(--brown-deep)",
-                    lineHeight: 1.7,
-                    fontSize: "0.95rem",
-                  }}
-                >
-                  {pain}
-                </p>
+                <p style={{ fontFamily: "var(--font-sans)", color: "var(--brown-deep)", lineHeight: 1.7, fontSize: "0.95rem" }}>{pain}</p>
               </div>
             ))}
           </div>
 
-          <p
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "1.15rem",
-              fontWeight: 600,
-              marginTop: "3rem",
-              color: "var(--brown-deep)",
-            }}
-          >
+          <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.15rem", fontWeight: 600, marginTop: "3rem", color: "var(--brown-deep)" }}>
             Isso tem solução. E o Método Mechas Sem Medo foi criado exatamente para isso.
           </p>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          PARA QUEM É — ICP (AJUSTADO PARA MOBILE)
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* PARA QUEM É */}
       <section className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg relative overflow-hidden">
-        {/* ELEMENTOS DECORATIVOS COM POSICIONAMENTO SEGURO */}
         <div className="absolute top-10 -left-12 opacity-[0.04] rotate-12 pointer-events-none">
           <Scissors size={180} style={{ color: "var(--brown-deep)" }} />
         </div>
-
-        {/* Estrela movida para a extrema direita e com z-index baixo para não cobrir texto */}
         <div className="absolute bottom-10 -right-8 opacity-[0.06] -rotate-12 pointer-events-none z-0">
           <Sparkles size={130} style={{ color: "var(--gold)" }} />
         </div>
@@ -635,122 +561,55 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-14 reveal">
             <div className="ornament-center mb-6">
-              <span
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "0.72rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                }}
-              >
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
                 Para quem é o Mechas Sem Medo
               </span>
             </div>
-            <h2
-              style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                fontWeight: 700,
-                lineHeight: 1.2,
-              }}
-            >
-              Esse método é pra você que trabalha com cabelo,
-              <br />
-              mas ainda se sente{" "}
-              <span className="gold-text">
-                insegura na hora de fazer mechas
-              </span>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, lineHeight: 1.2 }}>
+              Esse método é pra você que trabalha com cabelo,<br />
+              mas ainda se sente <span className="gold-text">insegura na hora de fazer mechas</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4 reveal">
             {ICP_BULLETS.map((bullet, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 p-6 rounded-2xl transition-all duration-300 sm:hover:-translate-y-1"
-                style={{
-                  background: "white",
-                  border: "1px solid rgba(201,168,76,0.15)",
-                  boxShadow: "0 4px 12px rgba(107,79,58,0.03)",
-                }}
-              >
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))",
-                  }}
-                >
+              <div key={i} className="flex items-start gap-4 p-6 rounded-2xl transition-all duration-300 sm:hover:-translate-y-1" style={{ background: "white", border: "1px solid rgba(201,168,76,0.15)", boxShadow: "0 4px 12px rgba(107,79,58,0.03)" }}>
+                <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style={{ background: "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))" }}>
                   <Check size={12} style={{ color: "white", strokeWidth: 4 }} />
                 </div>
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.95rem",
-                    lineHeight: 1.6,
-                    color: "var(--brown-deep)",
-                    fontWeight: 500,
-                  }}
-                >
-                  {bullet}
-                </p>
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", lineHeight: 1.6, color: "var(--brown-deep)", fontWeight: 500 }}>{bullet}</p>
               </div>
             ))}
           </div>
 
-          {/* Badge final ajustada */}
           <div className="flex justify-center mt-12 reveal">
-            <div
-              className="py-4 px-6 sm:px-10 rounded-2xl sm:rounded-full w-full sm:w-auto"
-              style={{
-                background: "rgba(255,255,255,0.5)",
-                border: "1px dashed rgba(201,168,76,0.3)",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                  color: "var(--brown-deep)",
-                  textAlign: "center",
-                  lineHeight: 1.4,
-                }}
-              >
-                Se você se identificou com pelo menos um desses pontos...{" "}
-                <br className="sm:hidden" />
-                <span style={{ color: "var(--gold-warm)" }}>
-                  este método é para você!
-                </span>
+            <div className="py-4 px-6 sm:px-10 rounded-2xl sm:rounded-full w-full sm:w-auto" style={{ background: "rgba(255,255,255,0.5)", border: "1px dashed rgba(201,168,76,0.3)" }}>
+              <p style={{ fontFamily: "var(--font-serif)", fontSize: "1rem", fontWeight: 600, color: "var(--brown-deep)", textAlign: "center", lineHeight: 1.4 }}>
+                Se você se identificou com pelo menos um desses pontos... <br className="sm:hidden" />
+                <span style={{ color: "var(--gold-warm)" }}>este método é para você!</span>
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          GALERIA DE RESULTADOS — mosaico com captions
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* GALERIA */}
       <section className="py-14 md:py-20 px-5 md:px-10" style={{ background: "var(--cream)" }}>
         <div className="max-w-7xl mx-auto">
-          {/* Label topo */}
           <div className="text-center mb-8 reveal">
             <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
               Resultados reais — técnicas do método
             </span>
           </div>
 
-          {/* Grade mobile: 2 colunas · desktop: 3 colunas */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 reveal">
             {[
-              { src: "/prova4.jpg",                tecnica: "Velvet Blast",           desc: "Transição de raiz natural com explosão de pontas sem marcação" },
-              { src: "/prova7.jpg",                tecnica: "Free Hands",             desc: "Mechas ao ar livre — sem marcação, sem esfumado" },
-              { src: "/blonddiamond.jpeg",         tecnica: "Blond Diamond",          desc: "Mechas coladas na raiz sem esfumado" },
-              { src: "/luminousslice.jpeg",        tecnica: "Luminous Slice",         desc: "Explosão de cor nas pontas — inclusive em cabelos cacheados" },
-              { src: "/intenseblond.jpeg",         tecnica: "Intense Blond",          desc: "Intensidade de cor e movimento — Power Blond" },
-              { src: "/prova11.jpg",               tecnica: "Soft Blond",             desc: "Luz & Sombra — mechas com profundidade" },
+              { src: "/prova4.jpg", tecnica: "Velvet Blast", desc: "Transição de raiz natural com explosão de pontas sem marcação" },
+              { src: "/prova7.jpg", tecnica: "Free Hands", desc: "Mechas ao ar livre — sem marcação, sem esfumado" },
+              { src: "/blonddiamond.jpeg", tecnica: "Blond Diamond", desc: "Mechas coladas na raiz sem esfumado" },
+              { src: "/luminousslice.jpeg", tecnica: "Luminous Slice", desc: "Explosão de cor nas pontas — inclusive em cabelos cacheados" },
+              { src: "/intenseblond.jpeg", tecnica: "Intense Blond", desc: "Intensidade de cor e movimento — Power Blond" },
+              { src: "/prova11.jpg", tecnica: "Soft Blond", desc: "Luz & Sombra — mechas com profundidade" },
             ].map(({ src, tecnica, desc }) => (
               <div key={src} className="group relative overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(201,168,76,0.18)" }}>
                 <div className="w-full" style={{ aspectRatio: "3/4" }}>
@@ -765,7 +624,6 @@ export default function LandingPage() {
             ))}
           </div>
 
-          {/* Linha dourada + frase */}
           <div className="flex items-center gap-4 mt-8 reveal">
             <div className="gold-divider flex-1" />
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontStyle: "italic", color: "var(--brown-warm)", textAlign: "center", flexShrink: 0 }}>
@@ -776,221 +634,70 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          BENEFÍCIOS
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* BENEFÍCIOS */}
       <section className="py-20 md:py-32 px-5 md:px-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16 reveal">
             <div className="ornament-center mb-6">
-              <span
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "0.72rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                }}
-              >
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
                 O que você vai conquistar
               </span>
             </div>
-            <h2
-              style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                fontWeight: 700,
-                lineHeight: 1.2,
-              }}
-            >
-              Tudo que muda quando você{" "}
-              <span className="gold-text">domina mechas com segurança</span>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, lineHeight: 1.2 }}>
+              Tudo que muda quando você <span className="gold-text">domina mechas com segurança</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {BENEFITS.map(({ icon: Icon, title, text }, i) => (
-              <div
-                key={i}
-                className="card p-7 reveal-scale"
-                style={{ transitionDelay: `${i * 80}ms` }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(201,168,76,0.12), rgba(107,79,58,0.08))",
-                  }}
-                >
+              <div key={i} className="card p-7 reveal-scale" style={{ transitionDelay: `${i * 80}ms` }}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.12), rgba(107,79,58,0.08))" }}>
                   <Icon size={22} style={{ color: "var(--gold-warm)" }} />
                 </div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontWeight: 700,
-                    fontSize: "1.05rem",
-                    marginBottom: "0.6rem",
-                    color: "var(--brown-deep)",
-                  }}
-                >
-                  {title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "var(--muted)",
-                    lineHeight: 1.75,
-                    fontSize: "0.9rem",
-                  }}
-                >
-                  {text}
-                </p>
+                <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.05rem", marginBottom: "0.6rem", color: "var(--brown-deep)" }}>{title}</h3>
+                <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.75, fontSize: "0.9rem" }}>{text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          SEÇÃO: AUTORIDADE — RAÍZES IMPECÁVEIS
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="relative py-20 md:py-36 px-5 md:px-10 overflow-hidden"
-        style={{ background: "var(--cream)" }}
-      >
-        {/* Fundo dourado sutil */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 50% at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 65%), radial-gradient(ellipse 50% 70% at 10% 80%, rgba(191,161,136,0.07) 0%, transparent 60%)",
-          }}
-        />
+      {/* AUTORIDADE */}
+      <section className="relative py-20 md:py-36 px-5 md:px-10 overflow-hidden" style={{ background: "var(--cream)" }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 65%), radial-gradient(ellipse 50% 70% at 10% 80%, rgba(191,161,136,0.07) 0%, transparent 60%)" }} />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          {/* ── Header em duas colunas ── */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-            {/* Texto de autoridade */}
             <div className="reveal-left">
-              <div
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
-                
-              >
-              </div>
-
-              <h2
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontSize: "clamp(1.9rem, 4vw, 3rem)",
-                  fontWeight: 700,
-                  lineHeight: 1.15,
-                  marginBottom: "1.5rem",
-                  color: "var(--fg)",
-                }}
-              >
-                Mancha na raiz não é azar.{" "}
-                <span className="gold-text-animated">É falta de método.</span>
+              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.9rem, 4vw, 3rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: "1.5rem", color: "var(--fg)" }}>
+                Mancha na raiz não é azar. <span className="gold-text-animated">É falta de método.</span>
               </h2>
 
-              <p
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "1rem",
-                  lineHeight: 1.85,
-                  color: "var(--muted)",
-                  marginBottom: "1.75rem",
-                }}
-              >
-                A Sol ensina com precisão onde cada profissional erra:
-                divisão incorreta, OX errado, tempo de processamento impreciso.
-                Com o Método MSM, você aprende a eliminar cada variável que
-                causa mancha — e executa com a segurança de quem sabe exatamente
-                o que está fazendo.
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "1rem", lineHeight: 1.85, color: "var(--muted)", marginBottom: "1.75rem" }}>
+                A Sol ensina com precisão onde cada profissional erra: divisão incorreta, OX errado, tempo de processamento impreciso. Com o Método MSM, você aprende a eliminar cada variável que causa mancha — e executa com a segurança de quem sabe exatamente o que está fazendo.
               </p>
 
-              {/* Pilares técnicos */}
               <div className="space-y-3 mb-8">
                 {[
-                  {
-                    label: "Divisões para cada técnica",
-                    desc: "sem sobrepor produto na raiz",
-                  },
-                  {
-                    label: "OX e descolorante corretos",
-                    desc: "calculados para cada tipo de fio e histórico",
-                  },
-                  {
-                    label: "Controle de tempo e calor",
-                    desc: "sem manchas, sem corte químico, sem surpresa",
-                  },
-                  {
-                    label: "Técnica de Aplicação Perfeita",
-                    desc: "Aprenda como fazer uma aplicação perfeita sem precisar reaplicar o pó descolorante,  economia de tempo e dinheiro.",
-                  },
+                  { label: "Divisões para cada técnica", desc: "sem sobrepor produto na raiz" },
+                  { label: "OX e descolorante corretos", desc: "calculados para cada tipo de fio e histórico" },
+                  { label: "Controle de tempo e calor", desc: "sem manchas, sem corte químico, sem surpresa" },
+                  { label: "Técnica de Aplicação Perfeita", desc: "Aprenda como fazer uma aplicação perfeita sem precisar reaplicar o pó descolorante, economia de tempo e dinheiro." },
                 ].map(({ label, desc }, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white"
-                    style={{ border: "1px solid transparent" }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor =
-                        "rgba(201,168,76,0.2)";
-                      (e.currentTarget as HTMLElement).style.boxShadow =
-                        "0 4px 16px rgba(107,79,58,0.06)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor =
-                        "transparent";
-                      (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                    }}
-                  >
-                    <div
-                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))",
-                      }}
-                    >
-                      <Check
-                        size={10}
-                        style={{ color: "white", strokeWidth: 3.5 }}
-                      />
+                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))" }}>
+                      <Check size={10} style={{ color: "white", strokeWidth: 3.5 }} />
                     </div>
                     <div>
-                      <p
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          fontWeight: 600,
-                          fontSize: "0.9rem",
-                          color: "var(--brown-deep)",
-                        }}
-                      >
-                        {label}
-                      </p>
-                      <p
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          fontSize: "0.82rem",
-                          color: "var(--muted)",
-                          marginTop: "1px",
-                        }}
-                      >
-                        {desc}
-                      </p>
+                      <p style={{ fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: "0.9rem", color: "var(--brown-deep)" }}>{label}</p>
+                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.82rem", color: "var(--muted)", marginTop: "1px" }}>{desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Foto raiz-1 — prova visual da técnica sem manchas */}
               <div className="relative rounded-2xl overflow-hidden mb-8 reveal-scale" style={{ border: "1px solid rgba(201,168,76,0.3)" }}>
-                <img
-                  src="/raiz-1.jpg"
-                  alt="Técnica de mechas sem manchas — aplicação precisa"
-                  className="w-full object-cover"
-                  style={{ maxHeight: "320px", objectPosition: "center 20%" }}
-                />
+                <img src="/raiz-1.jpg" alt="Técnica de mechas sem manchas — aplicação precisa" className="w-full object-cover" style={{ maxHeight: "320px", objectPosition: "center 20%" }} />
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.75) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end gap-3">
                   <div className="flex-1">
@@ -1000,27 +707,15 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <a
-                href={HOTMART_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold"
-                style={{ display: "inline-flex" }}
-              >
-                <Shield size={16} />
-                Quero aprender sem medo de manchar
+              <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ display: "inline-flex" }}>
+                <Shield size={16} /> Quero aprender sem medo de manchar
               </a>
             </div>
 
-            {/* Stat cards de autoridade */}
             <div className="reveal-right">
               <div className="relative w-full rounded-3xl overflow-hidden mb-0 shadow-2xl border border-[rgba(201,168,76,0.3)] bg-white">
-              <img 
-                src="/cliente-autoridade.jpg" 
-                alt="Solange Jesus Academy" 
-                className="w-full h-auto block" 
-              />
-            </div>
+                <img src="/cliente-autoridade.jpg" alt="Solange Jesus Academy" className="w-full h-auto block" />
+              </div>
 
               <div className="grid grid-cols-3 gap-4 w-full mt-4">
                 {[
@@ -1028,32 +723,16 @@ export default function LandingPage() {
                   { num: "19", unit: "anos", desc: "de história" },
                   { num: "100%", unit: "prático", desc: "no salão" },
                 ].map(({ num, unit, desc }, i) => (
-                  <div
-                    key={i}
-                    className="card p-6 text-center flex flex-col justify-center min-h-[140px]"
-                    style={{ transitionDelay: `${i * 80}ms` }}
-                  >
-                    <p className="gold-text font-serif text-3xl md:text-4xl font-extrabold leading-none mb-1">
-                      {num}
-                    </p>
-                    <p className="font-sans text-[11px] md:text-[12px] uppercase font-bold text-[var(--brown-warm)] tracking-wider">
-                      {unit}
-                    </p>
-                    <p className="font-sans text-[10px] md:text-[11px] text-[var(--muted)] leading-tight mt-2">
-                      {desc}
-                    </p>
+                  <div key={i} className="card p-6 text-center flex flex-col justify-center min-h-[140px]" style={{ transitionDelay: `${i * 80}ms` }}>
+                    <p className="gold-text font-serif text-3xl md:text-4xl font-extrabold leading-none mb-1">{num}</p>
+                    <p className="font-sans text-[11px] md:text-[12px] uppercase font-bold text-[var(--brown-warm)] tracking-wider">{unit}</p>
+                    <p className="font-sans text-[10px] md:text-[11px] text-[var(--muted)] leading-tight mt-2">{desc}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Foto de processo — papel alumínio mostrando técnica */}
               <div className="relative rounded-2xl overflow-hidden mt-4 reveal-scale" style={{ border: "1px solid rgba(201,168,76,0.25)" }}>
-                <img
-                  src="/prova8.jpg"
-                  alt="Técnica de mechas com papel alumínio — separação precisa"
-                  className="w-full object-cover object-top"
-                  style={{ maxHeight: "240px" }}
-                />
+                <img src="/prova8.jpg" alt="Técnica de mechas com papel alumínio — separação precisa" className="w-full object-cover object-top" style={{ maxHeight: "240px" }} />
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.72) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "2px" }}>Processo em aula</p>
@@ -1062,231 +741,71 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          </div>
+        </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          MÓDULOS DO CURSO
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="py-20 md:py-32 px-5 md:px-10"
-        style={{ background: "rgba(250,235,230,0.4)" }}
-      >
+      {/* MÓDULOS */}
+      <section className="py-20 md:py-32 px-5 md:px-10" style={{ background: "rgba(250,235,230,0.4)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-14 xl:gap-20 items-start">
-            {/* Sticky left */}
             <div className="lg:sticky lg:top-24 reveal-left">
-              <div
-                className="ornament-center mb-6"
-                style={{ justifyContent: "flex-start" }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.72rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "var(--gold)",
-                  }}
-                >
+              <div className="ornament-center mb-6" style={{ justifyContent: "flex-start" }}>
+                <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
                   Conteúdo completo do Mechas Sem Medo
                 </span>
               </div>
-              <p
-                style={{
-                  fontFamily: "var(--font-great-vibes), cursive",
-                  fontSize: "clamp(2rem, 4vw, 3rem)",
-                  color: "var(--brown-warm)",
-                  lineHeight: 1.1,
-                  marginBottom: "0.25rem",
-                }}
-              >
+              <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
                 Um passo a passo claro
               </p>
-              <h2
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                  fontWeight: 700,
-                  lineHeight: 1.2,
-                  marginBottom: "1.5rem",
-                }}
-              >
-                para dominar mechas com{" "}
-                <span className="gold-text">segurança e confiança</span>
+              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.5rem" }}>
+                para dominar mechas com <span className="gold-text">segurança e confiança</span>
               </h2>
-              <p
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  color: "var(--muted)",
-                  lineHeight: 1.8,
-                  fontSize: "0.97rem",
-                  marginBottom: "2.5rem",
-                }}
-              >
-                Do diagnóstico à finalização — cada módulo foi construído para
-                eliminar a insegurança e tornar a execução clara, segura e
-                profissional.
+              <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.8, fontSize: "0.97rem", marginBottom: "2.5rem" }}>
+                Do diagnóstico à finalização — cada módulo foi construído para eliminar a insegurança e tornar a execução clara, segura e profissional.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href={HOTMART_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gold"
-                >
-                  <Sparkles size={17} />
-                  Quero aprender com segurança
+                <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold">
+                  <Sparkles size={17} /> Quero aprender com segurança
                 </a>
               </div>
 
-              {/* +30 aulas badge */}
-              <div
-                className="flex items-center gap-4 mt-6 py-4 px-5 rounded-xl"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(201,168,76,0.1), rgba(107,79,58,0.05))",
-                  border: "1px solid rgba(201,168,76,0.25)",
-                }}
-              >
+              <div className="flex items-center gap-4 mt-6 py-4 px-5 rounded-xl" style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.1), rgba(107,79,58,0.05))", border: "1px solid rgba(201,168,76,0.25)" }}>
                 <div className="text-center flex-shrink-0">
-                  <p
-                    className="gold-text"
-                    style={{
-                      fontFamily: "var(--font-serif)",
-                      fontSize: "1.9rem",
-                      fontWeight: 800,
-                      lineHeight: 1,
-                    }}
-                  >
-                    +30
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontSize: "0.62rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      color: "var(--brown-warm)",
-                      marginTop: "2px",
-                    }}
-                  >
-                    aulas
-                  </p>
+                  <p className="gold-text" style={{ fontFamily: "var(--font-serif)", fontSize: "1.9rem", fontWeight: 800, lineHeight: 1 }}>+30</p>
+                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--brown-warm)", marginTop: "2px" }}>aulas</p>
                 </div>
-                <div
-                  className="w-px self-stretch"
-                  style={{ background: "rgba(201,168,76,0.2)" }}
-                />
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.84rem",
-                    color: "var(--brown-deep)",
-                    lineHeight: 1.55,
-                  }}
-                >
-                  Mais de <strong>30 aulas em vídeo HD</strong>, em 5 módulos +
-                  bônus de finalizações.
+                <div className="w-px self-stretch" style={{ background: "rgba(201,168,76,0.2)" }} />
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.84rem", color: "var(--brown-deep)", lineHeight: 1.55 }}>
+                  Mais de <strong>30 aulas em vídeo HD</strong>, em 5 módulos + bônus de finalizações.
                 </p>
               </div>
 
               <div className="flex items-center gap-3 mt-4">
-                <Lock
-                  size={16}
-                  style={{ color: "var(--gold)", flexShrink: 0 }}
-                />
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.8rem",
-                    color: "var(--muted)",
-                  }}
-                >
-                  Garantia de 7 dias. Sem risco nenhum.
-                </p>
+                <Lock size={16} style={{ color: "var(--gold)", flexShrink: 0 }} />
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "var(--muted)" }}>Garantia de 7 dias. Sem risco nenhum.</p>
               </div>
             </div>
 
-            {/* Lista de módulos com efeito Timeline (Versão Tailwind Puro) */}
             <div className="relative reveal-right">
-              {/* Linha vertical pontilhada (Desenhada direto no Tailwind) */}
-              <div
-                className="absolute border-l-2 border-dashed z-0"
-                style={{
-                  left: "23px" /* Alinhado exato no centro do círculo de 48px */,
-                  top: "24px",
-                  bottom: "24px",
-                  borderColor: "rgba(201,168,76,0.4)",
-                }}
-              />
+              <div className="absolute border-l-2 border-dashed z-0" style={{ left: "23px", top: "24px", bottom: "24px", borderColor: "rgba(201,168,76,0.4)" }} />
 
               <div className="space-y-12 relative z-10">
                 {MODULES.map(({ num, title, text, tags }, i) => (
                   <div key={i} className="flex gap-6 md:gap-10 relative group">
-                    {/* Indicador Numérico (Fica por cima da linha) */}
                     <div className="flex-shrink-0 relative z-10">
-                      <div
-                        className="w-12 h-12 rounded-full bg-white flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm relative z-20"
-                        style={{
-                          border: "1.5px solid rgba(201,168,76,0.5)",
-                          boxShadow: "0 4px 15px rgba(107,79,58,0.06)",
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: "var(--font-serif)",
-                            fontSize: "1rem",
-                            fontWeight: 800,
-                            color: "var(--gold-warm)",
-                          }}
-                        >
-                          {num}
-                        </span>
+                      <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm relative z-20" style={{ border: "1.5px solid rgba(201,168,76,0.5)", boxShadow: "0 4px 15px rgba(107,79,58,0.06)" }}>
+                        <span style={{ fontFamily: "var(--font-serif)", fontSize: "1rem", fontWeight: 800, color: "var(--gold-warm)" }}>{num}</span>
                       </div>
                     </div>
 
-                    {/* Conteúdo do Card */}
                     <div className="flex-grow pt-1">
-                      <h3
-                        style={{
-                          fontFamily: "var(--font-serif)",
-                          fontWeight: 700,
-                          fontSize: "1.1rem",
-                          color: "var(--brown-deep)",
-                          marginBottom: "0.5rem",
-                        }}
-                      >
-                        {title}
-                      </h3>
-                      <p
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          color: "var(--muted)",
-                          lineHeight: 1.7,
-                          fontSize: "0.92rem",
-                          marginBottom: tags.length ? "0.8rem" : 0,
-                        }}
-                      >
-                        {text}
-                      </p>
-
+                      <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.1rem", color: "var(--brown-deep)", marginBottom: "0.5rem" }}>{title}</h3>
+                      <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.7, fontSize: "0.92rem", marginBottom: tags.length ? "0.8rem" : 0 }}>{text}</p>
                       {tags.length > 0 && (
                         <div className="flex flex-wrap gap-2">
                           {tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="badge-gold"
-                              style={{
-                                fontSize: "0.65rem",
-                                padding: "0.3rem 0.8rem",
-                              }}
-                            >
-                              {tag}
-                            </span>
+                            <span key={tag} className="badge-gold" style={{ fontSize: "0.65rem", padding: "0.3rem 0.8rem" }}>{tag}</span>
                           ))}
                         </div>
                       )}
@@ -1299,76 +818,28 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          CTA MEIO
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* CTA MEIO */}
       <section className="dark-luxury py-20 md:py-28 px-5 md:px-10">
         <div className="relative z-10 max-w-3xl mx-auto text-center reveal">
-          <p
-            style={{
-              fontFamily: "var(--font-great-vibes), cursive",
-              fontSize: "clamp(2.5rem, 6vw, 4rem)",
-              color: "var(--gold-light)",
-              lineHeight: 1.05,
-              marginBottom: "0.5rem",
-            }}
-          >
+          <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.5rem, 6vw, 4rem)", color: "var(--gold-light)", lineHeight: 1.05, marginBottom: "0.5rem" }}>
             Pronta para mudar?
           </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-              fontWeight: 700,
-              color: "white",
-              marginBottom: "1rem",
-            }}
-          >
-            Pronta para atender com mais{" "}
-            <span className="gold-text-dark">
-              segurança e confiança nas mechas?
-            </span>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, color: "white", marginBottom: "1rem" }}>
+            Pronta para atender com mais <span className="gold-text-dark">segurança e confiança nas mechas?</span>
           </h2>
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              color: "rgba(255,255,255,0.7)",
-              fontSize: "1.02rem",
-              lineHeight: 1.8,
-              maxWidth: "28rem",
-              margin: "0 auto 2.5rem",
-            }}
-          >
-            O Método Mechas Sem Medo já ajudou diversas profissionais a
-            destravarem a insegurança e evoluírem na técnica — agora pode ser a
-            sua vez.
+          <p style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.7)", fontSize: "1.02rem", lineHeight: 1.8, maxWidth: "28rem", margin: "0 auto 2.5rem" }}>
+            O Método Mechas Sem Medo já ajudou diversas profissionais a destravarem a insegurança e evoluírem na técnica — agora pode ser a sua vez.
           </p>
-          <a
-            href={HOTMART_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gold animate-glow"
-            style={{ fontSize: "0.95rem", padding: "1.2rem 3rem" }}
-          >
-            <Sparkles size={18} />
-            Quero aprender mechas com segurança
+          <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold animate-glow" style={{ fontSize: "0.95rem", padding: "1.2rem 3rem" }}>
+            <Sparkles size={18} /> Quero aprender mechas com segurança
           </a>
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "0.78rem",
-              color: "rgba(255,255,255,0.4)",
-              marginTop: "1rem",
-            }}
-          >
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "rgba(255,255,255,0.4)", marginTop: "1rem" }}>
             Pagamento seguro · 7 dias de garantia · Acesso imediato
           </p>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          OFERTA / PREÇO
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* OFERTA */}
       <section id="oferta" className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg">
         <div className="max-w-2xl mx-auto text-center reveal">
           <div className="ornament-center mb-6">
@@ -1380,17 +851,14 @@ export default function LandingPage() {
             Invista na sua evolução
           </p>
           <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "2.5rem" }}>
-            Acesso completo ao{" "}
-            <span className="gold-text">Método Mechas Sem Medo</span>
+            Acesso completo ao <span className="gold-text">Método Mechas Sem Medo</span>
           </h2>
 
           <div className="card p-10 md:p-14 reveal-scale">
-            {/* Preço riscado */}
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "0.25rem" }}>
               de {PRECO_DE}
             </p>
 
-            {/* Preço principal */}
             <div className="flex items-end justify-center gap-2 mb-1">
               <span style={{ fontFamily: "var(--font-sans)", fontSize: "1.1rem", fontWeight: 700, color: "var(--brown-deep)", alignSelf: "flex-start", paddingTop: "0.8rem" }}>R$</span>
               <span style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(4rem, 12vw, 6rem)", fontWeight: 800, lineHeight: 1, color: "var(--gold-warm)" }}>397</span>
@@ -1399,7 +867,6 @@ export default function LandingPage() {
 
             <div className="gold-divider my-5" />
 
-            {/* Parcelamento */}
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "1rem", color: "var(--brown-deep)", marginBottom: "0.25rem" }}>
               ou <strong>{PARCELAMENTO}</strong> no cartão
             </p>
@@ -1407,7 +874,6 @@ export default function LandingPage() {
               Também aceita Pix e boleto
             </p>
 
-            {/* Incluídos */}
             <div className="grid sm:grid-cols-2 gap-3 mb-8 text-left">
               {[
                 "+30 aulas em vídeo HD",
@@ -1426,9 +892,8 @@ export default function LandingPage() {
               ))}
             </div>
 
-            <a href={HOTMART_URL} target="_blank" rel="noopener noreferrer" className="btn-gold animate-glow w-full" style={{ fontSize: "1rem", padding: "1.2rem 2rem" }}>
-              <Sparkles size={18} />
-              Quero aprender mechas com segurança
+            <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold animate-glow w-full" style={{ fontSize: "1rem", padding: "1.2rem 2rem" }}>
+              <Sparkles size={18} /> Quero aprender mechas com segurança
             </a>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mt-6">
@@ -1447,184 +912,66 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          MENTORA
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* MENTORA */}
       <section className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg">
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-14 xl:gap-20 items-center">
-            {/* Foto placeholder */}
             <div className="reveal-left order-2 lg:order-1">
               <div className="relative max-w-md mx-auto">
-                <div
-                  className="absolute -inset-3 rounded-3xl blur-2xl opacity-25"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, var(--gold), var(--gold-light))",
-                  }}
-                />
-                {/* Foto principal — maior presença */}
-                <div
-                  className="relative rounded-2xl overflow-hidden"
-                  style={{
-                   background: "rgba(107,79,58,0.06)",
-                   border: "1px solid rgba(201,168,76,0.2)",
-                   aspectRatio: "3/4",
-                  }}
-                >
-                  <img 
-                    src="/sol.png" 
-                    alt="Solange Jesus" 
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 15%" }}
-                  />
+                <div className="absolute -inset-3 rounded-3xl blur-2xl opacity-25" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-light))" }} />
+                <div className="relative rounded-2xl overflow-hidden" style={{ background: "rgba(107,79,58,0.06)", border: "1px solid rgba(201,168,76,0.2)", aspectRatio: "3/4" }}>
+                  <img src="/sol.png" alt="Solange Jesus" className="w-full h-full object-cover" style={{ objectPosition: "center 15%" }} />
                 </div>
 
-                {/* Foto secundária flutuante — Sol com modelo de fio */}
-                <div
-                  className="absolute -bottom-4 -right-4 rounded-xl overflow-hidden animate-float-slow"
-                  style={{
-                    width: "130px",
-                    aspectRatio: "1/1",
-                    border: "3px solid white",
-                    boxShadow: "0 10px 30px rgba(107,79,58,0.25)",
-                  }}
-                >
-                  <img
-                    src="/cliente-autoridade.jpg"
-                    alt="Solange Jesus com modelo de estrutura do fio"
-                    className="w-full h-full object-cover object-top"
-                  />
+                <div className="absolute -bottom-4 -right-4 rounded-xl overflow-hidden animate-float-slow" style={{ width: "130px", aspectRatio: "1/1", border: "3px solid white", boxShadow: "0 10px 30px rgba(107,79,58,0.25)" }}>
+                  <img src="/cliente-autoridade.jpg" alt="Solange Jesus com modelo de estrutura do fio" className="w-full h-full object-cover object-top" />
                 </div>
 
-                <div
-                  className="absolute -bottom-5 -left-5 rounded-2xl px-5 py-3 animate-float"
-                  style={{
-                    background: "white",
-                    boxShadow: "0 10px 30px rgba(107,79,58,0.2)",
-                  }}
-                >
+                <div className="absolute -bottom-5 -left-5 rounded-2xl px-5 py-3 animate-float" style={{ background: "white", boxShadow: "0 10px 30px rgba(107,79,58,0.2)" }}>
                   <div className="flex items-center gap-2">
                     <Award size={18} style={{ color: "var(--gold)" }} />
                     <div>
-                      <p
-                        style={{
-                          fontFamily: "var(--font-serif)",
-                          fontWeight: 700,
-                          fontSize: "0.9rem",
-                          color: "var(--brown-deep)",
-                        }}
-                      >
-                        +19 anos
-                      </p>
-                      <p
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          fontSize: "0.72rem",
-                          color: "var(--muted)",
-                        }}
-                      >
-                        de experiência
-                      </p>
+                      <p style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.9rem", color: "var(--brown-deep)" }}>+19 anos</p>
+                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--muted)" }}>de experiência</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Bio */}
             <div className="reveal-right order-1 lg:order-2">
-              <div
-                className="ornament-center mb-6"
-                style={{ justifyContent: "flex-start" }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.72rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "var(--gold)",
-                  }}
-                >
+              <div className="ornament-center mb-6" style={{ justifyContent: "flex-start" }}>
+                <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
                   Sua mentora
                 </span>
               </div>
 
-              <p
-                style={{
-                  fontFamily: "var(--font-great-vibes), cursive",
-                  fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)",
-                  color: "var(--brown-warm)",
-                  lineHeight: 1,
-                  marginBottom: "0.5rem",
-                }}
-              >
+              <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", color: "var(--brown-warm)", lineHeight: 1, marginBottom: "0.5rem" }}>
                 Conheça a história da Sol
               </p>
 
-              <h2
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
-                  fontWeight: 700,
-                  color: "var(--fg)",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                19 anos formando profissionais{" "}
-                <span className="gold-text">mais seguras e confiantes</span>
+              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", fontWeight: 700, color: "var(--fg)", marginBottom: "1.5rem" }}>
+                19 anos formando profissionais <span className="gold-text">mais seguras e confiantes</span>
               </h2>
 
-              <div
-                style={{
-                  color: "var(--muted)",
-                  fontFamily: "var(--font-sans)",
-                  lineHeight: 1.85,
-                  fontSize: "0.97rem",
-                }}
-              >
+              <div style={{ color: "var(--muted)", fontFamily: "var(--font-sans)", lineHeight: 1.85, fontSize: "0.97rem" }}>
                 {[
                   "Sol é especialista em mechas e fundadora da Solange Jesus Academy, com mais de 19 anos de experiência na área da beleza. Começou aos 19 anos e encontrou na profissão de cabeleireira sua verdadeira vocação.",
                   "Hoje, ajuda outras cabeleireiras a dominarem mechas com segurança — evitando manchas e corte químico — através de um método claro, direto e aplicável no dia a dia do salão.",
                 ].map((p, i) => (
-                  <p key={i} style={{ marginBottom: "1rem" }}>
-                    {p}
-                  </p>
+                  <p key={i} style={{ marginBottom: "1rem" }}>{p}</p>
                 ))}
               </div>
 
-              <div
-                className="grid grid-cols-3 gap-4 mt-8 pt-7"
-                style={{ borderTop: "1px solid rgba(191,161,136,0.25)" }}
-              >
+              <div className="grid grid-cols-3 gap-4 mt-8 pt-7" style={{ borderTop: "1px solid rgba(191,161,136,0.25)" }}>
                 {[
                   { v: "+19", l: "Anos de mercado" },
                   { v: "19", l: "Anos quando começou" },
                   { v: "MSM", l: "Método exclusivo" },
                 ].map(({ v, l }) => (
                   <div key={l} className="text-center">
-                    <p
-                      className="gold-text"
-                      style={{
-                        fontFamily: "var(--font-serif)",
-                        fontSize: "1.8rem",
-                        fontWeight: 800,
-                      }}
-                    >
-                      {v}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-sans)",
-                        color: "var(--muted)",
-                        fontSize: "0.73rem",
-                        marginTop: "0.2rem",
-                      }}
-                    >
-                      {l}
-                    </p>
+                    <p className="gold-text" style={{ fontFamily: "var(--font-serif)", fontSize: "1.8rem", fontWeight: 800 }}>{v}</p>
+                    <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.73rem", marginTop: "0.2rem" }}>{l}</p>
                   </div>
                 ))}
               </div>
@@ -1633,19 +980,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          FOTO SPLASH — transição (Sol no salão)
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* FOTO SPLASH */}
       <section className="relative w-full overflow-hidden reveal" style={{ minHeight: "380px" }}>
-        <img
-          src="/cliente-bio.jpg"
-          alt="Solange Jesus — Solange Jesus Academy"
-          className="w-full h-full object-cover absolute inset-0"
-          style={{ minHeight: "380px", objectPosition: "center 25%" }}
-        />
-        {/* overlay escuro gradiente */}
+        <img src="/cliente-bio.jpg" alt="Solange Jesus — Solange Jesus Academy" className="w-full h-full object-cover absolute inset-0" style={{ minHeight: "380px", objectPosition: "center 25%" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(26,16,8,0.78) 0%, rgba(107,79,58,0.55) 60%, rgba(26,16,8,0.4) 100%)" }} />
-        {/* Conteúdo centrado */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-5" style={{ minHeight: "380px", padding: "60px 20px" }}>
           <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem, 7vw, 3.8rem)", color: "var(--gold-light)", lineHeight: 1.1, marginBottom: "0.5rem" }}>
             Confiança que se vê no resultado
@@ -1657,59 +995,29 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          DEPOIMENTOS
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="py-20 md:py-32 px-5 md:px-10"
-        style={{ background: "rgba(250,235,230,0.4)" }}
-      >
+      {/* DEPOIMENTOS */}
+      <section className="py-20 md:py-32 px-5 md:px-10" style={{ background: "rgba(250,235,230,0.4)" }}>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16 reveal">
             <div className="ornament-center mb-6">
-              <span
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "0.72rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                }}
-              >
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
                 Veja o que as alunas estão dizendo
               </span>
             </div>
-            <h2
-              style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                fontWeight: 700,
-                lineHeight: 1.2,
-              }}
-            >
-              Profissionais que já se sentiam inseguras hoje{" "}
-              <span className="gold-text">executam mechas com confiança</span>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, lineHeight: 1.2 }}>
+              Profissionais que já se sentiam inseguras hoje <span className="gold-text">executam mechas com confiança</span>
             </h2>
           </div>
-
-          
         </div>
 
-        {/* ── CARROSSEL DE IMAGENS (PROVA SOCIAL) ── */}
         <div className="mt-20 max-w-6xl mx-auto reveal px-4 sm:px-0">
-          <div 
-            ref={carouselRef}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden" 
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
+          <div ref={carouselRef} className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             {PROVA_SOCIAL_IMAGES.map((imgSrc, index) => {
               const containImages = ["conceicao.jpg", "ingrid_lira.jpg", "milene_araujo.jpg", "monica.jpg", "talita.jpg"];
               const isContain = containImages.some(name => imgSrc.includes(name));
               return (
                 <div key={index} className="flex-none w-[280px] snap-center">
-                  <div className="rounded-2xl overflow-hidden relative shadow-md" 
-                      style={{ background: "black", border: "1px solid var(--bg)", aspectRatio: "4/5" }}>
+                  <div className="rounded-2xl overflow-hidden relative shadow-md" style={{ background: "black", border: "1px solid var(--bg)", aspectRatio: "4/5" }}>
                     <img src={imgSrc} alt="Depoimento" className="w-full h-full" style={{ objectFit: isContain ? "contain" : "cover" }} />
                   </div>
                 </div>
@@ -1717,318 +1025,146 @@ export default function LandingPage() {
             })}
           </div>
 
-          {/* MOBILE: Texto Informativo (Aparece apenas em telas pequenas) */}
-         <div className="flex sm:hidden items-center justify-center mt-2 py-2">
-            <span 
-              style={{ 
-                fontFamily: "var(--font-sans)", 
-                fontSize: "0.75rem", 
-                fontWeight: 500, 
-                letterSpacing: "0.05em",
-                color: "#9ca3af" // Cinza bem clarinho e discreto
-              }}
-            >
+          <div className="flex sm:hidden items-center justify-center mt-2 py-2">
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.05em", color: "#9ca3af" }}>
               ← Deslize para os lados →
             </span>
           </div>
 
-          {/* DESKTOP: Botões de Navegação (Aparece apenas em telas maiores) */}
           <div className="hidden sm:flex justify-center gap-4 mt-6">
-            <button 
-              onClick={() => scrollCarousel("left")}
-              className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 "
-            style={{
-                  background: "white",
-                }}
-                aria-label="Anterior">
+            <button onClick={() => scrollCarousel("left")} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95" style={{ background: "white" }} aria-label="Anterior">
               <ChevronLeft size={20} style={{ color: "var(--brown-deep)" }} />
             </button>
 
-            <button 
-              onClick={() => scrollCarousel("right")}
-              className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 "
-            style={{
-                  background: "white",
-                }}
-                aria-label="Próximo">
+            <button onClick={() => scrollCarousel("right")} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95" style={{ background: "white" }} aria-label="Próximo">
               <ChevronRight size={20} style={{ color: "var(--brown-deep)" }} />
             </button>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          FAQ
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* FAQ */}
       <section className="py-20 md:py-32 px-5 md:px-10">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-14 reveal">
             <div className="ornament-center mb-6">
-              <span
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "0.72rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                }}
-              >
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
                 Perguntas frequentes
               </span>
             </div>
-            <h2
-              style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-                fontWeight: 700,
-              }}
-            >
+            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700 }}>
               Suas <span className="gold-text">dúvidas</span>, respondidas
             </h2>
           </div>
 
-          <div
-            className="rounded-2xl p-6 md:p-10 shadow-lg reveal"
-            style={{ background: "white" }}
-          >
+          <div className="rounded-2xl p-6 md:p-10 shadow-lg reveal" style={{ background: "white" }}>
             {FAQS.map((faq, i) => (
-              <FAQItem
-                key={i}
-                question={faq.q}
-                answer={faq.a}
-                isOpen={openFAQ === i}
-                onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-              />
+              <FAQItem key={i} question={faq.q} answer={faq.a} isOpen={openFAQ === i} onClick={() => setOpenFAQ(openFAQ === i ? null : i)} />
             ))}
           </div>
 
-          {/* Link WhatsApp abaixo do FAQ */}
           <div className="text-center mt-10 reveal">
-            <p
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "0.9rem",
-                color: "var(--muted)",
-                marginBottom: "1rem",
-              }}
-            >
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem", color: "var(--muted)", marginBottom: "1rem" }}>
               Ainda tem dúvidas? Fale com a nossa equipe.
             </p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold"
-              style={{
-                width: "auto",
-                display: "inline-flex",
-                padding: "0.85rem 2rem",
-                fontSize: "0.82rem",
-              }}
-            >
-              <MessageCircle size={16} />
-              Falar pelo WhatsApp
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ width: "auto", display: "inline-flex", padding: "0.85rem 2rem", fontSize: "0.82rem" }}>
+              <MessageCircle size={16} /> Falar pelo WhatsApp
             </a>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          CTA FINAL
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* CTA FINAL */}
       <section className="dark-luxury py-24 md:py-36 px-5 md:px-10">
         <div className="relative z-10 max-w-3xl mx-auto text-center reveal">
-          <div
-            className="ornament-center mb-8"
-            style={{ filter: "brightness(1.5)" }}
-          >
-            <span
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--gold)",
-              }}
-            >
+          <div className="ornament-center mb-8" style={{ filter: "brightness(1.5)" }}>
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)" }}>
               Sua próxima etapa
             </span>
           </div>
 
-          <p
-            style={{
-              fontFamily: "var(--font-great-vibes), cursive",
-              fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-              color: "var(--gold-light)",
-              lineHeight: 1.05,
-              marginBottom: "0.5rem",
-            }}
-          >
+          <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.5rem, 6vw, 4.5rem)", color: "var(--gold-light)", lineHeight: 1.05, marginBottom: "0.5rem" }}>
             Chegou a sua vez
           </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
-              fontWeight: 700,
-              color: "white",
-              marginBottom: "1.5rem",
-            }}
-          >
-            de ser reconhecida como{" "}
-            <span className="gold-text-dark">especialista em mechas</span>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4.5vw, 3.2rem)", fontWeight: 700, color: "white", marginBottom: "1.5rem" }}>
+            de ser reconhecida como <span className="gold-text-dark">especialista em mechas</span>
           </h2>
 
-          <p
-            style={{
-              fontFamily: "var(--font-sans)",
-              color: "rgba(255,255,255,0.7)",
-              fontSize: "1.05rem",
-              lineHeight: 1.8,
-              maxWidth: "28rem",
-              margin: "0 auto 1.5rem",
-            }}
-          >
-            Você não precisa mais trabalhar com medo de errar nas mechas. Com um
-            método claro e aplicável, você pode desenvolver segurança, atender
-            melhor e aumentar o valor do seu trabalho. Sem risco — 7 dias de
-            garantia total.
+          <p style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.7)", fontSize: "1.05rem", lineHeight: 1.8, maxWidth: "28rem", margin: "0 auto 1.5rem" }}>
+            Você não precisa mais trabalhar com medo de errar nas mechas. Com um método claro e aplicável, você pode desenvolver segurança, atender melhor e aumentar o valor do seu trabalho. Sem risco — 7 dias de garantia total.
           </p>
 
-          {/* Preço resumido */}
           <div className="inline-flex flex-col items-center mb-8 px-8 py-5 rounded-2xl" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(201,168,76,0.2)" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", textDecoration: "line-through", marginBottom: "2px" }}>de {PRECO_DE}</p>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "2.4rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-light)" }}>{PRECO_POR}</p>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "rgba(255,255,255,0.45)", marginTop: "4px" }}>ou {PARCELAMENTO}</p>
           </div>
 
-          <a
-            href={HOTMART_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gold animate-glow"
-            style={{ fontSize: "0.95rem", padding: "1.2rem 3rem" }}
-          >
-            <Sparkles size={18} />
-            Quero aprender mechas com segurança
+          <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold animate-glow" style={{ fontSize: "0.95rem", padding: "1.2rem 3rem" }}>
+            <Sparkles size={18} /> Quero aprender mechas com segurança
           </a>
 
-          <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10 pt-8"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
             {[
               { icon: Shield, text: "7 dias de garantia" },
               { icon: Lock, text: "Compra 100% segura" },
               { icon: Clock, text: "Acesso imediato" },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-2">
-                <Icon
-                  size={15}
-                  style={{ color: "var(--gold)", flexShrink: 0 }}
-                />
-                <span
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.82rem",
-                    color: "rgba(255,255,255,0.5)",
-                  }}
-                >
-                  {text}
-                </span>
+                <Icon size={15} style={{ color: "var(--gold)", flexShrink: 0 }} />
+                <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.82rem", color: "rgba(255,255,255,0.5)" }}>{text}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          FOOTER
-      ══════════════════════════════════════════════════════════════════════ */}
-      <footer
-        className="py-10 px-5 md:px-10"
-        style={{
-          background: "rgba(0,0,0,0.94)",
-          color: "rgba(255,255,255,0.5)",
-        }}
-      >
+      {/* FOOTER */}
+      <footer className="py-10 px-5 md:px-10" style={{ background: "rgba(0,0,0,0.94)", color: "rgba(255,255,255,0.5)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="gold-divider mb-8 opacity-20" />
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
+            
+            {/* LOGO FOOTER COM ÍCONE DOURADO RECORTADO VIA CSS */}
             <div className="flex items-center gap-3">
-              <div
-                className="w-9 h-9 rounded-full flex items-center justify-center"
+              <div 
+                className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 shadow-md"
                 style={{
-                  background:
-                    "linear-gradient(135deg, var(--tan), var(--gold))",
+                  border: "1.5px solid var(--gold)",
+                  backgroundImage: "url('/sol_favicon.ico')",
+                  backgroundSize: "230%",
+                  backgroundPosition: "center 28%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundColor: "#FFFFFF"
                 }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-great-vibes), cursive",
-                    color: "white",
-                    fontSize: "1.1rem",
-                  }}
-                >
-                  S
-                </span>
-              </div>
+              />
               <div>
-                <span
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    color: "rgba(255,255,255,0.7)",
-                    fontSize: "1rem",
-                    display: "block",
-                  }}
-                >
+                <span style={{ fontFamily: "var(--font-serif)", color: "rgba(255,255,255,0.7)", fontSize: "1rem", display: "block" }}>
                   Solange Jesus Academy
                 </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    color: "rgba(255,255,255,0.35)",
-                    fontSize: "0.72rem",
-                  }}
-                >
+                <span style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.35)", fontSize: "0.72rem" }}>
                   Formando profissionais mais seguras e confiantes nas mechas
                 </span>
               </div>
             </div>
+
             <div className="flex items-center gap-5">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-white"
-              >
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
                 <MessageCircle size={18} />
               </a>
             </div>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.76rem" }}>
-              © {new Date().getFullYear()} Solange Jesus Academy. Todos os
-              direitos reservados.
+              © {new Date().getFullYear()} Solange Jesus Academy. Todos os direitos reservados.
             </p>
           </div>
         </div>
       </footer>
 
       {/* WhatsApp FAB */}
-      <a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="whatsapp-fab"
-        aria-label="Falar pelo WhatsApp"
-      >
+      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="whatsapp-fab" aria-label="Falar pelo WhatsApp">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-          <path
-            d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.934 1.399 5.61L0 24l6.61-1.347A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.663-.527-5.168-1.439l-.371-.218-3.843.783.816-3.738-.24-.387C2.016 15.368 1.5 13.738 1.5 12 1.5 6.201 6.201 1.5 12 1.5S22.5 6.201 22.5 12 17.799 22.5 12 22.5z"
-            fillRule="evenodd"
-          />
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.934 1.399 5.61L0 24l6.61-1.347A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.663-.527-5.168-1.439l-.371-.218-3.843.783.816-3.738-.24-.387C2.016 15.368 1.5 13.738 1.5 12 1.5 6.201 6.201 1.5 12 1.5S22.5 6.201 22.5 12 17.799 22.5 12 22.5z" fillRule="evenodd" />
         </svg>
       </a>
     </main>
