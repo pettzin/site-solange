@@ -410,7 +410,7 @@ export default function LandingPage() {
                     </div>
                     <div style={{ width: "1px", alignSelf: "stretch", background: "rgba(201,168,76,0.2)" }} />
                     <div className="flex-1">
-                      {["+30 aulas HD", "5 módulos", "7 dias garantia"].map((item) => (
+                      {["+30 aulas HD", "5 módulos", "7 dias garantia", "Certificado de Conclusão incluso"].map((item) => (
                         <div key={item} className="flex items-center gap-1.5 mb-1 last:mb-0">
                           <div className="w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
                             <Check size={9} style={{ color: "white", strokeWidth: 3 }} />
@@ -439,7 +439,7 @@ export default function LandingPage() {
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.2rem", color: "var(--fg)", marginBottom: "0.5rem" }}>Mechas <span className="gold-text">Sem Medo</span></h3>
                     <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.85rem", lineHeight: 1.6 }}>O método completo para executar mechas com segurança e confiança — do diagnóstico à finalização</p>
                   </div>
-                  {[ "+30 Aulas em 5 módulos", "Diagnóstico profissional", "Técnicas Free Hands", "Suporte durante o aprendizado", "7 dias de garantia" ].map((item, i) => (
+                  {[ "+30 Aulas em 5 módulos", "Diagnóstico profissional", "Técnicas Free Hands", "Suporte durante o aprendizado", "Certificado de Conclusão incluso", "7 dias de garantia" ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2.5 mb-2.5 last:mb-0">
                       <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-shine))" }}>
                         <Check size={11} style={{ color: "white", strokeWidth: 3 }} />
@@ -868,6 +868,7 @@ export default function LandingPage() {
                 "+30 aulas em vídeo HD",
                 "5 módulos completos + bônus",
                 "Diagnóstico profissional",
+                "Certificado de Conclusão incluso",
                 "Técnicas Free Hands, Balayage e mais",
                 "Suporte durante o aprendizado",
                 "7 dias de garantia total",

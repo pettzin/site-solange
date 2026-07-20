@@ -197,11 +197,11 @@ export default function FormularioPage() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 py-8 md:py-12">
         
         {/* LOGO BEM MAIOR */}
-        <div className={`mb-10 transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
+        <div className={`mb-10 flex justify-center transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
           <img 
             src="/icone.png" 
             alt="Solange Jesus Academy" 
-            className="h-20 md:h-28 w-auto object-contain" 
+            className="h-20 md:h-28 w-auto object-contain mx-auto" 
           />
         </div>
 
@@ -226,18 +226,17 @@ export default function FormularioPage() {
               Aula que você realmente vai aprender na PRÁTICA, AO VIVO, COM MODELO REAL, SEM ENROLAÇÃO e você vai poder tirar todas as suas dúvidas da técnica.
             </p>
 
-            {/* DATA E HORÁRIO */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full max-w-lg">
-              <div className="flex items-center justify-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full max-w-lg mx-auto">
+              <div className="flex items-center justify-center text-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <Calendar size={24} style={{ color: "var(--gold-light)" }} />
-                <div className="text-left">
+                <div className="text-center">
                   <span className="block text-xs uppercase opacity-60">Data</span>
                   <strong style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}>10 de agosto</strong>
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
+              <div className="flex items-center justify-center text-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <Clock size={24} style={{ color: "var(--gold-light)" }} />
-                <div className="text-left">
+                <div className="text-center">
                   <span className="block text-xs uppercase opacity-60">Horário</span>
                   <strong style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}>Às 18h</strong>
                 </div>
