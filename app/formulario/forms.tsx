@@ -1,13 +1,13 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { Check, Lock, AlertCircle, MessageCircle, Sparkles, Star, Scissors } from "lucide-react"
+import { Check, Lock, AlertCircle, Calendar, Clock, ArrowUp, ShieldCheck } from "lucide-react"
 
 /* ─── CONFIG ─────────────────────────────────────────────────────────────────── */
 const WHATSAPP_NUMBER = "5511978111150" 
 
 function buildWhatsAppURL(nome: string) {
-  const msg = `Oi, meu nome é ${nome} e quero saber mais sobre o Método MSM`
+  const msg = `Oi, meu nome é ${nome} e quero garantir minha vaga no Workshop Gratuito!`
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`
 }
 
@@ -42,21 +42,11 @@ function SuccessScreen({ nome, whatsappUrl }: { nome: string; whatsappUrl: strin
     <main className="min-h-[100svh] flex items-center justify-center px-5 py-12 relative overflow-hidden" 
       style={{ background: "#4A3628", color: "white" }}>
       
-      {/* DETALHES DE FUNDO (Igual ao formulário) */}
       <div className="absolute inset-0 opacity-20 pointer-events-none" 
         style={{ backgroundImage: `radial-gradient(var(--gold-light) 0.5px, transparent 0.5px)`, backgroundSize: '30px 30px' }} 
       />
 
-      <div className="absolute top-20 -left-12 opacity-[0.07] rotate-12 pointer-events-none">
-        <Scissors size={260} style={{ color: "var(--gold-light)" }} />
-      </div>
-      
-      <div className="absolute bottom-10 -right-10 opacity-[0.1] -rotate-12 pointer-events-none">
-        <Sparkles size={220} style={{ color: "var(--gold-shine)" }} />
-      </div>
-
       <div className="relative z-10 max-w-md w-full text-center">
-        {/* Check animado com Glow Dourado */}
         <div className="w-24 h-24 mx-auto mb-10 rounded-full flex items-center justify-center animate-pulse-gold shadow-[0_0_30px_rgba(201,168,76,0.3)]"
           style={{ 
             background: "linear-gradient(135deg, var(--gold-warm), var(--gold-shine))",
@@ -66,19 +56,19 @@ function SuccessScreen({ nome, whatsappUrl }: { nome: string; whatsappUrl: strin
         </div>
 
         <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(3rem, 10vw, 4.5rem)", color: "var(--gold-light)", lineHeight: 1 }}>
-          Incrível,
+          Parabéns,
         </p>
         <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(3rem, 10vw, 4.5rem)", color: "var(--gold-light)", lineHeight: 1.15, marginBottom: "1.5rem" }}>
           {firstName}!
         </p>
 
         <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.3rem", color: "white", marginBottom: "0.75rem", letterSpacing: "0.02em" }}>
-          Sua mensagem está <span className="gold-text-dark">pronta para enviar</span>
+          Sua vaga está <span className="gold-text-dark">quase garantida!</span>
         </h2>
         
         <p style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "2.5rem" }}>
-          Você será redirecionada para o WhatsApp em <br />
-          <strong className="text-white bg-white/10 px-2 py-0.5 rounded" style={{ color: "var(--gold-light)" }}>{redirect} segundos</strong>.
+          Entrando no grupo do WhatsApp em <br />
+          <strong className="text-white bg-white/10 px-2 py-0.5 rounded" style={{ color: "var(--gold-light)" }}>{redirect} segundos</strong>...
         </p>
 
         <a
@@ -88,8 +78,7 @@ function SuccessScreen({ nome, whatsappUrl }: { nome: string; whatsappUrl: strin
           className="btn-gold animate-glow w-full shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
           style={{ fontSize: "0.95rem", padding: "1.2rem 2rem", borderRadius: "1rem" }}
         >
-          <MessageCircle size={20} />
-          Ir para o WhatsApp Agora
+          Entrar no Grupo VIP do WhatsApp
         </a>
       </div>
     </main>
@@ -155,6 +144,10 @@ export default function FormularioPage() {
 
   useEffect(() => { setMounted(true) }, [])
 
+  const scrollToForm = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const validate = useCallback((): boolean => {
     const e: typeof errors = {}
     if (!nome.trim() || nome.trim().length < 2) e.nome = "Digite seu nome completo"
@@ -181,94 +174,245 @@ export default function FormularioPage() {
   return (
     <main className="min-h-[100svh] relative overflow-hidden" style={{ background: "#4A3628", color: "white" }}>
       
-      {/* DETALHES MOBILE/PC: Partículas de Brilho no Fundo */}
+      {/* BACKGROUND PARTICLES */}
       <div className="absolute inset-0 opacity-20 pointer-events-none" 
         style={{ backgroundImage: `radial-gradient(var(--gold-light) 0.5px, transparent 0.5px)`, backgroundSize: '30px 30px' }} 
       />
 
-      {/* Ícones Decorativos */}
-      <div className="absolute top-20 -left-12 opacity-[0.07] rotate-12 pointer-events-none">
-        <Scissors size={260} style={{ color: "var(--gold-light)" }} />
-      </div>
-      <div className="absolute bottom-10 -right-10 opacity-[0.1] -rotate-12 pointer-events-none">
-        <Sparkles size={220} style={{ color: "var(--gold-shine)" }} />
-      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 py-8 md:py-12">
+        
+        {/* LOGO */}
+        <div className={`flex items-center gap-3 mb-8 transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
+          <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+            style={{ background: "linear-gradient(135deg, var(--tan), var(--gold))", border: "1px solid rgba(255,255,255,0.2)" }}>
+            <span style={{ fontFamily: "var(--font-great-vibes), cursive", color: "white", fontSize: "1.5rem" }}>S</span>
+          </div>
+          <span style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", color: "rgba(255,255,255,0.9)", letterSpacing: "0.05em" }}>Solange Jesus Academy</span>
+        </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10">
-        <div className="flex flex-col lg:flex-row gap-0 min-h-[100svh] items-center">
+        {/* HERO SECTION - NO MOBILE O FORMULÁRIO FICA EM PRIMEIRO */}
+        <div className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-16 items-center">
 
-          {/* ─── ESQUERDA: Copy ─── */}
-          <div className="flex-1 py-12 lg:py-20 lg:pr-16 flex flex-col justify-center">
-            <div className={`flex items-center gap-3 mb-10 transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
-                style={{ background: "linear-gradient(135deg, var(--tan), var(--gold))", border: "1px solid rgba(255,255,255,0.2)" }}>
-                <span style={{ fontFamily: "var(--font-great-vibes), cursive", color: "white", fontSize: "1.5rem" }}>S</span>
-              </div>
-              <span style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", color: "rgba(255,255,255,0.9)", letterSpacing: "0.05em" }}>Solange Jesus Academy</span>
+          {/* ESQUERDA: APRESENTAÇÃO */}
+          <div className="flex-1 flex flex-col justify-center">
+            
+            <div className="inline-block px-4 py-1.5 rounded-full mb-4 w-max" style={{ background: "rgba(201,168,76,0.2)", border: "1px solid rgba(201,168,76,0.4)" }}>
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", fontWeight: 700, color: "var(--gold-light)", letterSpacing: "0.1em" }}>
+                WORKSHOP GRATUITO E AO VIVO
+              </span>
             </div>
 
-            <p className={`transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.5rem, 6vw, 4.5rem)", color: "var(--gold-light)", lineHeight: 1 }}>
-              Tire suas dúvidas
-            </p>
             <h1 className={`transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.9rem, 4.5vw, 3rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: "1.5rem" }}>
-              e descubra como o Método MSM vai <span className="gold-text-dark">eliminar sua insegurança nas mechas</span>
+              style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.2rem" }}>
+              Aprenda uma técnica de mechas sem usar pó descolorante e <span className="gold-text-dark">elimine de uma vez o MEDO</span> de fazer mechas!
             </h1>
 
-            <div className={`space-y-4 transition-all duration-700 delay-300 ${mounted ? "opacity-100" : "opacity-0"}`}>
-              {["Resposta rápida em horário comercial", "Suporte personalizado para sua carreira", "Tire dúvidas sobre módulos, bônus e acesso"].map((p, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(201,168,76,0.25)", border: "1px solid rgba(201,168,76,0.3)" }}>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: "2rem" }}>
+              Aula que você realmente vai aprender na PRÁTICA, AO VIVO, COM MODELO REAL, SEM ENROLAÇÃO e você vai poder tirar todas as suas dúvidas da técnica.
+            </p>
+
+            {/* DATA E HORÁRIO */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div className="flex items-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                <Calendar size={24} style={{ color: "var(--gold-light)" }} />
+                <div>
+                  <span className="block text-xs uppercase opacity-60">Data</span>
+                  <strong style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}>10 de agosto</strong>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                <Clock size={24} style={{ color: "var(--gold-light)" }} />
+                <div>
+                  <span className="block text-xs uppercase opacity-60">Horário</span>
+                  <strong style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}>Às 18h</strong>
+                </div>
+              </div>
+            </div>
+
+            {/* 3 OU 4 BENEFÍCIOS */}
+            <div className="space-y-3.5 mb-6">
+              {[
+                "100% Online e Gratuito",
+                "Sem risco de manchas ou corte químico",
+                "Resultado prático com modelo real ao vivo",
+                "Colorimetria simplificada e sem segredos"
+              ].map((b, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(201,168,76,0.25)" }}>
                     <Check size={12} style={{ color: "var(--gold-light)" }} />
                   </div>
-                  <span style={{ fontFamily: "var(--font-sans)", fontSize: "1rem", color: "rgba(255,255,255,0.9)" }}>{p}</span>
+                  <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", color: "rgba(255,255,255,0.9)" }}>{b}</span>
                 </div>
               ))}
             </div>
+
           </div>
 
-          {/* ─── DIREITA: Formulário (Card com Contraste e Borda Dourada Viva) ─── */}
-          <div className="lg:w-[460px] xl:w-[500px] flex-shrink-0 pb-12 lg:py-20 flex items-center relative z-20">
+          {/* DIREITA: FORMULÁRIO PRINCIPAL */}
+          <div id="formulario-ancora" className="w-full lg:w-[450px] flex-shrink-0 relative z-20">
             <div className={`w-full rounded-3xl transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
               style={{ 
                 background: "#FFFFFF", 
                 color: "#1A1008", 
                 boxShadow: "0 30px 70px rgba(0,0,0,0.5)", 
-                border: "2px solid #C9A84C" // ← Borda dourada principal mais espessa e viva
+                border: "2px solid #C9A84C"
               }}
             >
-              
-              <div className="rounded-t-3xl px-8 pt-10 pb-8" 
+              <div className="rounded-t-3xl px-6 pt-8 pb-6 text-center" 
                 style={{ 
                   background: "linear-gradient(135deg, #6B4F3A 0%, #4A3628 100%)",
                   borderBottom: "1px solid rgba(201,168,76,0.3)" 
                 }}>
-                <div className="flex items-center gap-2 mb-3">
-                  <MessageCircle size={16} style={{ color: "var(--gold-light)" }} />
-                  <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, color: "var(--gold-light)", textTransform: "uppercase", letterSpacing: "0.15em" }}>Fale conosco</span>
-                </div>
-                <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", fontWeight: 700, color: "white", lineHeight: 1.2 }}>
-                  Preencha e fale direto<br />
-                  <span className="gold-text-dark">pelo WhatsApp</span>
+                <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.4rem", fontWeight: 700, color: "white", lineHeight: 1.2 }}>
+                  Garanta sua vaga gratuita
                 </h2>
+                <p className="mt-1" style={{ fontSize: "0.85rem", color: "var(--gold-light)" }}>
+                  Preencha o formulário abaixo:
+                </p>
               </div>
-              <div className="px-8 py-10">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <FloatingField id="nome" label="Seu nome completo" value={nome} placeholder="Ex: Maria Silva" error={errors.nome} disabled={submitting} onChange={(e) => { setNome(e.target.value); if (errors.nome) setErrors((prev) => ({ ...prev, nome: undefined })) }} />
-                  <FloatingField id="phone" label="Seu WhatsApp" type="tel" value={phone} placeholder="(11) 99999-9999" error={errors.phone} disabled={submitting} onChange={(e) => { setPhone(formatPhone(e.target.value)); if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined })) }} />
-                  <FloatingField id="email" label="Seu melhor e-mail" type="email" value={email} placeholder="exemplo@email.com" error={errors.email} disabled={submitting} onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((prev) => ({ ...prev, email: undefined })) }} />
 
-                  <button type="submit" disabled={submitting} className="btn-gold w-full animate-glow" style={{ fontSize: "0.9rem", padding: "1.3rem", borderRadius: "1rem" }}>
-                    {submitting ? "Preparando conversa..." : "Falar com a Equipe MSM"}
+              <div className="px-6 py-8">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <FloatingField id="nome" label="Nome Completo" value={nome} placeholder="Ex: Maria Silva" error={errors.nome} disabled={submitting} onChange={(e) => { setNome(e.target.value); if (errors.nome) setErrors((prev) => ({ ...prev, nome: undefined })) }} />
+                  <FloatingField id="phone" label="WhatsApp" type="tel" value={phone} placeholder="(11) 99999-9999" error={errors.phone} disabled={submitting} onChange={(e) => { setPhone(formatPhone(e.target.value)); if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined })) }} />
+                  <FloatingField id="email" label="E-mail" type="email" value={email} placeholder="exemplo@email.com" error={errors.email} disabled={submitting} onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((prev) => ({ ...prev, email: undefined })) }} />
+
+                  <button type="submit" disabled={submitting} className="btn-gold w-full animate-glow" style={{ fontSize: "0.85rem", padding: "1.2rem", borderRadius: "1rem" }}>
+                    {submitting ? "Garantindo vaga..." : "QUERO GARANTIR MINHA VAGA GRATUITA"}
                   </button>
                 </form>
-                <p className="flex items-center justify-center gap-2 mt-6" style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "#8B7361" }}><Lock size={12} /> Seus dados estão 100% seguros.</p>
+
+                {/* TEXTO PEQUENO ABAIXO DO FORMULÁRIO */}
+                <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col items-center gap-1.5 text-center">
+                  <p className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "#6B4F3A", fontWeight: 600 }}>
+                    <Lock size={12} /> Seus dados estão seguros.
+                  </p>
+                  <p className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "#8B7361" }}>
+                    <ShieldCheck size={12} /> Evento 100% gratuito.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
         </div>
+
+        {/* ─── CONTEÚDO DETALHADO ─── */}
+        <div className="mt-20 space-y-20 border-t border-white/10 pt-16">
+
+          {/* O QUE VAI APRENDER */}
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", color: "var(--gold-light)", marginBottom: "1rem" }}>
+              Nesta aula você vai aprender:
+            </h2>
+            <p className="mb-10 opacity-80">Descubra uma técnica prática que vai te ajudar a conquistar resultados incríveis, sem manchas, sem corte químico e vai deixar suas clientes apaixonadas.</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+              {[
+                "Como fazer mechas utilizando coloração, sem depender do pó descolorante.",
+                "As divisões que facilitam todo o procedimento.",
+                "Como fazer o eriçado corretamente para um resultado impecável.",
+                "Colorimetria explicada de forma simples.",
+                "Como evitar manchas, marcações e corte químico.",
+                "Os maiores segredos das mechas que normalmente ninguém ensina."
+              ].map((item, idx) => (
+                <div key={idx} className="p-4 rounded-xl flex items-start gap-3" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.15)" }}>
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "var(--gold)", color: "white" }}>
+                    <Check size={12} />
+                  </div>
+                  <span style={{ fontSize: "0.95rem", lineHeight: 1.5 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* PARA QUEM É */}
+          <div className="max-w-3xl mx-auto rounded-3xl p-8 md:p-12 text-center" style={{ background: "rgba(0,0,0,0.2)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.8rem", color: "white", marginBottom: "1.5rem" }}>
+              Essa aula é para você que...
+            </h2>
+            <div className="space-y-4 text-left max-w-xl mx-auto">
+              {[
+                "Tem medo de fazer mechas.",
+                "Já perdeu clientes por insegurança.",
+                "Quer aumentar seu faturamento oferecendo um dos serviços mais lucrativos do salão.",
+                "Deseja aprender um método simples, prático e sem truques."
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full" style={{ background: "var(--gold-light)" }} />
+                  <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)" }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* SOBRE SOLANGE JESUS (COM ESPAÇO PARA FOTO) */}
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
+            
+            {/* ESPAÇO DEDICADO À FOTO DA SOLANGE */}
+            <div className="w-full md:w-1/2 flex justify-center">
+              <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl" 
+                style={{ border: "2px solid var(--gold)" }}>
+                <img 
+                  src="/sol.png" 
+                  alt="Solange Jesus" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+            </div>
+
+            <div className="w-full md:w-1/2">
+              <span style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "2rem", color: "var(--gold-light)" }}>Quem é Solange Jesus?</span>
+              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.5rem", fontWeight: 700, marginBottom: "1rem" }}>Sua mentora nessa jornada</h3>
+              <p className="text-sm opacity-90 leading-relaxed space-y-3">
+                <span className="block">Sou conhecida como Sol e atuo há mais de 19 anos como cabeleireira.</span>
+                <span className="block">Comecei atendendo em um quartinho nos fundos da minha casa e transformei as mechas no serviço que me deu liberdade financeira e qualidade de vida.</span>
+                <span className="block">Hoje sou fundadora da Solange Jesus Academy, Colorista Master, Terapeuta Capilar e Especialista em Mechas.</span>
+                <span className="block mt-2 font-semibold style={{ color: 'var(--gold-pale)' }}">Minha missão é ajudar cabeleireiras a vencerem o medo de fazer mechas, ensinando exatamente o que faço na prática, da cadeira ao lavatório, sem esconder nenhuma etapa.</span>
+              </p>
+            </div>
+          </div>
+
+          {/* O QUE ACONTECE DEPOIS DA INSCRIÇÃO & ATENÇÃO */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="p-6 rounded-2xl" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.15)" }}>
+              <h4 style={{ fontFamily: "var(--font-serif)", fontSize: "1.2rem", color: "var(--gold-light)", marginBottom: "1rem" }}>O que acontece depois da inscrição?</h4>
+              <p className="text-xs opacity-75 mb-4">Assim que você concluir sua inscrição:</p>
+              <ul className="space-y-2 text-sm">
+                <li>Entrará para o grupo exclusivo do WhatsApp.</li>
+                <li>Receberá todas as orientações do evento.</li>
+                <li>No dia 10 de agosto, às 18h, enviaremos o link para você participar da aula ao vivo.</li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-2xl" style={{ background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.3)" }}>
+              <h4 style={{ fontFamily: "var(--font-serif)", fontSize: "1.2rem", color: "#fca5a5", marginBottom: "1rem" }}>Atenção</h4>
+              <p className="text-sm leading-relaxed opacity-90">
+                As vagas são limitadas. Para garantir uma experiência de qualidade, a aula será realizada em uma sala online exclusiva para as profissionais inscritas. Assim que o limite de participantes for atingido, as inscrições serão encerradas.
+              </p>
+            </div>
+          </div>
+
+          {/* BOTÃO PARA SUBIR A PÁGINA NA PARTE DO FORMULÁRIO */}
+          <div className="text-center pt-8 max-w-xl mx-auto">
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.3rem", color: "var(--gold-pale)", marginBottom: "0.5rem" }}>
+              O medo não desaparece sozinho.
+            </p>
+            <p className="text-sm opacity-80 mb-6">
+              Ele desaparece quando você aprende o caminho certo. Preencha o formulário e reserve gratuitamente a sua vaga.
+            </p>
+            
+            <button 
+              onClick={scrollToForm} 
+              className="btn-gold animate-glow"
+              style={{ padding: "1rem 2rem", borderRadius: "9999px" }}
+            >
+              <ArrowUp size={18} /> QUERO ME INSCREVER AGORA
+            </button>
+          </div>
+
+        </div>
+
       </div>
     </main>
   )
