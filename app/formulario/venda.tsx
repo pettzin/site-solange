@@ -370,20 +370,12 @@ export default function LandingPage() {
             
             {/* Lado esquerdo */}
             <div>
-              {/* LOGO COM SÍMBOLO DOURADO RECORTADO VIA CSS */}
-              <div className={`flex items-center gap-3 mb-7 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                <div 
-                  className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 shadow-md"
-                  style={{
-                    border: "1.5px solid var(--gold)",
-                    backgroundImage: "url('/sol_favicon.ico')",
-                    backgroundSize: "230%",
-                    backgroundPosition: "center 28%",
-                    backgroundRepeat: "no-repeat",
-                    backgroundColor: "#FFFFFF"
-                  }}
+              <div className={`mb-7 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+                <img 
+                  src="/icone.png" 
+                  alt="Solange Jesus Academy" 
+                  className="h-20 md:h-22 w-auto object-contain" 
                 />
-                <span className="badge-gold">Solange Jesus Academy</span>
               </div>
 
               <p className={`transition-all duration-700 delay-75 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ fontFamily: "var(--font-script)", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
@@ -1125,27 +1117,13 @@ export default function LandingPage() {
           <div className="gold-divider mb-8 opacity-20" />
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             
-            {/* LOGO FOOTER COM ÍCONE DOURADO RECORTADO VIA CSS */}
+            {/* LOGO FOOTER */}
             <div className="flex items-center gap-3">
-              <div 
-                className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 shadow-md"
-                style={{
-                  border: "1.5px solid var(--gold)",
-                  backgroundImage: "url('/sol_favicon.ico')",
-                  backgroundSize: "230%",
-                  backgroundPosition: "center 28%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundColor: "#FFFFFF"
-                }}
+              <img 
+                src="/icone.png" 
+                alt="Solange Jesus Academy" 
+                className="h-14 w-auto object-contain" 
               />
-              <div>
-                <span style={{ fontFamily: "var(--font-serif)", color: "rgba(255,255,255,0.7)", fontSize: "1rem", display: "block" }}>
-                  Solange Jesus Academy
-                </span>
-                <span style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.35)", fontSize: "0.72rem" }}>
-                  Formando profissionais mais seguras e confiantes nas mechas
-                </span>
-              </div>
             </div>
 
             <div className="flex items-center gap-5">

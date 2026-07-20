@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { Check, Lock, AlertCircle, Calendar, Clock, ArrowUp, ShieldCheck } from "lucide-react"
+import { Check, Lock, AlertCircle, Calendar, Clock, ArrowUp, ShieldCheck, Sparkles } from "lucide-react"
 
 /* ─── CONFIG ─────────────────────────────────────────────────────────────────── */
 const WHATSAPP_NUMBER = "5511978111150" 
@@ -145,7 +145,12 @@ export default function FormularioPage() {
   useEffect(() => { setMounted(true) }, [])
 
   const scrollToForm = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    const el = document.getElementById("formulario-ancora")
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   const validate = useCallback((): boolean => {
@@ -163,7 +168,6 @@ export default function FormularioPage() {
     if (!validate()) return
     setSubmitting(true)
 
-    // Dispara o evento de Lead para o Meta Ads
     if (typeof window !== "undefined" && (window as any).fbq) {
       (window as any).fbq('track', 'Lead')
     }
@@ -185,84 +189,82 @@ export default function FormularioPage() {
         style={{ backgroundImage: `radial-gradient(var(--gold-light) 0.5px, transparent 0.5px)`, backgroundSize: '30px 30px' }} 
       />
 
+      {/* BRILHOS DE FUNDO */}
+      <div className="absolute bottom-10 -right-10 opacity-[0.1] -rotate-12 pointer-events-none">
+        <Sparkles size={220} style={{ color: "var(--gold-shine)" }} />
+      </div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 py-8 md:py-12">
         
-        {/* LOGO COM ÍCONE DA LOGO RECORTADO VIA CSS */}
-        <div className={`flex items-center gap-3 mb-8 transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
-          <div 
-            className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 shadow-md"
-            style={{
-              border: "1.5px solid var(--gold)",
-              backgroundImage: "url('/sol_favicon.ico')",
-              backgroundSize: "230%",
-              backgroundPosition: "center 28%",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: "#FFFFFF"
-            }}
+        {/* LOGO BEM MAIOR */}
+        <div className={`mb-10 transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
+          <img 
+            src="/icone.png" 
+            alt="Solange Jesus Academy" 
+            className="h-20 md:h-28 w-auto object-contain" 
           />
-          <span style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", color: "rgba(255,255,255,0.9)", letterSpacing: "0.05em" }}>Solange Jesus Academy</span>
         </div>
 
-        {/* HERO SECTION */}
-        <div className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-16 items-center">
+        {/* HERO SECTION REORGANIZADA: CONTEÚDO EM CIMA -> FORMULÁRIO LOGO ABAIXO DOS 4 BENEFÍCIOS */}
+        <div className="flex flex-col gap-10 items-center max-w-4xl mx-auto">
 
-          {/* ESQUERDA: APRESENTAÇÃO */}
-          <div className="flex-1 flex flex-col justify-center">
+          {/* PARTE SUPERIOR: INFORMAÇÕES E 4 BENEFÍCIOS */}
+          <div className="w-full flex flex-col items-center text-center">
             
-            <div className="inline-block px-4 py-1.5 rounded-full mb-4 w-max" style={{ background: "rgba(201,168,76,0.2)", border: "1px solid rgba(201,168,76,0.4)" }}>
-              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", fontWeight: 700, color: "var(--gold-light)", letterSpacing: "0.1em" }}>
+            <div className="inline-block px-4 py-1.5 rounded-full mb-6 w-max" style={{ background: "rgba(201,168,76,0.2)", border: "1px solid rgba(201,168,76,0.4)" }}>
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.85rem", fontWeight: 700, color: "var(--gold-light)", letterSpacing: "0.1em" }}>
                 WORKSHOP GRATUITO E AO VIVO
               </span>
             </div>
 
-            <h1 className={`transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.2rem" }}>
+            <h1 className={`transition-all duration-700 delay-150 max-w-3xl ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 5vw, 3.2rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.2rem" }}>
               Aprenda uma técnica de mechas sem usar pó descolorante e <span className="gold-text-dark">elimine de uma vez o MEDO</span> de fazer mechas!
             </h1>
 
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: "2rem" }}>
+            <p className="max-w-2xl" style={{ fontFamily: "var(--font-sans)", fontSize: "1.1rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: "2rem" }}>
               Aula que você realmente vai aprender na PRÁTICA, AO VIVO, COM MODELO REAL, SEM ENROLAÇÃO e você vai poder tirar todas as suas dúvidas da técnica.
             </p>
 
             {/* DATA E HORÁRIO */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              <div className="flex items-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full max-w-lg">
+              <div className="flex items-center justify-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <Calendar size={24} style={{ color: "var(--gold-light)" }} />
-                <div>
+                <div className="text-left">
                   <span className="block text-xs uppercase opacity-60">Data</span>
                   <strong style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}>10 de agosto</strong>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
+              <div className="flex items-center justify-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <Clock size={24} style={{ color: "var(--gold-light)" }} />
-                <div>
+                <div className="text-left">
                   <span className="block text-xs uppercase opacity-60">Horário</span>
                   <strong style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}>Às 18h</strong>
                 </div>
               </div>
             </div>
 
-            {/* BENEFÍCIOS */}
-            <div className="space-y-3.5 mb-6">
+            {/* 4 BENEFÍCIOS EM DESTAQUE */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 w-full max-w-2xl text-left">
               {[
                 "100% Online e Gratuito",
                 "Sem risco de manchas ou corte químico",
                 "Resultado prático com modelo real ao vivo",
                 "Colorimetria simplificada e sem segredos"
               ].map((b, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(201,168,76,0.25)" }}>
-                    <Check size={12} style={{ color: "var(--gold-light)" }} />
+                <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.15)" }}>
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(201,168,76,0.25)" }}>
+                    <Check size={14} style={{ color: "var(--gold-light)" }} />
                   </div>
-                  <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", color: "rgba(255,255,255,0.9)" }}>{b}</span>
+                  <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", color: "rgba(255,255,255,0.9)", fontWeight: 500 }}>{b}</span>
                 </div>
               ))}
             </div>
 
           </div>
 
-          {/* DIREITA: FORMULÁRIO PRINCIPAL */}
-          <div id="formulario-ancora" className="w-full lg:w-[450px] flex-shrink-0 relative z-20">
+          {/* FORMULÁRIO POSICIONADO LOGO ABAIXO DOS BENEFÍCIOS */}
+          <div id="formulario-ancora" className="w-full max-w-lg relative z-20">
             <div className={`w-full rounded-3xl transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
               style={{ 
                 background: "#FFFFFF", 
@@ -276,10 +278,10 @@ export default function FormularioPage() {
                   background: "linear-gradient(135deg, #6B4F3A 0%, #4A3628 100%)",
                   borderBottom: "1px solid rgba(201,168,76,0.3)" 
                 }}>
-                <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.4rem", fontWeight: 700, color: "white", lineHeight: 1.2 }}>
+                <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.5rem", fontWeight: 700, color: "white", lineHeight: 1.2 }}>
                   Garanta sua vaga gratuita
                 </h2>
-                <p className="mt-1" style={{ fontSize: "0.85rem", color: "var(--gold-light)" }}>
+                <p className="mt-1" style={{ fontSize: "0.88rem", color: "var(--gold-light)" }}>
                   Preencha o formulário abaixo:
                 </p>
               </div>
@@ -290,7 +292,7 @@ export default function FormularioPage() {
                   <FloatingField id="phone" label="WhatsApp" type="tel" value={phone} placeholder="(11) 99999-9999" error={errors.phone} disabled={submitting} onChange={(e) => { setPhone(formatPhone(e.target.value)); if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined })) }} />
                   <FloatingField id="email" label="E-mail" type="email" value={email} placeholder="exemplo@email.com" error={errors.email} disabled={submitting} onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((prev) => ({ ...prev, email: undefined })) }} />
 
-                  <button type="submit" disabled={submitting} className="btn-gold w-full animate-glow" style={{ fontSize: "0.85rem", padding: "1.2rem", borderRadius: "1rem" }}>
+                  <button type="submit" disabled={submitting} className="btn-gold w-full animate-glow" style={{ fontSize: "0.9rem", padding: "1.2rem", borderRadius: "1rem" }}>
                     {submitting ? "Garantindo vaga..." : "QUERO GARANTIR MINHA VAGA GRATUITA"}
                   </button>
                 </form>
