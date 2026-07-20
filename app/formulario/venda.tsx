@@ -543,9 +543,6 @@ export default function LandingPage() {
 
       {/* PARA QUEM É */}
       <section className="py-20 md:py-32 px-5 md:px-10 gold-texture-bg relative overflow-hidden">
-        <div className="absolute top-10 -left-12 opacity-[0.04] rotate-12 pointer-events-none">
-          <Scissors size={180} style={{ color: "var(--brown-deep)" }} />
-        </div>
         <div className="absolute bottom-10 -right-8 opacity-[0.06] -rotate-12 pointer-events-none z-0">
           <Sparkles size={130} style={{ color: "var(--gold)" }} />
         </div>
