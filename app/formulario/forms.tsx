@@ -222,9 +222,10 @@ export default function FormularioPage() {
               </span>
             </div>
 
-            <h1 className={`transition-all duration-700 delay-150 max-w-3xl ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 5vw, 3.2rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.2rem" }}>
-              Aprenda uma técnica de mechas sem usar pó descolorante e <span className="gold-text-dark">elimine de uma vez o MEDO</span> de fazer mechas!
+            <h1 className="text-3xl md:text-5xl font-serif text-center leading-tight text-balance">
+              Aprenda uma técnica de mechas <br className="hidden md:block" />
+              sem usar pó descolorante e <br className="hidden md:block" />
+              elimine de uma vez o <span className="text-[#C5A265]">MEDO de fazer mechas!</span>
             </h1>
 
             <p className="max-w-2xl" style={{ fontFamily: "var(--font-sans)", fontSize: "1.1rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: "2rem" }}>
