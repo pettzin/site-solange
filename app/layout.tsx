@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: '%s | Solange Jesus Academy',
   },
   description:
-    'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Aula 100% gratuita e ao vivo!',
+    'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lotes sua agenda!',
   keywords: ['curso loiro perfeito', 'coloração profissional', 'loiros impecáveis', 'técnica de loiro', 'curso cabeleireira'],
   authors: [{ name: 'Solange Jesus Academy' }],
   
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: 'Solange Jesus Academy',
     title: 'Mechas Sem Pó Descolorante | Solange Jesus Academy',
     description:
-      'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Aula 100% gratuita e ao vivo!',
+      'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lotes sua agenda!',
     url: 'https://www.solangejesusacademy.com.br',
     images: [
       {
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mechas Sem Pó Descolorante | Solange Jesus Academy',
     description:
-      'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Aula 100% gratuita e ao vivo!',
+      'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lotes sua agenda!',
     images: ['https://www.solangejesusacademy.com.br/og-image.jpg'],
   },
 }
