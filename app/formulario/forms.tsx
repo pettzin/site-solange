@@ -201,6 +201,7 @@ export default function FormularioPage() {
           <img 
             src="/icone.png" 
             alt="Solange Jesus Academy" 
+            title="Solange Jesus Academy"
             className="h-20 md:h-28 w-auto object-contain mx-auto" 
           />
         </div>
@@ -367,6 +368,7 @@ export default function FormularioPage() {
                 <img 
                   src="/sol.png" 
                   alt="Solange Jesus" 
+                  title="Solange Jesus - Especialista em Mechas"
                   className="w-full h-full object-cover" 
                 />
               </div>
