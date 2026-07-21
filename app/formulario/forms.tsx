@@ -210,10 +210,10 @@ export default function FormularioPage() {
           />
         </div>
 
-        {/* HERO SECTION REORGANIZADA: CONTEÚDO EM CIMA -> FORMULÁRIO LOGO ABAIXO DOS 4 BENEFÍCIOS */}
+        {/* HERO SECTION REORGANIZADA */}
         <div className="flex flex-col gap-10 items-center max-w-4xl mx-auto">
 
-          {/* PARTE SUPERIOR: INFORMAÇÕES E 4 BENEFÍCIOS */}
+          {/* PARTE SUPERIOR */}
           <div className="w-full flex flex-col items-center text-center">
             
             <div className="inline-block px-4 py-1.5 rounded-full mb-6 w-max" style={{ background: "rgba(201,168,76,0.2)", border: "1px solid rgba(201,168,76,0.4)" }}>
@@ -226,8 +226,8 @@ export default function FormularioPage() {
               Aprenda uma técnica de mechas <br className="hidden md:block" />
               sem usar pó descolorante e <br className="hidden md:block" />
               elimine de uma vez o{' '}
-              <span className="font-title text-4xl md:text-6xl text-[#C5A265] block md:inline mt-1 md:mt-0">
-                MEDO de fazer mechas!
+              <span className="font-title text-4xl md:text-5xl text-[#C5A265] block md:inline mt-1 md:mt-0">
+                medo de fazer mechas!
               </span>
             </h1>
 
@@ -235,6 +235,7 @@ export default function FormularioPage() {
               Aula que você realmente vai aprender na PRÁTICA, AO VIVO, COM MODELO REAL, SEM ENROLAÇÃO e você vai poder tirar todas as suas dúvidas da técnica.
             </p>
 
+            {/* DATA E HORÁRIO */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full max-w-lg mx-auto">
               <div className="flex items-center justify-center text-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <Calendar size={24} style={{ color: "var(--gold-light)" }} />
@@ -252,7 +253,53 @@ export default function FormularioPage() {
               </div>
             </div>
 
-            {/* 4 BENEFÍCIOS EM DESTAQUE */}
+            {/* FORMULÁRIO POSICIONADO ACIMA DOS 4 BENEFÍCIOS */}
+            <div id="formulario-ancora" className="w-full max-w-lg relative z-20 mb-10">
+              <div className={`w-full rounded-3xl transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                style={{ 
+                  background: "#FFFFFF", 
+                  color: "#1A1008", 
+                  boxShadow: "0 30px 70px rgba(0,0,0,0.5)", 
+                  border: "2px solid #C9A84C"
+                }}
+              >
+                <div className="rounded-t-3xl px-6 pt-8 pb-6 text-center" 
+                  style={{ 
+                    background: "linear-gradient(135deg, #6B4F3A 0%, #4A3628 100%)",
+                    borderBottom: "1px solid rgba(201,168,76,0.3)" 
+                  }}>
+                  <h2 className="font-title text-3xl md:text-4xl text-white">
+                    Garanta sua vaga gratuita
+                  </h2>
+                  <p className="mt-1 font-sans text-xs md:text-sm text-[var(--gold-light)]">
+                    Preencha o formulário abaixo:
+                  </p>
+                </div>
+
+                <div className="px-6 py-8 text-left">
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <FloatingField id="nome" label="Nome Completo" value={nome} placeholder="Ex: Maria Silva" error={errors.nome} disabled={submitting} onChange={(e) => { setNome(e.target.value); if (errors.nome) setErrors((prev) => ({ ...prev, nome: undefined })) }} />
+                    <FloatingField id="phone" label="WhatsApp" type="tel" value={phone} placeholder="(11) 99999-9999" error={errors.phone} disabled={submitting} onChange={(e) => { setPhone(formatPhone(e.target.value)); if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined })) }} />
+                    <FloatingField id="email" label="E-mail" type="email" value={email} placeholder="exemplo@email.com" error={errors.email} disabled={submitting} onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((prev) => ({ ...prev, email: undefined })) }} />
+
+                    <button type="submit" disabled={submitting} className="btn-gold w-full animate-glow" style={{ fontSize: "0.9rem", padding: "1.2rem", borderRadius: "1rem" }}>
+                      {submitting ? "Garantindo vaga..." : "QUERO GARANTIR MINHA VAGA GRATUITA"}
+                    </button>
+                  </form>
+
+                  <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col items-center gap-1.5 text-center">
+                    <p className="flex items-center gap-1.5 font-sans text-xs text-[#6B4F3A] font-semibold">
+                      <Lock size={12} /> Seus dados estão seguros.
+                    </p>
+                    <p className="flex items-center gap-1.5 font-sans text-xs text-[#8B7361]">
+                      <ShieldCheck size={12} /> Evento 100% gratuito.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 4 BENEFÍCIOS EM DESTAQUE (AGORA ABAIXO DO FORMULÁRIO) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 w-full max-w-2xl text-left">
               {[
                 "100% Online e Gratuito",
@@ -269,52 +316,6 @@ export default function FormularioPage() {
               ))}
             </div>
 
-          </div>
-
-          {/* FORMULÁRIO POSICIONADO LOGO ABAIXO DOS BENEFÍCIOS */}
-          <div id="formulario-ancora" className="w-full max-w-lg relative z-20">
-            <div className={`w-full rounded-3xl transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ 
-                background: "#FFFFFF", 
-                color: "#1A1008", 
-                boxShadow: "0 30px 70px rgba(0,0,0,0.5)", 
-                border: "2px solid #C9A84C"
-              }}
-            >
-              <div className="rounded-t-3xl px-6 pt-8 pb-6 text-center" 
-                style={{ 
-                  background: "linear-gradient(135deg, #6B4F3A 0%, #4A3628 100%)",
-                  borderBottom: "1px solid rgba(201,168,76,0.3)" 
-                }}>
-                <h2 className="font-title text-3xl md:text-4xl text-white">
-                  Garanta sua vaga gratuita
-                </h2>
-                <p className="mt-1 font-sans text-xs md:text-sm text-[var(--gold-light)]">
-                  Preencha o formulário abaixo:
-                </p>
-              </div>
-
-              <div className="px-6 py-8">
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <FloatingField id="nome" label="Nome Completo" value={nome} placeholder="Ex: Maria Silva" error={errors.nome} disabled={submitting} onChange={(e) => { setNome(e.target.value); if (errors.nome) setErrors((prev) => ({ ...prev, nome: undefined })) }} />
-                  <FloatingField id="phone" label="WhatsApp" type="tel" value={phone} placeholder="(11) 99999-9999" error={errors.phone} disabled={submitting} onChange={(e) => { setPhone(formatPhone(e.target.value)); if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined })) }} />
-                  <FloatingField id="email" label="E-mail" type="email" value={email} placeholder="exemplo@email.com" error={errors.email} disabled={submitting} onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((prev) => ({ ...prev, email: undefined })) }} />
-
-                  <button type="submit" disabled={submitting} className="btn-gold w-full animate-glow" style={{ fontSize: "0.9rem", padding: "1.2rem", borderRadius: "1rem" }}>
-                    {submitting ? "Garantindo vaga..." : "QUERO GARANTIR MINHA VAGA GRATUITA"}
-                  </button>
-                </form>
-
-                <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col items-center gap-1.5 text-center">
-                  <p className="flex items-center gap-1.5 font-sans text-xs text-[#6B4F3A] font-semibold">
-                    <Lock size={12} /> Seus dados estão seguros.
-                  </p>
-                  <p className="flex items-center gap-1.5 font-sans text-xs text-[#8B7361]">
-                    <ShieldCheck size={12} /> Evento 100% gratuito.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -444,4 +445,3 @@ export default function FormularioPage() {
     </main>
   )
 }
-
