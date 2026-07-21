@@ -151,7 +151,7 @@
   border-color:var(--gold);
   box-shadow:0 0 0 3px rgba(201,168,76,0.12),0 2px 12px rgba(107,79,58,0.1);
 }
-.input-luxury::placeholder { color:var(--tan); }
+.input-luxury::placeholder { color: #6B4F3A; }
 .input-luxury.error { border-color:#dc2626; box-shadow:0 0 0 3px rgba(220,38,38,0.1); }
 
 /* Badge */
