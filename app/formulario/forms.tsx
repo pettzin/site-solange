@@ -198,7 +198,7 @@ export default function FormularioPage() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 py-8 md:py-12">
         
         {/* LOGO BEM MAIOR */}
-        <div className={`mb-10 flex justify-center transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
+        <div className="mb-10 flex justify-center">
           <Image
             src="/icone.webp"
             alt="Solange Jesus Academy"
