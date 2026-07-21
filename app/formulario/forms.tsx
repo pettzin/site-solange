@@ -204,8 +204,10 @@ export default function FormularioPage() {
             alt="Solange Jesus Academy"
             title="Solange Jesus Academy"
             className="h-20 md:h-28 w-auto object-contain mx-auto"
-            width={100}
-            height={100}
+            width={600}
+            height={225}
+            priority={true}
+            quality={90}
           />
         </div>
 
