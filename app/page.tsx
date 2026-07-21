@@ -23,10 +23,10 @@ export const metadata: Metadata = CURSO_LANCADO
     }
   : {
       title: 'Mechas Sem Medo | Solange Jesus Academy',
-      description: 'Descubra o método Mechas Sem Medo com Solange Jesus. Elimine a insegurança, conquiste loiros perfeitos e lote a sua agenda!',
+      description: 'Descubra o método MSM Mechas Sem Medo com Solange Jesus. A Sol vai pegar na sua mão e ajudar a eliminar sua insegurança em fazer mechas, sem segredos escondidos e sem truques!',
       openGraph: {
         title: 'Mechas Sem Medo | Solange Jesus Academy',
-        description: 'Descubra o método Mechas Sem Medo com Solange Jesus. Elimine a insegurança, conquiste loiros perfeitos e lote a sua agenda!',
+        description: 'Descubra o método MSM Mechas Sem Medo com Solange Jesus. A Sol vai pegar na sua mão e ajudar a eliminar sua insegurança em fazer mechas, sem segredos escondidos e sem truques!',
         images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
       },
     }
