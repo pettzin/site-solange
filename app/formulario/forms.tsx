@@ -207,7 +207,6 @@ export default function FormularioPage() {
             width={600}
             height={225}
             priority={true}
-            quality={90}
           />
         </div>
 
