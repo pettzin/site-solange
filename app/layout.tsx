@@ -6,12 +6,14 @@ import { Great_Vibes, Playfair_Display, Montserrat } from 'next/font/google'
 const greatVibes = Great_Vibes({ 
   weight: '400', 
   subsets: ['latin'], 
-  variable: '--font-great-vibes' 
+  variable: '--font-great-vibes',
+  display: 'swap',
 })
 
 const playfair = Playfair_Display({ 
   subsets: ['latin'], 
-  variable: '--font-playfair' 
+  variable: '--font-playfair', 
+  display: 'swap',
 })
 
 // Fonte Sans-Serif ultra-otimizada sem bloqueio
