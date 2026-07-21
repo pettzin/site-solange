@@ -199,7 +199,7 @@ export default function FormularioPage() {
         {/* LOGO BEM MAIOR */}
         <div className={`mb-10 flex justify-center transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
           <img 
-            src="/icone.png" 
+            src="/icone.webp" 
             alt="Solange Jesus Academy" 
             title="Solange Jesus Academy"
             className="h-20 md:h-28 w-auto object-contain mx-auto" 
@@ -366,7 +366,7 @@ export default function FormularioPage() {
               <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl" 
                 style={{ border: "2px solid var(--gold)" }}>
                 <img 
-                  src="/sol.png" 
+                  src="/sol.webp" 
                   alt="Solange Jesus" 
                   title="Solange Jesus - Especialista em Mechas"
                   className="w-full h-full object-cover" 
