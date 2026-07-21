@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { Check, Lock, AlertCircle, Calendar, Clock, ArrowUp, ShieldCheck, Sparkles } from "lucide-react"
+import Image from 'next/image'
 
 /* ─── CONFIG ─────────────────────────────────────────────────────────────────── */
 const WHATSAPP_NUMBER = "5511978111150" 
@@ -198,11 +199,13 @@ export default function FormularioPage() {
         
         {/* LOGO BEM MAIOR */}
         <div className={`mb-10 flex justify-center transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}>
-          <img 
-            src="/icone.webp" 
-            alt="Solange Jesus Academy" 
+          <Image
+            src="/icone.webp"
+            alt="Solange Jesus Academy"
             title="Solange Jesus Academy"
-            className="h-20 md:h-28 w-auto object-contain mx-auto" 
+            className="h-20 md:h-28 w-auto object-contain mx-auto"
+            width={100}
+            height={100}
           />
         </div>
 
@@ -365,11 +368,13 @@ export default function FormularioPage() {
             <div className="w-full md:w-1/2 flex justify-center">
               <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl" 
                 style={{ border: "2px solid var(--gold)" }}>
-                <img 
-                  src="/sol.webp" 
-                  alt="Solange Jesus" 
+                <Image
+                  src="/sol.webp"
+                  alt="Solange Jesus"
                   title="Solange Jesus - Especialista em Mechas"
-                  className="w-full h-full object-cover" 
+                  className="w-full h-full object-cover"
+                  width={320}
+                  height={480}
                 />
               </div>
             </div>
