@@ -17,10 +17,9 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  // ── URL Base Oficial do Projeto ───────────────────────────────────────────────
-  metadataBase: new URL('https://solangejesusacademy.com.br'),
+  // ── Alterado para a versão com WWW ─────────────────────────────────────────
+  metadataBase: new URL('https://www.solangejesusacademy.com.br'),
 
-  // ── Título e Descrição do Site ────────────────────────────────────────────────
   title: {
     default: 'Mechas Sem Pó Descolorante | Solange Jesus Academy',
     template: '%s | Solange Jesus Academy',
@@ -30,9 +29,9 @@ export const metadata: Metadata = {
   keywords: ['curso loiro perfeito', 'coloração profissional', 'loiros impecáveis', 'técnica de loiro', 'curso cabeleireira'],
   authors: [{ name: 'Solange Jesus Academy' }],
   
-  // ── Canonical URL (Resolve o erro "Canonical: Missing") ────────────────────────
+  // ── Canonical alinhado com a URL atual (com www) ───────────────────────────
   alternates: {
-    canonical: 'https://solangejesusacademy.com.br',
+    canonical: 'https://www.solangejesusacademy.com.br',
   },
 
   robots: { index: true, follow: true },
@@ -43,7 +42,6 @@ export const metadata: Metadata = {
     apple: '/sol_favicon.ico',
   },
 
-  // ── Open Graph (WhatsApp, Instagram, Facebook) ────────────────────────────────
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
@@ -51,10 +49,10 @@ export const metadata: Metadata = {
     title: 'Mechas Sem Pó Descolorante | Solange Jesus Academy',
     description:
       'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Aula 100% gratuita e ao vivo!',
-    url: 'https://solangejesusacademy.com.br',
+    url: 'https://www.solangejesusacademy.com.br',
     images: [
       {
-        url: 'https://solangejesusacademy.com.br/og-image.jpg',
+        url: 'https://www.solangejesusacademy.com.br/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Solange Jesus Academy',
@@ -62,13 +60,12 @@ export const metadata: Metadata = {
     ],
   },
 
-  // ── Twitter Card ──────────────────────────────────────────────────────────────
   twitter: {
     card: 'summary_large_image',
     title: 'Mechas Sem Pó Descolorante | Solange Jesus Academy',
     description:
       'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Aula 100% gratuita e ao vivo!',
-    images: ['https://solangejesusacademy.com.br/og-image.jpg'],
+    images: ['https://www.solangejesusacademy.com.br/og-image.jpg'],
   },
 }
 
