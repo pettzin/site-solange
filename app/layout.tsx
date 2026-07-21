@@ -1,20 +1,28 @@
 import type { Metadata, Viewport } from 'next'
-import { Great_Vibes, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
+import { Great_Vibes, Playfair_Display, Montserrat } from 'next/font/google'
 
-const greatVibes = Great_Vibes({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-great-vibes',
-  display: 'swap',
+const greatVibes = Great_Vibes({ 
+  weight: '400', 
+  subsets: ['latin'], 
+  variable: '--font-great-vibes' 
 })
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
+const playfair = Playfair_Display({ 
+  subsets: ['latin'], 
+  variable: '--font-playfair' 
 })
+
+// Fonte Sans-Serif ultra-otimizada sem bloqueio
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap', 
+})
+
+
+
 
 export const metadata: Metadata = {
   // ── Alterado para a versão com WWW ─────────────────────────────────────────
@@ -77,12 +85,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${greatVibes.variable} ${playfair.variable}`}>
+    <html lang="pt-BR" className={`${greatVibes.variable} ${playfair.variable} ${montserrat.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.cdnfonts.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.cdnfonts.com" />
-        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/glacial-indifference-2" />
-
         {/* ── Meta Pixel (Facebook Ads) ── */}
         <Script id="facebook-pixel" strategy="afterInteractive">
           {`
