@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.solangejesusacademy.com.br'),
 
   title: {
-    default: 'Mechas Sem Pó Descolorante | Solange Jesus Academy',
+    default: 'Mechas Sem Medo | Solange Jesus Academy',
     template: '%s | Solange Jesus Academy',
   },
   description:
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     siteName: 'Solange Jesus Academy',
-    title: 'Mechas Sem Pó Descolorante | Solange Jesus Academy',
+    title: 'Mechas Sem Medo | Solange Jesus Academy',
     description:
       'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lotes sua agenda!',
     url: 'https://www.solangejesusacademy.com.br',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Mechas Sem Pó Descolorante | Solange Jesus Academy',
+    title: 'Mechas Sem Medo | Solange Jesus Academy',
     description:
       'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lotes sua agenda!',
     images: ['https://www.solangejesusacademy.com.br/og-image.jpg'],
