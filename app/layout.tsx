@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     siteName: 'Loiros Impecáveis',
     title: 'Loiros Impecáveis — Método Profissional',
-    description: 'Domine as técnicas mais avançadas de loiro.',
+    description: 'Descubra o método prático para fazer mechas perfeitas com coloração, sem medo e com total segurança no salão.',
   },
 }
 
