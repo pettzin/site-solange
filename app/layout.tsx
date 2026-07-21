@@ -79,6 +79,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={`${greatVibes.variable} ${playfair.variable}`}>
       <head>
+        <link rel="preconnect" href="https://fonts.cdnfonts.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.cdnfonts.com" />
         <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/glacial-indifference-2" />
 
         {/* ── Meta Pixel (Facebook Ads) ── */}
