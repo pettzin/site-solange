@@ -26,8 +26,8 @@
 
 @theme inline {
   --font-script: var(--font-great-vibes), cursive;
-  --font-serif:  var(--font-playfair), Georgia, serif;
- --font-sans:   var(--font-sans), 'Gill Sans', Verdana, sans-serif; 
+  --font-sans:   var(--font-montserrat), 'Gill Sans', Verdana, sans-serif;
+  --font-title:  var(--font-great-vibes), cursive;
 }
 
 @layer base {

@@ -56,20 +56,20 @@ function SuccessScreen({ nome, whatsappUrl }: { nome: string; whatsappUrl: strin
           <Check size={44} style={{ color: "white", strokeWidth: 3 }} />
         </div>
 
-        <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(3rem, 10vw, 4.5rem)", color: "var(--gold-light)", lineHeight: 1 }}>
+        <p className="font-title text-5xl md:text-6xl text-[var(--gold-light)] leading-none">
           Parabéns,
         </p>
-        <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(3rem, 10vw, 4.5rem)", color: "var(--gold-light)", lineHeight: 1.15, marginBottom: "1.5rem" }}>
+        <p className="font-title text-5xl md:text-6xl text-[var(--gold-light)] leading-tight mb-6">
           {firstName}!
         </p>
 
-        <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.3rem", color: "white", marginBottom: "0.75rem", letterSpacing: "0.02em" }}>
+        <h2 className="font-title text-3xl md:text-4xl text-white mb-3">
           Sua vaga está <span className="gold-text-dark">quase garantida!</span>
         </h2>
         
-        <p style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: "2.5rem" }}>
+        <p className="font-sans text-white/70 leading-relaxed text-sm md:text-base mb-10">
           Entrando no grupo do WhatsApp em <br />
-          <strong className="text-white bg-white/10 px-2 py-0.5 rounded" style={{ color: "var(--gold-light)" }}>{redirect} segundos</strong>...
+          <strong className="text-white bg-white/10 px-2 py-0.5 rounded text-[var(--gold-light)]">{redirect} segundos</strong>...
         </p>
 
         <a
@@ -217,18 +217,21 @@ export default function FormularioPage() {
           <div className="w-full flex flex-col items-center text-center">
             
             <div className="inline-block px-4 py-1.5 rounded-full mb-6 w-max" style={{ background: "rgba(201,168,76,0.2)", border: "1px solid rgba(201,168,76,0.4)" }}>
-              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.85rem", fontWeight: 700, color: "var(--gold-light)", letterSpacing: "0.1em" }}>
+              <span className="font-sans text-xs md:text-sm font-bold text-[var(--gold-light)] tracking-widest">
                 WORKSHOP GRATUITO E AO VIVO
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-serif text-center leading-tight text-balance">
+            <h1 className="font-title font-bold text-2xl md:text-4xl text-center leading-tight text-balance">
               Aprenda uma técnica de mechas <br className="hidden md:block" />
               sem usar pó descolorante e <br className="hidden md:block" />
-              elimine de uma vez o <span className="text-[#C5A265]">MEDO de fazer mechas!</span>
+              elimine de uma vez o{' '}
+              <span className="font-title text-4xl md:text-6xl text-[#C5A265] block md:inline mt-1 md:mt-0">
+                MEDO de fazer mechas!
+              </span>
             </h1>
 
-            <p className="max-w-2xl" style={{ fontFamily: "var(--font-sans)", fontSize: "1.1rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: "2rem" }}>
+            <p className="max-w-2xl font-sans text-base md:text-lg text-white/85 leading-relaxed my-6">
               Aula que você realmente vai aprender na PRÁTICA, AO VIVO, COM MODELO REAL, SEM ENROLAÇÃO e você vai poder tirar todas as suas dúvidas da técnica.
             </p>
 
@@ -236,15 +239,15 @@ export default function FormularioPage() {
               <div className="flex items-center justify-center text-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <Calendar size={24} style={{ color: "var(--gold-light)" }} />
                 <div className="text-center">
-                  <span className="block text-xs uppercase opacity-60">Data</span>
-                  <strong style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}>10 de agosto</strong>
+                  <span className="block text-xs uppercase opacity-60 font-sans">Data</span>
+                  <strong className="font-sans font-bold text-lg">10 de agosto</strong>
                 </div>
               </div>
               <div className="flex items-center justify-center text-center gap-3 p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <Clock size={24} style={{ color: "var(--gold-light)" }} />
                 <div className="text-center">
-                  <span className="block text-xs uppercase opacity-60">Horário</span>
-                  <strong style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}>Às 18h</strong>
+                  <span className="block text-xs uppercase opacity-60 font-sans">Horário</span>
+                  <strong className="font-sans font-bold text-lg">Às 18h</strong>
                 </div>
               </div>
             </div>
@@ -261,7 +264,7 @@ export default function FormularioPage() {
                   <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(201,168,76,0.25)" }}>
                     <Check size={14} style={{ color: "var(--gold-light)" }} />
                   </div>
-                  <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", color: "rgba(255,255,255,0.9)", fontWeight: 500 }}>{b}</span>
+                  <span className="font-sans text-sm md:text-base text-white/90 font-medium">{b}</span>
                 </div>
               ))}
             </div>
@@ -283,10 +286,10 @@ export default function FormularioPage() {
                   background: "linear-gradient(135deg, #6B4F3A 0%, #4A3628 100%)",
                   borderBottom: "1px solid rgba(201,168,76,0.3)" 
                 }}>
-                <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.5rem", fontWeight: 700, color: "white", lineHeight: 1.2 }}>
+                <h2 className="font-title text-3xl md:text-4xl text-white">
                   Garanta sua vaga gratuita
                 </h2>
-                <p className="mt-1" style={{ fontSize: "0.88rem", color: "var(--gold-light)" }}>
+                <p className="mt-1 font-sans text-xs md:text-sm text-[var(--gold-light)]">
                   Preencha o formulário abaixo:
                 </p>
               </div>
@@ -303,10 +306,10 @@ export default function FormularioPage() {
                 </form>
 
                 <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col items-center gap-1.5 text-center">
-                  <p className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "#6B4F3A", fontWeight: 600 }}>
+                  <p className="flex items-center gap-1.5 font-sans text-xs text-[#6B4F3A] font-semibold">
                     <Lock size={12} /> Seus dados estão seguros.
                   </p>
-                  <p className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "#8B7361" }}>
+                  <p className="flex items-center gap-1.5 font-sans text-xs text-[#8B7361]">
                     <ShieldCheck size={12} /> Evento 100% gratuito.
                   </p>
                 </div>
@@ -321,10 +324,10 @@ export default function FormularioPage() {
 
           {/* O QUE VAI APRENDER */}
           <div className="max-w-3xl mx-auto text-center">
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", color: "var(--gold-light)", marginBottom: "1rem" }}>
+            <h2 className="font-title text-4xl md:text-5xl text-[var(--gold-light)] mb-4">
               Nesta aula você vai aprender:
             </h2>
-            <p className="mb-10 opacity-80">Descubra uma técnica prática que vai te ajudar a conquistar resultados incríveis, sem manchas, sem corte químico e vai deixar suas clientes apaixonadas.</p>
+            <p className="mb-10 opacity-80 font-sans text-sm md:text-base">Descubra uma técnica prática que vai te ajudar a conquistar resultados incríveis, sem manchas, sem corte químico e vai deixar suas clientes apaixonadas.</p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
               {[
@@ -339,7 +342,7 @@ export default function FormularioPage() {
                   <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "var(--gold)", color: "white" }}>
                     <Check size={12} />
                   </div>
-                  <span style={{ fontSize: "0.95rem", lineHeight: 1.5 }}>{item}</span>
+                  <span className="font-sans text-sm leading-relaxed">{item}</span>
                 </div>
               ))}
             </div>
@@ -347,7 +350,7 @@ export default function FormularioPage() {
 
           {/* PARA QUEM É */}
           <div className="max-w-3xl mx-auto rounded-3xl p-8 md:p-12 text-center" style={{ background: "rgba(0,0,0,0.2)", border: "1px solid rgba(201,168,76,0.2)" }}>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.8rem", color: "white", marginBottom: "1.5rem" }}>
+            <h2 className="font-title text-4xl md:text-5xl text-white mb-6">
               Essa aula é para você que...
             </h2>
             <div className="space-y-4 text-left max-w-xl mx-auto">
@@ -358,8 +361,8 @@ export default function FormularioPage() {
                 "Deseja aprender um método simples, prático e sem truques."
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full" style={{ background: "var(--gold-light)" }} />
-                  <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)" }}>{item}</span>
+                  <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: "var(--gold-light)" }} />
+                  <span className="font-sans text-base text-white/90">{item}</span>
                 </div>
               ))}
             </div>
@@ -382,13 +385,17 @@ export default function FormularioPage() {
             </div>
 
             <div className="w-full md:w-1/2">
-              <span style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "2rem", color: "var(--gold-light)" }}>Quem é Solange Jesus?</span>
-              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.5rem", fontWeight: 700, marginBottom: "1rem" }}>Sua mentora nessa jornada</h3>
-              <p className="text-sm opacity-90 leading-relaxed space-y-3">
+              <span className="font-title text-4xl md:text-5xl text-[var(--gold-light)] block mb-1">
+                Quem é Solange Jesus?
+              </span>
+              <h3 className="font-sans font-bold text-lg md:text-xl text-white mb-4">
+                Sua mentora nessa jornada
+              </h3>
+              <p className="font-sans text-sm opacity-90 leading-relaxed space-y-3">
                 <span className="block">Sou conhecida como Sol e atuo há mais de 19 anos como cabeleireira.</span>
                 <span className="block">Comecei atendendo em um quartinho nos fundos da minha casa e transformei as mechas no serviço que me deu liberdade financeira e qualidade de vida.</span>
                 <span className="block">Hoje sou fundadora da Solange Jesus Academy, Colorista Master, Terapeuta Capilar e Especialista em Mechas.</span>
-                <span className="block mt-2 font-semibold" style={{ color: 'var(--gold-pale)' }}>Minha missão é ajudar cabeleireiras a vencerem o medo de fazer mechas, ensinando exatamente o que faço na prática, da cadeira ao lavatório, sem esconder nenhuma etapa.</span>
+                <span className="block mt-2 font-semibold text-[var(--gold-pale)]">Minha missão é ajudar cabeleireiras a vencerem o medo de fazer mechas, ensinando exatamente o que faço na prática, da cadeira ao lavatório, sem esconder nenhuma etapa.</span>
               </p>
             </div>
           </div>
@@ -396,18 +403,18 @@ export default function FormularioPage() {
           {/* O QUE ACONTECE DEPOIS DA INSCRIÇÃO & ATENÇÃO */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="p-6 rounded-2xl" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.15)" }}>
-              <h4 style={{ fontFamily: "var(--font-serif)", fontSize: "1.2rem", color: "var(--gold-light)", marginBottom: "1rem" }}>O que acontece depois da inscrição?</h4>
-              <p className="text-xs opacity-75 mb-4">Assim que você concluir sua inscrição:</p>
-              <ul className="space-y-2 text-sm">
-                <li>Entrará para o grupo exclusivo do WhatsApp.</li>
-                <li>Receberá todas as orientações do evento.</li>
-                <li>No dia 10 de agosto, às 18h, enviaremos o link para você participar da aula ao vivo.</li>
+              <h4 className="font-title text-3xl text-[var(--gold-light)] mb-2">O que acontece depois da inscrição?</h4>
+              <p className="font-sans text-xs opacity-75 mb-4">Assim que você concluir sua inscrição:</p>
+              <ul className="font-sans space-y-2 text-sm">
+                <li>• Entrará para o grupo exclusivo do WhatsApp.</li>
+                <li>• Receberá todas as orientações do evento.</li>
+                <li>• No dia 10 de agosto, às 18h, enviaremos o link para você participar da aula ao vivo.</li>
               </ul>
             </div>
 
             <div className="p-6 rounded-2xl" style={{ background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.3)" }}>
-              <h4 style={{ fontFamily: "var(--font-serif)", fontSize: "1.2rem", color: "#fca5a5", marginBottom: "1rem" }}>Atenção</h4>
-              <p className="text-sm leading-relaxed opacity-90">
+              <h4 className="font-title text-3xl text-red-300 mb-2">Atenção</h4>
+              <p className="font-sans text-sm leading-relaxed opacity-90">
                 As vagas são limitadas. Para garantir uma experiência de qualidade, a aula será realizada em uma sala online exclusiva para as profissionais inscritas. Assim que o limite de participantes for atingido, as inscrições serão encerradas.
               </p>
             </div>
@@ -415,10 +422,10 @@ export default function FormularioPage() {
 
           {/* BOTÃO PARA SUBIR A PÁGINA */}
           <div className="text-center pt-8 max-w-xl mx-auto">
-            <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.3rem", color: "var(--gold-pale)", marginBottom: "0.5rem" }}>
+            <p className="font-title text-3xl md:text-4xl text-[var(--gold-pale)] mb-2">
               O medo não desaparece sozinho.
             </p>
-            <p className="text-sm opacity-80 mb-6">
+            <p className="font-sans text-sm opacity-80 mb-6">
               Ele desaparece quando você aprende o caminho certo. Preencha o formulário e reserve gratuitamente a sua vaga.
             </p>
             
@@ -437,3 +444,4 @@ export default function FormularioPage() {
     </main>
   )
 }
+

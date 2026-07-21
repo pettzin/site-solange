@@ -1,30 +1,22 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import './globals.css'
-import { Great_Vibes, Playfair_Display, Montserrat } from 'next/font/google'
+import { Montserrat, Great_Vibes } from 'next/font/google'
 
-const greatVibes = Great_Vibes({ 
-  weight: '400', 
-  subsets: ['latin'], 
+// Configura a Montserrat para textos e botões
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+})
+
+// Configura a Great Vibes para os títulos e detalhes elegantes
+const greatVibes = Great_Vibes({
+  weight: '400',
+  subsets: ['latin'],
   variable: '--font-great-vibes',
   display: 'swap',
 })
-
-const playfair = Playfair_Display({ 
-  subsets: ['latin'], 
-  variable: '--font-playfair', 
-  display: 'swap',
-})
-
-// Fonte Sans-Serif ultra-otimizada sem bloqueio
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap', 
-})
-
-
-
 
 export const metadata: Metadata = {
   // ── Alterado para a versão com WWW ─────────────────────────────────────────
@@ -35,10 +27,10 @@ export const metadata: Metadata = {
     template: '%s | Solange Jesus Academy',
   },
   description:
-    'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lotes sua agenda!',
+    'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lote sua agenda!',
   keywords: ['curso loiro perfeito', 'coloração profissional', 'loiros impecáveis', 'técnica de loiro', 'curso cabeleireira'],
   authors: [{ name: 'Solange Jesus Academy' }],
-  
+
   // ── Canonical alinhado com a URL atual (com www) ───────────────────────────
   alternates: {
     canonical: 'https://www.solangejesusacademy.com.br',
@@ -58,7 +50,7 @@ export const metadata: Metadata = {
     siteName: 'Solange Jesus Academy',
     title: 'Mechas Sem Medo | Solange Jesus Academy',
     description:
-      'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lotes sua agenda!',
+      'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lote sua agenda!',
     url: 'https://www.solangejesusacademy.com.br',
     images: [
       {
@@ -74,7 +66,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mechas Sem Medo | Solange Jesus Academy',
     description:
-      'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lotes sua agenda!',
+      'Aprenda uma técnica de mechas sem usar pó descolorante e elimine de uma vez o medo do corte químico e manchas. Torne-se especialista e lote sua agenda!',
     images: ['https://www.solangejesusacademy.com.br/og-image.jpg'],
   },
 }
@@ -87,10 +79,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${greatVibes.variable} ${playfair.variable} ${montserrat.variable}`}>
+    <html lang="pt-BR" className={`${greatVibes.variable} ${montserrat.variable}`}>
       <head>
         {/* ── Meta Pixel (Facebook Ads) ── */}
-        <Script id="facebook-pixel" strategy="afterInteractive">
+        <Script id="facebook-pixel" strategy="lazyOnload">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -116,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </noscript>
       </head>
-      <body className="antialiased">{children}</body>
+      <body className={`antialiased ${montserrat.className}`}>{children}</body>
     </html>
   )
 }
