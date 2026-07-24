@@ -26,7 +26,7 @@ function SuccessScreen({ nome, whatsappUrl }: { nome: string; whatsappUrl: strin
       setRedirect((prev) => {
         if (prev <= 1) {
           clearInterval(interval)
-          window.open(whatsappUrl, "_blank")
+          window.location.href = whatsappUrl
           return 0
         }
         return prev - 1
