@@ -5,12 +5,8 @@ import { Check, Lock, AlertCircle, Calendar, Clock, ArrowUp, ShieldCheck, Sparkl
 import Image from 'next/image'
 
 /* ─── CONFIG ─────────────────────────────────────────────────────────────────── */
-const WHATSAPP_NUMBER = "5511978111150" 
-
-function buildWhatsAppURL(nome: string) {
-  const msg = `Oi, meu nome é ${nome} e quero garantir minha vaga no Workshop Gratuito!`
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`
-}
+// Link direto para o Grupo do WhatsApp
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/Hq2ej5e7RD11lZDqlbTITW" 
 
 /* ─── HELPERS ────────────────────────────────────────────────────────────────── */
 function formatPhone(value: string): string {
@@ -173,8 +169,8 @@ export default function FormularioPage() {
       (window as any).fbq('track', 'Lead')
     }
 
-    const url = buildWhatsAppURL(nome.trim())
-    setWhatsappUrl(url)
+    // Agora enviamos o usuário direto para o grupo
+    setWhatsappUrl(WHATSAPP_GROUP_URL)
     await new Promise((r) => setTimeout(r, 1200))
     setSubmitting(false)
     setSubmitted(true)
