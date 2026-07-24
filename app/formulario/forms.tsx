@@ -165,11 +165,33 @@ export default function FormularioPage() {
     if (!validate()) return
     setSubmitting(true)
 
+    // Dispara o evento de Pixel do Facebook
     if (typeof window !== "undefined" && (window as any).fbq) {
       (window as any).fbq('track', 'Lead')
     }
 
-    // Agora enviamos o usuário direto para o grupo
+    // 1. SALVA OS DADOS SILENCIOSAMENTE NO FORMSPREE
+    try {
+      const URL_DE_CAPTURA = "https://formspree.io/f/mzdnjqwr"; 
+
+      await fetch(URL_DE_CAPTURA, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ 
+          nome: nome.trim(), 
+          phone: phone, 
+          email: email.trim(), 
+          data: new Date().toLocaleString('pt-BR') 
+        })
+      });
+    } catch (err) {
+      console.error("Erro ao salvar lead, mas seguindo o fluxo para não perder a conversão...", err);
+    }
+
+    // 2. REDIRECIONA PARA O GRUPO DO WHATSAPP
     setWhatsappUrl(WHATSAPP_GROUP_URL)
     await new Promise((r) => setTimeout(r, 1200))
     setSubmitting(false)
