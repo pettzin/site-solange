@@ -160,7 +160,7 @@ export default function FormularioPage() {
     return Object.keys(e).length === 0
   }, [nome, phone, email])
 
-  async function handleSubmit(e: React.FormEvent) {
+ async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!validate()) return
     setSubmitting(true)
@@ -170,9 +170,9 @@ export default function FormularioPage() {
       (window as any).fbq('track', 'Lead')
     }
 
-    // 1. SALVA OS DADOS SILENCIOSAMENTE NO FORMSPREE
+    // 1. ENVIA OS DADOS PARA O MAKE (QUE VAI SALVAR NA PLANILHA)
     try {
-      const URL_DE_CAPTURA = "https://formspree.io/f/mzdnjqwr"; 
+      const URL_DE_CAPTURA = "https://hook.us2.make.com/s9sj2dd5ebyf4fnd6lhdkuv47l1fy809"; 
 
       await fetch(URL_DE_CAPTURA, {
         method: "POST",
@@ -188,7 +188,7 @@ export default function FormularioPage() {
         })
       });
     } catch (err) {
-      console.error("Erro ao salvar lead, mas seguindo o fluxo para não perder a conversão...", err);
+      console.error("Erro ao enviar para a planilha, mas seguindo o fluxo...", err);
     }
 
     // 2. REDIRECIONA PARA O GRUPO DO WHATSAPP
