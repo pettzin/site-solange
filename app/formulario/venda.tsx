@@ -69,7 +69,7 @@ const BENEFITS = [
   {
     icon: Award,
     title: "Técnicas que o mercado pede",
-    text: "Free Hands, Balayage, Luminous Slice, Soft Blond — o portfólio completo para qualquer cliente.",
+    text: "Free Hands, Luminous Slice, Soft Blond — o portfólio completo para qualquer cliente.",
   },
   {
     icon: Zap,
@@ -110,7 +110,7 @@ const MODULES = [
   {
     num: "03",
     title: "Técnicas sem manchas e sem corte químico",
-    text: "Air Touch / Mechas Vaporizadas,  Free Hands, Blond Diamond, Intense Blond,  Luminous Slice (sem pó descolorante), Soft Blond, entre outras técnicas.",
+    text: "Air Touch / Mechas Vaporizadas, Free Hands, Blond Diamond, Intense Blond, Luminous Slice (sem pó descolorante), Soft Blond, entre outras técnicas.",
     tags: [],
   },
   {
@@ -148,7 +148,7 @@ const FAQS = [
   },
   {
     q: "Por quanto tempo terei acesso?",
-    a: "O acesso ao curso é por 2 ano a partir da data da compra.",
+    a: "O acesso ao curso é por 2 anos a partir da data da compra.",
   },
   {
     q: "O curso tem suporte?",
@@ -232,6 +232,7 @@ function FAQItem({
         className="w-full py-5 flex items-center justify-between text-left gap-4"
       >
         <span
+          className="text-balance"
           style={{
             fontFamily: "var(--font-serif)",
             fontSize: "1.02rem",
@@ -265,6 +266,7 @@ function FAQItem({
         }}
       >
         <p
+          className="text-pretty"
           style={{
             fontFamily: "var(--font-sans)",
             color: "var(--muted)",
@@ -304,6 +306,7 @@ function StatCard({
         {display}
       </p>
       <p
+        className="text-balance"
         style={{
           fontFamily: "var(--font-sans)",
           color: "rgba(255,255,255,0.75)",
@@ -345,7 +348,7 @@ export default function LandingPage() {
       {/* HERO */}
       <section
         ref={heroRef}
-        className="relative min-h-[100svh] flex items-center gold-texture-bg overflow-hidden"
+        className="relative min-h-[100svh] flex items-center gold-texture-bg overflow-hidden py-12 md:py-20"
       >
         {mounted && (
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -372,101 +375,60 @@ export default function LandingPage() {
 
         <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "linear-gradient(90deg, transparent 0%, var(--gold-warm) 30%, var(--gold-shine) 50%, var(--gold-warm) 70%, transparent 100%)" }} />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-10 py-12 md:py-24">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-5 md:px-10 flex flex-col items-center text-center">
+          
+          {/* Logo */}
+          <div className={`mb-4 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <img 
+              src="/icone.webp" 
+              title="Solange Jesus Academy"
+              alt="Solange Jesus Academy" 
+              className="h-16 md:h-22 w-auto object-contain mx-auto" 
+            />
+          </div>
+
+          {/* Subtítulo Script */}
+          <p className={`text-balance transition-all duration-700 delay-75 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ fontFamily: "var(--font-script)", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
+            Mechas com segurança
+          </p>
+
+          {/* Título Principal */}
+          <h1 className={`text-balance transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.9rem, 5vw, 3.6rem)", fontWeight: 800, lineHeight: 1.15, marginBottom: "1.25rem", color: "var(--fg)" }}>
+            Domine a técnica e <span className="gold-text-animated">nunca mais tenha medo de manchar</span> ou causar corte químico
+          </h1>
+
+          {/* Descrição */}
+          <p className={`text-pretty transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-sans)", fontSize: "0.98rem", lineHeight: 1.75, color: "var(--muted)", maxWidth: "32rem", marginBottom: "1.5rem" }}>
+            Aprenda o Método MSM (Mechas Sem Medo) para executar mechas com confiança, cobrar o que seu trabalho merece e ser reconhecida como especialista.
+          </p>
+
+          {/* Botões com a Imagem de Colorimetria exatamente no meio */}
+          <div className={`flex flex-col items-center gap-4 w-full sm:w-auto mb-4 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
             
-            {/* Lado esquerdo */}
-            <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
-              <div className={`mb-4 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            {/* 1. Botão Principal */}
+            <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold animate-pulse-gold w-full sm:w-auto justify-center">
+              <Sparkles size={20} className="text-amber-100 fill-amber-300 flex-shrink-0" /> Quero aprender mechas sem medo
+            </a>
+
+            {/* 2. Imagem de Colorimetria (Entre os dois botões) */}
+            <div className="w-full max-w-md my-2">
+              <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[rgba(201,168,76,0.3)] bg-white">
                 <img 
-                  src="/icone.webp" 
-                  title="Solange Jesus Academy"
-                  alt="Solange Jesus Academy" 
-                  className="h-16 md:h-22 w-auto object-contain mx-auto lg:mx-0" 
+                  src="/colorimetria.webp" 
+                  title="Colorimetria Capilar - Solange Jesus" 
+                  alt="Colorimetria Capilar - Solange Jesus" 
+                  className="w-full h-auto object-cover block" 
                 />
               </div>
-
-              <p className={`transition-all duration-700 delay-75 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ fontFamily: "var(--font-script)", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
-                Mechas com segurança
-              </p>
-
-              <h1 className={`transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.9rem, 5vw, 3.6rem)", fontWeight: 800, lineHeight: 1.15, marginBottom: "1.25rem", color: "var(--fg)" }}>
-                Domine a técnica e <span className="gold-text-animated">nunca mais tenha medo de manchar</span> ou causar corte químico
-              </h1>
-
-              <p className={`transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-sans)", fontSize: "0.98rem", lineHeight: 1.75, color: "var(--muted)", maxWidth: "32rem", marginBottom: "1.5rem" }}>
-                Aprenda o Método MSM (Mechas Sem Medo) para executar mechas com confiança, cobrar o que seu trabalho merece e ser reconhecida como especialista.
-              </p>
-
-              <div className={`flex flex-col sm:flex-row gap-3 w-full sm:w-auto mb-6 transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-                <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold animate-pulse-gold w-full sm:w-auto justify-center">
-                  <Sparkles size={20} className="text-amber-100 fill-amber-300 flex-shrink-0" /> Quero aprender mechas sem medo
-                </a>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto justify-center" style={{ background: "transparent", color: "var(--brown-deep)", border: "1.5px solid rgba(107,79,58,0.3)", boxShadow: "none" }}>
-                  <MessageCircle size={18} /> Falar pelo WhatsApp
-                </a>
-              </div>
-
-              {/* Mini-card mobile */}
-              <div className={`w-full lg:hidden transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-                <div className="rounded-2xl p-5 bg-white text-left" style={{ border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 4px 20px rgba(107,79,58,0.1)" }}>
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "1px" }}>de {PRECO_DE}</p>
-                      <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.9rem", fontWeight: 800, lineHeight: 1, color: "var(--brown-warm)" }}>{PRECO_POR}</p>
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.68rem", color: "var(--muted)", marginTop: "2px" }}>ou {PARCELAMENTO}</p>
-                    </div>
-                    <div style={{ width: "1px", alignSelf: "stretch", background: "rgba(201,168,76,0.2)" }} />
-                    <div className="flex-1">
-                      {["+30 aulas HD", "5 módulos", "7 dias garantia", "Certificado incluso"].map((item) => (
-                        <div key={item} className="flex items-center gap-1.5 mb-1 last:mb-0">
-                          <div className="w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--brown-warm), var(--gold-shine))" }}>
-                            <Check size={9} style={{ color: "white", strokeWidth: 3 }} />
-                          </div>
-                          <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "var(--fg)" }}>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold w-full mt-4 justify-center" style={{ fontSize: "0.8rem", padding: "0.85rem 1.5rem" }}>
-                    Garantir Minha Vaga
-                  </a>
-                </div>
-              </div>
             </div>
 
-            {/* Lado direito */}
-            <div className={`hidden lg:flex justify-center items-center transition-all duration-1000 delay-400 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <div className="relative w-full max-w-sm">
-                <div className="absolute -inset-6 rounded-3xl animate-spin-slow opacity-30" style={{ background: "conic-gradient(from 0deg, var(--gold-warm), var(--gold-shine), var(--gold-light), var(--tan), var(--gold-warm))", filter: "blur(18px)" }} />
-                <div className="relative rounded-2xl p-8 z-10 bg-white shadow-2xl">
-                  <div className="text-center mb-5">
-                    <div className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--gold), var(--brown-deep))" }}>
-                      <Scissors size={24} style={{ color: "white" }} />
-                    </div>
-                    <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.2rem", color: "var(--fg)", marginBottom: "0.5rem" }}>Mechas <span style={{ color: "var(--brown-warm)" }}>Sem Medo</span></h3>
-                    <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.85rem", lineHeight: 1.6 }}>O método completo para executar mechas com segurança e confiança — do diagnóstico à finalização</p>
-                  </div>
-                  {[ "+30 Aulas em 5 módulos", "Diagnóstico profissional", "Técnicas Free Hands", "Suporte durante o aprendizado", "Certificado de Conclusão incluso", "7 dias de garantia" ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2.5 mb-2.5 last:mb-0">
-                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, var(--brown-warm), var(--gold-shine))" }}>
-                        <Check size={11} style={{ color: "white", strokeWidth: 3 }} />
-                      </div>
-                      <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.87rem", color: "var(--fg)" }}>{item}</span>
-                    </div>
-                  ))}
-                  <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(191,161,136,0.2)" }}>
-                    <div className="text-center mb-3">
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "2px" }}>de {PRECO_DE}</p>
-                      <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", fontWeight: 800, lineHeight: 1, color: "var(--brown-warm)" }}>{PRECO_POR}</p>
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "var(--muted)", marginTop: "2px" }}>ou {PARCELAMENTO}</p>
-                    </div>
-                    <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold w-full justify-center">Garantir Minha Vaga</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* 3. Botão WhatsApp */}
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto justify-center" style={{ background: "transparent", color: "var(--brown-deep)", border: "1.5px solid rgba(107,79,58,0.3)", boxShadow: "none" }}>
+              <MessageCircle size={18} /> Falar pelo WhatsApp
+            </a>
+
           </div>
+
         </div>
       </section>
 
@@ -486,11 +448,11 @@ export default function LandingPage() {
       <section className="w-full overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="relative" style={{ minHeight: "360px" }}>
-            <img src="/prova1.webp" title="Solange Jesus aplicando técnica de balayage" alt="Solange Jesus aplicando técnica de balayage" className="w-full h-full object-cover" style={{ minHeight: "360px" }} />
+            <img src="/prova1.webp" title="Solange Jesus aplicando técnica" alt="Solange Jesus aplicando técnica" className="w-full h-full object-cover" style={{ minHeight: "360px" }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.65) 0%, transparent 50%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Free Hands</p>
-              <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Modelo real do nosso curso.</p>
+              <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Modelo real do nosso curso.</p>
             </div>
           </div>
           <div className="relative" style={{ minHeight: "360px" }}>
@@ -498,47 +460,9 @@ export default function LandingPage() {
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.65) 0%, transparent 50%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Intense Blond</p>
-              <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Transição impecável — zero marcação na raiz</p>
+              <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Transição impecável — zero marcação na raiz</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* PROBLEMA / DOR (COM ESPAÇAMENTO COMPACTO) */}
-      <section className="py-10 md:py-20 px-5 md:px-10 gold-texture-bg">
-        <div className="relative z-10 max-w-4xl mx-auto text-center reveal">
-          <div className="ornament-center mb-4">
-            <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--brown-warm)" }}>
-              A realidade de muitas cabeleireiras
-            </span>
-          </div>
-
-          <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.2rem, 5vw, 3.5rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.5rem" }}>
-            Você já sentiu isso?
-          </p>
-
-          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.5rem" }}>
-            O medo de errar nas mechas te impede de <span className="gold-text-animated">cobrar o que você merece</span>
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-4 mt-8">
-            {[
-              { icon: AlertCircle, pain: "Clientes chegam pedindo mechas e você hesita em aceitar — não tem confiança e não sabe se vai conseguir entregar o resultado da foto de inspiração da cliente." },
-              { icon: DollarSign, pain: "Vê colegas cobrando o dobro pelo mesmo serviço e não entende por quê — a diferença está na segurança da técnica" },
-              { icon: AlertTriangle, pain: "Já teve medo de corte químico ou já viu uma mecha dar errado, e desde então o medo aumentou ainda mais" },
-            ].map(({ icon: Icon, pain }, i) => (
-              <div key={i} className="card p-6 reveal text-left" style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="w-10 h-10 rounded-full mb-4 flex items-center justify-center" style={{ background: "rgba(169,117,98,0.12)" }}>
-                  <Icon size={22} style={{ color: "var(--brown-warm)" }} />
-                </div>
-                <p style={{ fontFamily: "var(--font-sans)", color: "var(--brown-deep)", lineHeight: 1.6, fontSize: "0.92rem" }}>{pain}</p>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.10rem", fontWeight: 600, marginTop: "1.5rem", color: "var(--brown-deep)", textWrap: "balance" }}>
-            Isso tem solução. E o Método Mechas Sem Medo foi criado exatamente para isso.
-          </p>
         </div>
       </section>
 
@@ -555,7 +479,7 @@ export default function LandingPage() {
             Você já sentiu isso?
           </p>
 
-          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+          <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.25rem" }}>
             O medo de errar nas mechas te impede de <span className="gold-text-animated">cobrar o que você merece</span>
           </h2>
 
@@ -563,24 +487,61 @@ export default function LandingPage() {
             {[
               { icon: AlertCircle, pain: "Clientes chegam pedindo mechas e você hesita em aceitar — não tem confiança e não sabe se vai conseguir entregar o resultado da foto de inspiração da cliente." },
               { icon: DollarSign, pain: "Vê colegas cobrando o dobro pelo mesmo serviço e não entende por quê — a diferença está na segurança da técnica" },
-              { icon: AlertTriangle, pain: "Já teve medo de corte químico ou já viu uma mecha dar errado, e desde então o medo aumentou ainda mais" },
+              { icon: AlertTriangle, pain: "Já teve medo de corte químico ou já viu uma mecha dar errado, e desde então o medo aumentó ainda mais" },
             ].map(({ icon: Icon, pain }, i) => (
               <div key={i} className="card p-5 reveal text-left" style={{ transitionDelay: `${i * 100}ms` }}>
                 <div className="w-9 h-9 rounded-full mb-3 flex items-center justify-center" style={{ background: "rgba(169,117,98,0.12)" }}>
                   <Icon size={20} style={{ color: "var(--brown-warm)" }} />
                 </div>
-                <p style={{ fontFamily: "var(--font-sans)", color: "var(--brown-deep)", lineHeight: 1.55, fontSize: "0.9rem" }}>{pain}</p>
+                <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", color: "var(--brown-deep)", lineHeight: 1.55, fontSize: "0.9rem" }}>{pain}</p>
               </div>
             ))}
           </div>
 
-          <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem", fontWeight: 600, marginTop: "1rem", color: "var(--brown-deep)" }}>
+          <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem", fontWeight: 600, marginTop: "1rem", color: "var(--brown-deep)" }}>
             Isso tem solução. E o Método Mechas Sem Medo foi criado exatamente para isso.
           </p>
         </div>
       </section>
 
-      {/* GALERIA */}
+      {/* PARA QUEM É */}
+      <section className="pt-2 pb-8 md:py-14 px-5 md:px-10 gold-texture-bg relative overflow-hidden">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="text-center mb-5 reveal">
+            <div className="ornament-center mb-2">
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--brown-warm)" }}>
+                Para quem é o Mechas Sem Medo
+              </span>
+            </div>
+            <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.6rem, 4vw, 2.5rem)", fontWeight: 700, lineHeight: 1.2 }}>
+              Esse método é pra você que trabalha com cabelo,<br className="hidden sm:inline" />
+              mas ainda se sente <span style={{ color: "var(--brown-warm)" }}>insegura na hora de fazer mechas</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-3 reveal">
+            {ICP_BULLETS.map((bullet, i) => (
+              <div key={i} className="flex items-start gap-3 p-4 rounded-2xl transition-all duration-300 sm:hover:-translate-y-1" style={{ background: "white", border: "1px solid rgba(201,168,76,0.2)", boxShadow: "0 4px 12px rgba(107,79,58,0.03)" }}>
+                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg, var(--brown-warm), var(--gold-shine))" }}>
+                  <Check size={11} style={{ color: "white", strokeWidth: 3.5 }} />
+                </div>
+                <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem", lineHeight: 1.5, color: "var(--brown-deep)", fontWeight: 500 }}>{bullet}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-6 reveal">
+            <div className="py-2.5 px-5 rounded-2xl sm:rounded-full w-full sm:w-auto" style={{ background: "rgba(255,255,255,0.6)", border: "1px dashed rgba(201,168,76,0.3)" }}>
+              <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "0.92rem", fontWeight: 600, color: "var(--brown-deep)", textAlign: "center", lineHeight: 1.4 }}>
+                Se você se identificou com pelo menos um desses pontos... <br className="sm:hidden" />
+                <span style={{ color: "var(--brown-warm)" }}>este método é para você!</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     {/* GALERIA */}
       <section className="py-10 md:py-16 px-5 md:px-10" style={{ background: "var(--cream)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6 reveal">
@@ -591,21 +552,23 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 reveal">
             {[
-              { src: "/prova4.webp", tecnica: "Air Touch / Mechas Vaporizadas", desc: "Eriçado sem Eriçar!" },
-              { src: "/prova7.webp", tecnica: "Free Hands", desc: "Mechas ao ar livre — sem marcação, sem esfumado" },
-              { src: "/blonddiamond.webp", tecnica: "Blond Diamond", desc: "Mechas coladas na raiz sem esfumado" },
-              { src: "/luminousslice.webp", tecnica: "Luminous Slice", desc: "Explosão de cor nas pontas — inclusive em cabelos cacheados" },
-              { src: "/intenseblond.webp", tecnica: "Intense Blond", desc: "Intensidade de cor e movimento — Power Blond" },
-              { src: "/prova11.webp", tecnica: "Soft Blond", desc: "Luz & Sombra — mechas com profundidade" },
-            ].map(({ src, tecnica, desc }) => (
-              <div key={src} className="group relative overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(201,168,76,0.2)" }}>
+              { src: "/prova4.webp", tecnica: "Air Touch / Mechas Vaporizadas", desc: "Eriçado sem Eriçar!", imgStyle: "object-cover object-top" },
+              { src: "/prova7.webp", tecnica: "Free Hands", desc: "Mechas ao ar livre — sem marcação, sem esfumado", imgStyle: "object-cover object-top" },
+              { src: "/blonddiamond.webp", tecnica: "Blond Diamond", desc: "Mechas coladas na raiz sem esfumado", imgStyle: "object-cover object-top" },
+              { src: "/luminousslice.webp", tecnica: "Luminous Slice", desc: "Explosão de cor nas pontas — inclusive em cabelos cacheados", imgStyle: "object-cover object-top" },
+              { src: "/intenseblond.webp", tecnica: "Intense Blond", desc: "Intensidade de cor e movimento — Power Blond", imgStyle: "object-cover object-top" },
+              { src: "/prova11.webp", tecnica: "Soft Blond", desc: "Luz & Sombra — mechas com profundidade", imgStyle: "object-cover object-top" },
+              { src: "/estrela.webp", tecnica: "Estrela de Oswald", desc: "Dessa vez você vai entender e aprender!", imgStyle: "object-cover object-[40%_55%] scale-100" }, 
+              { src: "/sol_color.webp", tecnica: "Fundo de Clareamento e Neutralização", desc: "Aprenda a identificar todas as Alturas de Tom e Fundos de Clareamento", imgStyle: "object-cover object-[25%_30%] scale-110" },
+            ].map(({ src, tecnica, desc, imgStyle }) => (
+              <div key={src} className="group relative overflow-hidden rounded-2xl bg-stone-900" style={{ border: "1px solid rgba(201,168,76,0.2)" }}>
                 <div className="w-full" style={{ aspectRatio: "3/4" }}>
-                  <img src={src} title={tecnica} alt={tecnica} className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+                  <img src={src} title={tecnica} alt={tecnica} className={`w-full h-full transition-transform duration-700 group-hover:scale-110 ${imgStyle}`} />
                 </div>
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.85) 0%, rgba(26,16,8,0.1) 55%, transparent 75%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
                   <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "3px" }}>{tecnica}</p>
-                  <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.82rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>{desc}</p>
+                  <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "0.82rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -613,8 +576,8 @@ export default function LandingPage() {
 
           <div className="flex items-center gap-4 mt-6 reveal">
             <div className="gold-divider flex-1" />
-            <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontStyle: "italic", color: "var(--brown-warm)", textAlign: "center", flexShrink: 0 }}>
-              Resultado reais das técnicas realizadas no curso.
+            <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontStyle: "italic", color: "var(--brown-warm)", textAlign: "center", flexShrink: 0 }}>
+              Resultados reais das técnicas realizadas no curso.
             </p>
             <div className="gold-divider flex-1" />
           </div>
@@ -630,7 +593,7 @@ export default function LandingPage() {
                 O que você vai conquistar
               </span>
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, lineHeight: 1.2 }}>
+            <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, lineHeight: 1.2 }}>
               Tudo que muda quando você <span style={{ color: "var(--brown-warm)" }}>domina mechas com segurança</span>
             </h2>
           </div>
@@ -642,7 +605,7 @@ export default function LandingPage() {
                   <Icon size={20} style={{ color: "var(--brown-warm)" }} />
                 </div>
                 <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.05rem", marginBottom: "0.5rem", color: "var(--brown-deep)" }}>{title}</h3>
-                <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.65, fontSize: "0.9rem" }}>{text}</p>
+                <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.65, fontSize: "0.9rem" }}>{text}</p>
               </div>
             ))}
           </div>
@@ -654,11 +617,11 @@ export default function LandingPage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-6">
             <div className="reveal-left">
-              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: "1.25rem", color: "var(--fg)" }}>
+              <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: "1.25rem", color: "var(--fg)" }}>
                 Mancha na raiz não é azar. <span className="gold-text-animated">É falta de método.</span>
               </h2>
 
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.98rem", lineHeight: 1.75, color: "var(--muted)", marginBottom: "1.25rem" }}>
+              <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", fontSize: "0.98rem", lineHeight: 1.75, color: "var(--muted)", marginBottom: "1.25rem" }}>
                 A Sol ensina com precisão onde cada profissional erra: divisão incorreta, OX errado, tempo de processamento impreciso. Com o Método MSM, você aprende a eliminar cada variável que causa mancha — e executa com a segurança de quem sabe exatamente o que está fazendo.
               </p>
 
@@ -675,7 +638,7 @@ export default function LandingPage() {
                     </div>
                     <div>
                       <p style={{ fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: "0.88rem", color: "var(--brown-deep)" }}>{label}</p>
-                      <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "var(--muted)", marginTop: "1px" }}>{desc}</p>
+                      <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "var(--muted)", marginTop: "1px" }}>{desc}</p>
                     </div>
                   </div>
                 ))}
@@ -687,7 +650,7 @@ export default function LandingPage() {
                 <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end gap-3">
                   <div className="flex-1">
                     <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "3px" }}>Aplicação em processo</p>
-                    <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.95rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Zero manchas · zero esfumaçado — é isso que o método garante</p>
+                    <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "0.95rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Zero manchas · zero esfumaçado — é isso que o método garante</p>
                   </div>
                 </div>
               </div>
@@ -698,8 +661,14 @@ export default function LandingPage() {
             </div>
 
             <div className="reveal-right">
+              {/* NOVA FOTO SOL_TONS */}
               <div className="relative w-full rounded-3xl overflow-hidden mb-0 shadow-xl border border-[rgba(201,168,76,0.3)] bg-white">
-                <img src="/cliente-bio.webp" title="Solange Jesus Academy" alt="Solange Jesus Academy" className="w-full h-auto block" />
+                <img 
+                  src="/sol_tons.webp" 
+                  title="Solange Jesus - Tabela e Mechas de Fundo de Clareamento" 
+                  alt="Solange Jesus - Tabela e Mechas de Fundo de Clareamento" 
+                  className="w-full h-auto block object-cover" 
+                />
               </div>
 
               {/* CARDS MBR SENSACIONAL */}
@@ -712,7 +681,7 @@ export default function LandingPage() {
                   <div key={i} className="card px-2 py-3.5 sm:p-5 text-center flex flex-col justify-center min-h-[110px] sm:min-h-[130px]" style={{ transitionDelay: `${i * 80}ms` }}>
                     <p className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold leading-none mb-1" style={{ color: "var(--brown-warm)" }}>{num}</p>
                     <p className="font-sans text-[10px] sm:text-[12px] uppercase font-bold text-[var(--brown-warm)] tracking-wider">{unit}</p>
-                    <p className="font-sans text-[9px] sm:text-[11px] text-[var(--muted)] leading-tight mt-1 sm:mt-1.5">{desc}</p>
+                    <p className="font-sans text-[9px] sm:text-[11px] text-[var(--muted)] leading-tight mt-1 sm:mt-1.5 text-balance">{desc}</p>
                   </div>
                 ))}
               </div>
@@ -722,7 +691,7 @@ export default function LandingPage() {
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.72) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "2px" }}>Processo em aula</p>
-                  <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Divisão de mechas precisa — sem sobrepor na raiz</p>
+                  <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Divisão de mechas precisa — sem sobrepor na raiz</p>
                 </div>
               </div>
             </div>
@@ -743,10 +712,10 @@ export default function LandingPage() {
               <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
                 Um passo a passo claro
               </p>
-              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+              <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.25rem" }}>
                 para dominar mechas com <span style={{ color: "var(--brown-warm)" }}>segurança e confiança</span>
               </h2>
-              <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.75, fontSize: "0.95rem", marginBottom: "1.75rem" }}>
+              <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.75, fontSize: "0.95rem", marginBottom: "1.75rem" }}>
                 Do diagnóstico à finalização — cada módulo foi construído para eliminar a insegurança e tornar a execução clara, segura e profissional.
               </p>
 
@@ -762,7 +731,7 @@ export default function LandingPage() {
                   <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--brown-warm)", marginTop: "2px" }}>aulas</p>
                 </div>
                 <div className="w-px self-stretch" style={{ background: "rgba(201,168,76,0.25)" }} />
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.82rem", color: "var(--brown-deep)", lineHeight: 1.5 }}>
+                <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", fontSize: "0.82rem", color: "var(--brown-deep)", lineHeight: 1.5 }}>
                   Mais de <strong>30 aulas em vídeo HD</strong>, em 5 módulos + bônus de finalizações.
                 </p>
               </div>
@@ -786,8 +755,8 @@ export default function LandingPage() {
                     </div>
 
                     <div className="flex-grow pt-1">
-                      <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.05rem", color: "var(--brown-deep)", marginBottom: "0.4rem" }}>{title}</h3>
-                      <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.65, fontSize: "0.9rem", marginBottom: tags.length ? "0.6rem" : 0 }}>{text}</p>
+                      <h3 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1.05rem", color: "var(--brown-deep)", marginBottom: "0.4rem" }}>{title}</h3>
+                      <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", lineHeight: 1.65, fontSize: "0.9rem", marginBottom: tags.length ? "0.6rem" : 0 }}>{text}</p>
                       {tags.length > 0 && (
                         <div className="flex flex-wrap gap-2">
                           {tags.map((tag) => (
@@ -810,10 +779,10 @@ export default function LandingPage() {
           <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.5rem, 6vw, 4rem)", color: "var(--gold-light)", lineHeight: 1.05, marginBottom: "0.5rem" }}>
             Pronta para mudar?
           </p>
-          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, color: "white", marginBottom: "0.85rem" }}>
+          <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, color: "white", marginBottom: "0.85rem" }}>
             Pronta para atender com mais <span className="gold-text-dark">segurança e confiança nas mechas?</span>
           </h2>
-          <p style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)", fontSize: "0.98rem", lineHeight: 1.75, maxWidth: "28rem", margin: "0 auto 2rem" }}>
+          <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)", fontSize: "0.98rem", lineHeight: 1.75, maxWidth: "28rem", margin: "0 auto 2rem" }}>
             O Método Mechas Sem Medo já ajudou diversas profissionais a destravarem a insegurança e evoluírem na técnica — agora pode ser a sua vez.
           </p>
           <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold animate-glow justify-center" style={{ fontSize: "0.95rem", padding: "1.1rem 2.5rem" }}>
@@ -836,7 +805,7 @@ export default function LandingPage() {
           <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem, 5vw, 3.2rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
             Invista na sua evolução
           </p>
-          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.75rem" }}>
+          <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.75rem" }}>
             Acesso completo ao <span style={{ color: "var(--brown-warm)" }}>Método Mechas Sem Medo</span>
           </h2>
 
@@ -906,15 +875,25 @@ export default function LandingPage() {
             <div className="reveal-left order-2 lg:order-1">
               <div className="relative max-w-md mx-auto">
                 <div className="absolute -inset-3 rounded-3xl blur-2xl opacity-25" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-light))" }} />
-                <div className="relative rounded-2xl overflow-hidden" style={{ background: "rgba(107,79,58,0.06)", border: "1px solid rgba(201,168,76,0.2)", aspectRatio: "3/4" }}>
-                  <img src="/cliente-bio.webp" title="Solange Jesus" alt="Solange Jesus" className="w-full h-full object-cover" style={{ objectPosition: "center 15%" }} />
+                
+                {/* FOTO PRINCIPAL NOVA */}
+                <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{ background: "rgba(107,79,58,0.06)", border: "1px solid rgba(201,168,76,0.2)", aspectRatio: "3/4" }}>
+                  <img 
+                    src="/solange.webp" 
+                    title="Solange Jesus" 
+                    alt="Solange Jesus" 
+                    className="w-full h-full object-cover" 
+                    style={{ objectPosition: "center 10%" }} 
+                  />
                 </div>
 
+                {/* Mini foto no canto inferior direito */}
                 <div className="absolute -bottom-4 -right-4 rounded-xl overflow-hidden animate-float-slow" style={{ width: "120px", aspectRatio: "1/1", border: "3px solid white", boxShadow: "0 10px 30px rgba(107,79,58,0.25)" }}>
                   <img src="/cliente-autoridade.webp" title="Solange Jesus com modelo de estrutura do fio" alt="Solange Jesus com modelo de estrutura do fio" className="w-full h-full object-cover object-top" />
                 </div>
 
-                <div className="absolute -bottom-5 -left-5 rounded-2xl px-4 py-2.5 animate-float" style={{ background: "white", boxShadow: "0 10px 30px rgba(107,79,58,0.2)" }}>
+                {/* Badge de anos de experiência no canto inferior esquerdo */}
+                <div className="absolute -bottom-5 -left-5 rounded-2xl px-4 py-2.5 animate-float z-10" style={{ background: "white", boxShadow: "0 10px 30px rgba(107,79,58,0.2)" }}>
                   <div className="flex items-center gap-2">
                     <Award size={18} style={{ color: "var(--brown-warm)" }} />
                     <div>
@@ -937,7 +916,7 @@ export default function LandingPage() {
                 Conheça a história da Sol
               </p>
 
-              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", fontWeight: 700, color: "var(--fg)", marginBottom: "1.25rem" }}>
+              <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", fontWeight: 700, color: "var(--fg)", marginBottom: "1.25rem" }}>
                 19 anos formando profissionais <span style={{ color: "var(--brown-warm)" }}>mais seguras e confiantes</span>
               </h2>
 
@@ -946,7 +925,7 @@ export default function LandingPage() {
                   "Sol é especialista em mechas e fundadora da Solange Jesus Academy, com mais de 19 anos de experiência na área da beleza. Começou aos 19 anos e encontrou na profissão de cabeleireira sua verdadeira vocação.",
                   "Hoje, ajuda outras cabeleireiras a dominarem mechas com segurança — evitando manchas e corte químico — através de um método claro, direto e aplicável no dia a dia do salão.",
                 ].map((p, i) => (
-                  <p key={i} style={{ marginBottom: "0.85rem" }}>{p}</p>
+                  <p key={i} className="text-pretty" style={{ marginBottom: "0.85rem" }}>{p}</p>
                 ))}
               </div>
 
@@ -958,7 +937,7 @@ export default function LandingPage() {
                 ].map(({ v, l }) => (
                   <div key={l} className="text-center">
                     <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", fontWeight: 800, color: "var(--brown-warm)" }}>{v}</p>
-                    <p style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.72rem", marginTop: "0.1rem" }}>{l}</p>
+                    <p className="text-balance" style={{ fontFamily: "var(--font-sans)", color: "var(--muted)", fontSize: "0.72rem", marginTop: "0.1rem" }}>{l}</p>
                   </div>
                 ))}
               </div>
@@ -975,7 +954,7 @@ export default function LandingPage() {
           <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem, 7vw, 3.8rem)", color: "var(--gold-light)", lineHeight: 1.1, marginBottom: "0.5rem" }}>
             Confiança que se vê no resultado
           </p>
-          <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.95rem, 3vw, 1.2rem)", fontWeight: 600, color: "rgba(255,255,255,0.9)", maxWidth: "32rem", lineHeight: 1.5 }}>
+          <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.95rem, 3vw, 1.2rem)", fontWeight: 600, color: "rgba(255,255,255,0.9)", maxWidth: "32rem", lineHeight: 1.5 }}>
             Mais de 19 anos formando profissionais que atendem com segurança e cobram o que merecem
           </p>
           <div className="gold-divider mt-5" style={{ width: "80px" }} />
@@ -991,7 +970,7 @@ export default function LandingPage() {
                 Veja o que as alunas estão dizendo
               </span>
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, lineHeight: 1.2 }}>
+            <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, lineHeight: 1.2 }}>
               Profissionais que já se sentiam inseguras hoje <span style={{ color: "var(--brown-warm)" }}>executam mechas com confiança</span>
             </h2>
           </div>
@@ -1039,7 +1018,7 @@ export default function LandingPage() {
                 Perguntas frequentes
               </span>
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.5rem)", fontWeight: 700 }}>
+            <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.5rem)", fontWeight: 700 }}>
               Suas <span style={{ color: "var(--brown-warm)" }}>dúvidas</span>, respondidas
             </h2>
           </div>
@@ -1073,11 +1052,11 @@ export default function LandingPage() {
           <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.5rem, 6vw, 4.5rem)", color: "var(--gold-light)", lineHeight: 1.05, marginBottom: "0.5rem" }}>
             Chegou a sua vez
           </p>
-          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4.5vw, 3rem)", fontWeight: 700, color: "white", marginBottom: "1.25rem" }}>
+          <h2 className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4.5vw, 3rem)", fontWeight: 700, color: "white", marginBottom: "1.25rem" }}>
             de ser reconhecida como <span className="gold-text-dark">especialista em mechas</span>
           </h2>
 
-          <p style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)", fontSize: "1rem", lineHeight: 1.75, maxWidth: "28rem", margin: "0 auto 1.5rem" }}>
+          <p className="text-pretty" style={{ fontFamily: "var(--font-sans)", color: "rgba(255,255,255,0.75)", fontSize: "1rem", lineHeight: 1.75, maxWidth: "28rem", margin: "0 auto 1.5rem" }}>
             Você não precisa mais trabalhar com medo de errar nas mechas. Com um método claro e aplicável, você pode desenvolver segurança, atender melhor e aumentar o valor do seu trabalho. Sem risco — 7 dias de garantia total.
           </p>
 
