@@ -6,7 +6,7 @@
  */
 
 // ─── LINKS ────────────────────────────────────────────────────────────────────
-export const HOTMART_URL    = "https://pay.hotmart.com/SEULINK" // ← checkout
+export const HOTMART_URL    = "https://pay.hotmart.com/W105740206E" // ← checkout
 export const WHATSAPP_NUMBER = "5511978111150"                   // ← com DDI, sem +
 
 // ─── CONTEÚDO ─────────────────────────────────────────────────────────────────
@@ -35,21 +35,21 @@ export function buildFormWhatsAppURL(nome: string) {
 // Coloque os arquivos de imagem dentro da pasta "public" na raiz do projeto.
 // Ex: se o arquivo for "public/aluna1.jpg", escreva apenas "/aluna1.jpg"
 export const PROVA_SOCIAL_IMAGES = [
-  "/conceicao.jpg",
-  "/ingrid_lira.jpg",
-  "/milene_araujo.jpg",
-  "/monica.jpg",
-  "/talita.jpg",
+  "/conceicao.webp",
+  "/ingrid_lira.webp",
+  "/milene_araujo.webp",
+  "/monica.webp",
+  "/talita.webp",
 ]
 
 // ─── IMAGENS DE RAÍZES (CARROSSEL TÉCNICO) ────────────────────────────────────
 export const RAIZES_IMAGES = [
-  { src: "/raiz-1.jpg", caption: "Loiro platinado — sem nenhuma marca" },
-  { src: "/raiz-2.jpg", caption: "Mechas finas — transição perfeita" },
-  { src: "/raiz-3.jpg", caption: "Balayage — raiz integrada com precisão" },
-  { src: "/raiz-4.jpg", caption: "Loiro dourado — borda a borda" },
-  { src: "/raiz-5.jpg", caption: "Free Hands — sem sobreposição" },
-  { src: "/raiz-6.jpg", caption: "Luminous Slice — execução limpa" },
-  { src: "/raiz-7.jpg", caption: "Soft Blond — zero marcação" },
-  { src: "/raiz-8.jpg", caption: "Blond Diamond — resultado impecável" },
+  { src: "/raiz-1.webp", caption: "Loiro platinado — sem nenhuma marca" },
+  { src: "/raiz-2.webp", caption: "Mechas finas — transição perfeita" },
+  { src: "/raiz-3.webp", caption: "Balayage — raiz integrada com precisão" },
+  { src: "/raiz-4.webp", caption: "Loiro dourado — borda a borda" },
+  { src: "/raiz-5.webp", caption: "Free Hands — sem sobreposição" },
+  { src: "/raiz-6.webp", caption: "Luminous Slice — execução limpa" },
+  { src: "/raiz-7.webp", caption: "Soft Blond — zero marcação" },
+  { src: "/raiz-8.webp", caption: "Blond Diamond — resultado impecável" },
 ]
