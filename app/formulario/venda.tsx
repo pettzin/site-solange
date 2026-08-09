@@ -110,11 +110,17 @@ const MODULES = [
   {
     num: "03",
     title: "Técnicas sem manchas e sem corte químico",
-    text: "Blond Diamond, Free Hands, Velvet Bond Blast, Luminous Slice (com e sem coloração), Soft Blond, Intense Blond — o portfólio completo.",
-    tags: ["Free Hands", "Balayage", "Blond Diamond"],
+    text: "Air Touch / Mechas Vaporizadas,  Free Hands, Blond Diamond, Intense Blond,  Luminous Slice (sem pó descolorante), Soft Blond, entre outras técnicas.",
+    tags: [],
   },
   {
     num: "04",
+    title: "Colorimetria Prática",
+    text: "Desvendando todos os mistérios e aprendendo de uma vez por todas a criação das cores.",
+    tags: []
+  },
+  {
+    num: "05",
     title: "Dicas essenciais para resultados profissionais",
     text: "Ajustes que evitam erros comuns, dicas coringa para mechas mais seguras e bonitas e como garantir resultado uniforme valorizado pela cliente.",
     tags: [],
@@ -483,8 +489,8 @@ export default function LandingPage() {
             <img src="/prova1.webp" title="Solange Jesus aplicando técnica de balayage" alt="Solange Jesus aplicando técnica de balayage" className="w-full h-full object-cover" style={{ minHeight: "360px" }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.65) 0%, transparent 50%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-5">
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Balayage mel</p>
-              <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Sol em atendimento — mechas sem marcação</p>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Free Hands</p>
+              <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Modelo real do nosso curso.</p>
             </div>
           </div>
           <div className="relative" style={{ minHeight: "360px" }}>
@@ -530,46 +536,47 @@ export default function LandingPage() {
             ))}
           </div>
 
-          <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.08rem", fontWeight: 600, marginTop: "1.5rem", color: "var(--brown-deep)" }}>
+          <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.10rem", fontWeight: 600, marginTop: "1.5rem", color: "var(--brown-deep)", textWrap: "balance" }}>
             Isso tem solução. E o Método Mechas Sem Medo foi criado exatamente para isso.
           </p>
         </div>
       </section>
 
-      {/* PARA QUEM É (SEM LACUNA) */}
-      <section className="py-10 md:py-20 px-5 md:px-10 gold-texture-bg relative overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-8 reveal">
-            <div className="ornament-center mb-3">
-              <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--brown-warm)" }}>
-                Para quem é o Mechas Sem Medo
-              </span>
-            </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.7rem, 4vw, 2.6rem)", fontWeight: 700, lineHeight: 1.2 }}>
-              Esse método é pra você que trabalha com cabelo,<br />
-              mas ainda se sente <span style={{ color: "var(--brown-warm)" }}>insegura na hora de fazer mechas</span>
-            </h2>
+      {/* PROBLEMA / DOR */}
+      <section className="pt-8 pb-4 md:py-16 px-5 md:px-10 gold-texture-bg">
+        <div className="relative z-10 max-w-4xl mx-auto text-center reveal">
+          <div className="ornament-center mb-3">
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--brown-warm)" }}>
+              A realidade de muitas cabeleireiras
+            </span>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-3.5 reveal">
-            {ICP_BULLETS.map((bullet, i) => (
-              <div key={i} className="flex items-start gap-3.5 p-5 rounded-2xl transition-all duration-300 sm:hover:-translate-y-1" style={{ background: "white", border: "1px solid rgba(201,168,76,0.2)", boxShadow: "0 4px 12px rgba(107,79,58,0.03)" }}>
-                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg, var(--brown-warm), var(--gold-shine))" }}>
-                  <Check size={11} style={{ color: "white", strokeWidth: 3.5 }} />
+          <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2.2rem, 5vw, 3.5rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
+            Você já sentiu isso?
+          </p>
+
+          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "1.25rem" }}>
+            O medo de errar nas mechas te impede de <span className="gold-text-animated">cobrar o que você merece</span>
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-3.5 mt-6">
+            {[
+              { icon: AlertCircle, pain: "Clientes chegam pedindo mechas e você hesita em aceitar — não tem confiança e não sabe se vai conseguir entregar o resultado da foto de inspiração da cliente." },
+              { icon: DollarSign, pain: "Vê colegas cobrando o dobro pelo mesmo serviço e não entende por quê — a diferença está na segurança da técnica" },
+              { icon: AlertTriangle, pain: "Já teve medo de corte químico ou já viu uma mecha dar errado, e desde então o medo aumentou ainda mais" },
+            ].map(({ icon: Icon, pain }, i) => (
+              <div key={i} className="card p-5 reveal text-left" style={{ transitionDelay: `${i * 100}ms` }}>
+                <div className="w-9 h-9 rounded-full mb-3 flex items-center justify-center" style={{ background: "rgba(169,117,98,0.12)" }}>
+                  <Icon size={20} style={{ color: "var(--brown-warm)" }} />
                 </div>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.92rem", lineHeight: 1.55, color: "var(--brown-deep)", fontWeight: 500 }}>{bullet}</p>
+                <p style={{ fontFamily: "var(--font-sans)", color: "var(--brown-deep)", lineHeight: 1.55, fontSize: "0.9rem" }}>{pain}</p>
               </div>
             ))}
           </div>
 
-          <div className="flex justify-center mt-8 reveal">
-            <div className="py-3 px-6 rounded-2xl sm:rounded-full w-full sm:w-auto" style={{ background: "rgba(255,255,255,0.6)", border: "1px dashed rgba(201,168,76,0.3)" }}>
-              <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.95rem", fontWeight: 600, color: "var(--brown-deep)", textAlign: "center", lineHeight: 1.4 }}>
-                Se você se identificou com pelo menos um desses pontos... <br className="sm:hidden" />
-                <span style={{ color: "var(--brown-warm)" }}>este método é para você!</span>
-              </p>
-            </div>
-          </div>
+          <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem", fontWeight: 600, marginTop: "1rem", color: "var(--brown-deep)" }}>
+            Isso tem solução. E o Método Mechas Sem Medo foi criado exatamente para isso.
+          </p>
         </div>
       </section>
 
@@ -584,7 +591,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 reveal">
             {[
-              { src: "/prova4.webp", tecnica: "Velvet Blast", desc: "Transição de raiz natural com explosão de pontas sem marcação" },
+              { src: "/prova4.webp", tecnica: "Air Touch / Mechas Vaporizadas", desc: "Eriçado sem Eriçar!" },
               { src: "/prova7.webp", tecnica: "Free Hands", desc: "Mechas ao ar livre — sem marcação, sem esfumado" },
               { src: "/blonddiamond.webp", tecnica: "Blond Diamond", desc: "Mechas coladas na raiz sem esfumado" },
               { src: "/luminousslice.webp", tecnica: "Luminous Slice", desc: "Explosão de cor nas pontas — inclusive em cabelos cacheados" },
@@ -607,7 +614,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-4 mt-6 reveal">
             <div className="gold-divider flex-1" />
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontStyle: "italic", color: "var(--brown-warm)", textAlign: "center", flexShrink: 0 }}>
-              Resultados reais de alunas do Método MSM
+              Resultado reais das técnicas realizadas no curso.
             </p>
             <div className="gold-divider flex-1" />
           </div>
@@ -859,7 +866,7 @@ export default function LandingPage() {
                 "5 módulos completos + bônus",
                 "Diagnóstico profissional",
                 "Certificado de Conclusão incluso",
-                "Técnicas Free Hands, Balayage e mais",
+                "Técnicas Free Hands, Mechas Vaporizadas e mais",
                 "Suporte durante o aprendizado",
                 "7 dias de garantia total",
               ].map((item) => (
