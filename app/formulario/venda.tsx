@@ -373,7 +373,7 @@ export default function LandingPage() {
             <div>
               <div className={`mb-7 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
                 <img 
-                  src="/icone.png" 
+                  src="/icone.webp" 
                   title="Solange Jesus Academy"
                   alt="Solange Jesus Academy" 
                   className="h-20 md:h-22 w-auto object-contain" 
@@ -480,7 +480,7 @@ export default function LandingPage() {
       <section className="w-full overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="relative" style={{ minHeight: "420px" }}>
-            <img src="/prova1.jpg" title="Solange Jesus aplicando técnica de balayage" alt="Solange Jesus aplicando técnica de balayage" className="w-full h-full object-cover" style={{ minHeight: "420px" }} />
+            <img src="/prova1.webp" title="Solange Jesus aplicando técnica de balayage" alt="Solange Jesus aplicando técnica de balayage" className="w-full h-full object-cover" style={{ minHeight: "420px" }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.55) 0%, transparent 50%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Balayage mel</p>
@@ -488,7 +488,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="relative" style={{ minHeight: "420px" }}>
-            <img src="/prova2.jpg" title="Resultado Intense Blond — mechas impecáveis" alt="Resultado Intense Blond — mechas impecáveis" className="w-full h-full object-cover" style={{ minHeight: "420px" }} />
+            <img src="/prova2.webp" title="Resultado Intense Blond — mechas impecáveis" alt="Resultado Intense Blond — mechas impecáveis" className="w-full h-full object-cover" style={{ minHeight: "420px" }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(107,79,58,0.55) 0%, transparent 50%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "4px" }}>Intense Blond</p>
@@ -595,12 +595,12 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 reveal">
             {[
-              { src: "/prova4.jpg", tecnica: "Velvet Blast", desc: "Transição de raiz natural com explosão de pontas sem marcação" },
-              { src: "/prova7.jpg", tecnica: "Free Hands", desc: "Mechas ao ar livre — sem marcação, sem esfumado" },
-              { src: "/blonddiamond.jpeg", tecnica: "Blond Diamond", desc: "Mechas coladas na raiz sem esfumado" },
-              { src: "/luminousslice.jpeg", tecnica: "Luminous Slice", desc: "Explosão de cor nas pontas — inclusive em cabelos cacheados" },
-              { src: "/intenseblond.jpeg", tecnica: "Intense Blond", desc: "Intensidade de cor e movimento — Power Blond" },
-              { src: "/prova11.jpg", tecnica: "Soft Blond", desc: "Luz & Sombra — mechas com profundidade" },
+              { src: "/prova4.webp", tecnica: "Velvet Blast", desc: "Transição de raiz natural com explosão de pontas sem marcação" },
+              { src: "/prova7.webp", tecnica: "Free Hands", desc: "Mechas ao ar livre — sem marcação, sem esfumado" },
+              { src: "/blonddiamond.webp", tecnica: "Blond Diamond", desc: "Mechas coladas na raiz sem esfumado" },
+              { src: "/luminousslice.webp", tecnica: "Luminous Slice", desc: "Explosão de cor nas pontas — inclusive em cabelos cacheados" },
+              { src: "/intenseblond.webp", tecnica: "Intense Blond", desc: "Intensidade de cor e movimento — Power Blond" },
+              { src: "/prova11.webp", tecnica: "Soft Blond", desc: "Luz & Sombra — mechas com profundidade" },
             ].map(({ src, tecnica, desc }) => (
               <div key={src} className="group relative overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(201,168,76,0.18)" }}>
                 <div className="w-full" style={{ aspectRatio: "3/4" }}>
@@ -688,7 +688,7 @@ export default function LandingPage() {
               </div>
 
               <div className="relative rounded-2xl overflow-hidden mb-8 reveal-scale" style={{ border: "1px solid rgba(201,168,76,0.3)" }}>
-                <img src="/raiz-1.jpg" title="Técnica de mechas sem manchas — aplicação precisa" alt="Técnica de mechas sem manchas — aplicação precisa" className="w-full object-cover" style={{ maxHeight: "320px", objectPosition: "center 20%" }} />
+                <img src="/raiz-1.webp" title="Técnica de mechas sem manchas — aplicação precisa" alt="Técnica de mechas sem manchas — aplicação precisa" className="w-full object-cover" style={{ maxHeight: "320px", objectPosition: "center 20%" }} />
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.75) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end gap-3">
                   <div className="flex-1">
@@ -705,7 +705,7 @@ export default function LandingPage() {
 
             <div className="reveal-right">
               <div className="relative w-full rounded-3xl overflow-hidden mb-0 shadow-2xl border border-[rgba(201,168,76,0.3)] bg-white">
-                <img src="/cliente-autoridade.jpg" title="Solange Jesus Academy" alt="Solange Jesus Academy" className="w-full h-auto block" />
+                <img src="/cliente-autoridade.webp" title="Solange Jesus Academy" alt="Solange Jesus Academy" className="w-full h-auto block" />
               </div>
 
               <div className="grid grid-cols-3 gap-4 w-full mt-4">
@@ -723,7 +723,7 @@ export default function LandingPage() {
               </div>
 
               <div className="relative rounded-2xl overflow-hidden mt-4 reveal-scale" style={{ border: "1px solid rgba(201,168,76,0.25)" }}>
-                <img src="/prova8.jpg" title="Técnica de mechas com papel alumínio — separação precisa" alt="Técnica de mechas com papel alumínio — separação precisa" className="w-full object-cover object-top" style={{ maxHeight: "240px" }} />
+                <img src="/prova8.webp" title="Técnica de mechas com papel alumínio — separação precisa" alt="Técnica de mechas com papel alumínio — separação precisa" className="w-full object-cover object-top" style={{ maxHeight: "240px" }} />
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.72) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "2px" }}>Processo em aula</p>
@@ -912,7 +912,7 @@ export default function LandingPage() {
               <div className="relative max-w-md mx-auto">
                 <div className="absolute -inset-3 rounded-3xl blur-2xl opacity-25" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-light))" }} />
                 <div className="relative rounded-2xl overflow-hidden" style={{ background: "rgba(107,79,58,0.06)", border: "1px solid rgba(201,168,76,0.2)", aspectRatio: "3/4" }}>
-                  <img src="/sol.png" title="Solange Jesus" alt="Solange Jesus" className="w-full h-full object-cover" style={{ objectPosition: "center 15%" }} />
+                  <img src="/cliente-bio.jpg" title="Solange Jesus" alt="Solange Jesus" className="w-full h-full object-cover" style={{ objectPosition: "center 15%" }} />
                 </div>
 
                 <div className="absolute -bottom-4 -right-4 rounded-xl overflow-hidden animate-float-slow" style={{ width: "130px", aspectRatio: "1/1", border: "3px solid white", boxShadow: "0 10px 30px rgba(107,79,58,0.25)" }}>
@@ -1120,7 +1120,7 @@ export default function LandingPage() {
             {/* LOGO FOOTER */}
             <div className="flex items-center gap-3">
               <img 
-                src="/icone.png" 
+                src="/icone.webp" 
                 alt="Solange Jesus Academy" 
                 title="Solange Jesus Academy"
                 className="h-14 w-auto object-contain" 
