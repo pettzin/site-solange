@@ -559,7 +559,7 @@ export default function LandingPage() {
               { src: "/intenseblond.webp", tecnica: "Intense Blond", desc: "Intensidade de cor e movimento — Power Blond", imgStyle: "object-cover object-top" },
               { src: "/prova11.webp", tecnica: "Soft Blond", desc: "Luz & Sombra — mechas com profundidade", imgStyle: "object-cover object-top" },
               { src: "/estrela.webp", tecnica: "Estrela de Oswald", desc: "Dessa vez você vai entender e aprender!", imgStyle: "object-cover object-[40%_55%] scale-100" }, 
-              { src: "/sol_color.webp", tecnica: "Fundo de Clareamento e Neutralização", desc: "Aprenda a identificar todas as Alturas de Tom e Fundos de Clareamento", imgStyle: "object-cover object-[25%_30%] scale-110" },
+              { src: "/sol_color.webp", tecnica: "Fundo de Clareamento e Neutralização", desc: "Aprenda Altura de Tom e Fundo de Clareamento", imgStyle: "object-cover object-[35%_40%] scale-100" },
             ].map(({ src, tecnica, desc, imgStyle }) => (
               <div key={src} className="group relative overflow-hidden rounded-2xl bg-stone-900" style={{ border: "1px solid rgba(201,168,76,0.2)" }}>
                 <div className="w-full" style={{ aspectRatio: "3/4" }}>
@@ -690,8 +690,8 @@ export default function LandingPage() {
                 <img src="/prova8.webp" title="Técnica de mechas com papel alumínio — separação precisa" alt="Técnica de mechas com papel alumínio — separação precisa" className="w-full object-cover object-top" style={{ maxHeight: "220px" }} />
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(26,16,8,0.72) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "2px" }}>Processo em aula</p>
-                  <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Divisão de mechas precisa — sem sobrepor na raiz</p>
+                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "2px" }}>VOCÊ VAI ENTREGAR PERFEIÇÃO</p>
+                  <p className="text-balance" style={{ fontFamily: "var(--font-serif)", fontSize: "0.88rem", fontWeight: 700, color: "white", lineHeight: 1.3 }}>Os seus resultados agora será totalmente previsível.</p>
                 </div>
               </div>
             </div>
