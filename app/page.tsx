@@ -8,7 +8,7 @@ import LandingPage from "./formulario/venda"
  * ║  Altere só a linha abaixo (true/false) e faça o deploy   ║
  * ╚══════════════════════════════════════════════════════════╝
  */
-const CURSO_LANCADO = false // false = mostra Formulário | true = mostra Vendas
+const CURSO_LANCADO = true // false = mostra Formulário | true = mostra Vendas
 
 // ── Metadata Dinâmico baseado no status do curso ─────────────────────────────
 export const metadata: Metadata = CURSO_LANCADO
