@@ -1089,7 +1089,7 @@ export default function LandingPage() {
       <footer className="py-8 px-5 md:px-10" style={{ background: "rgba(0,0,0,0.94)", color: "rgba(255,255,255,0.5)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="gold-divider mb-6 opacity-20" />
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             
             {/* LOGO FOOTER */}
             <div className="flex items-center gap-3">
@@ -1101,14 +1101,23 @@ export default function LandingPage() {
               />
             </div>
 
+            {/* CNPJ E DIREITOS AUTORAIS */}
+            <div className="flex flex-col items-center md:items-end gap-1">
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.76rem" }}>
+                Solange Laranjeira de Jesus · CNPJ: 36.566.695/0001-10
+              </p>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", color: "rgba(255,255,255,0.35)" }}>
+                © {new Date().getFullYear()} Solange Jesus Academy. Todos os direitos reservados.
+              </p>
+            </div>
+
+            {/* ÍCONE SOCIAL */}
             <div className="flex items-center gap-5">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white" aria-label="WhatsApp">
                 <MessageCircle size={18} />
               </a>
             </div>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.76rem" }}>
-              © {new Date().getFullYear()} Solange Jesus Academy. Todos os direitos reservados.
-            </p>
+
           </div>
         </div>
       </footer>
