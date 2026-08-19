@@ -19,7 +19,6 @@ const greatVibes = Great_Vibes({
 })
 
 export const metadata: Metadata = {
-  // ── Alterado para a versão com WWW ─────────────────────────────────────────
   metadataBase: new URL('https://www.solangejesusacademy.com.br'),
 
   title: {
@@ -31,7 +30,6 @@ export const metadata: Metadata = {
   keywords: ['curso loiro perfeito', 'coloração profissional', 'loiros impecáveis', 'técnica de loiro', 'curso cabeleireira'],
   authors: [{ name: 'Solange Jesus Academy' }],
 
-  // ── Canonical alinhado com a URL atual (com www) ───────────────────────────
   alternates: {
     canonical: 'https://www.solangejesusacademy.com.br',
   },
@@ -81,8 +79,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={`${greatVibes.variable} ${montserrat.variable}`}>
       <head>
-        {/* ── Meta Pixel (Facebook Ads) ── */}
-        <Script id="facebook-pixel" strategy="lazyOnload">
+        {/* ── Meta Pixel (Carrega os 2 Pixels ao mesmo tempo) ── */}
+        <Script id="facebook-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -92,18 +90,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
+            
+            // Pixel Antigo
             fbq('init', '1861368957871560');
+            // Pixel Novo do Gestor
+            fbq('init', '27898455766471537');
+            
+            // Rastreia PageView para AMBOS
             fbq('track', 'PageView');
           `}
         </Script>
 
-        {/* Fallback para navegadores sem JavaScript */}
+        {/* Fallback de noscript para os 2 Pixels */}
         <noscript>
           <img
             height="1"
             width="1"
             style={{ display: 'none' }}
             src="https://www.facebook.com/tr?id=1861368957871560&ev=PageView&noscript=1"
+            alt=""
+          />
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=27898455766471537&ev=PageView&noscript=1"
             alt=""
           />
         </noscript>
