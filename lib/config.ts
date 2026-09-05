@@ -6,7 +6,7 @@
  */
 
 // ─── LINKS ────────────────────────────────────────────────────────────────────
-export const HOTMART_URL    = "https://pay.hotmart.com/W105740206E" // ← checkout
+export const HOTMART_URL    = "https://pay.hotmart.com/W105740206E?off=wa48mhrm" // ← checkout
 export const WHATSAPP_NUMBER = "5511978111150"                   // ← com DDI, sem +
 
 // ─── CONTEÚDO ─────────────────────────────────────────────────────────────────

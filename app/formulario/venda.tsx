@@ -20,7 +20,7 @@ import {
   AlertCircle,
   DollarSign,
   AlertTriangle,
-  Image as ImageIcon,
+  ImageIcon,
   ChevronLeft,
   ChevronRight, 
 } from "lucide-react";
@@ -28,9 +28,6 @@ import {
   PROVA_SOCIAL_IMAGES,
   HOTMART_URL,
   WHATSAPP_NUMBER,
-  PRECO_DE,
-  PRECO_POR,
-  PARCELAMENTO,
   buildWhatsAppURL,
 } from "../../lib/config";
 
@@ -160,7 +157,7 @@ const FAQS = [
   },
   {
     q: "Posso parcelar o pagamento?",
-    a: `Sim. O pagamento pode ser parcelado em até ${PARCELAMENTO} no cartão de crédito. À vista, o valor é ${PRECO_POR},00. Também aceita Pix e boleto.`,
+    a: "Sim. O pagamento pode ser parcelado em até 12x de R$ 51,40 no cartão de crédito. À vista, o valor é R$ 497,00. Também aceita Pix e boleto.",
   },
 ];
 
@@ -799,7 +796,7 @@ export default function LandingPage() {
         <div className="max-w-2xl mx-auto text-center reveal">
           <div className="ornament-center mb-4">
             <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--brown-warm)" }}>
-              Oferta especial — primeira semana
+              Oferta Especial
             </span>
           </div>
           <p style={{ fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem, 5vw, 3.2rem)", color: "var(--brown-warm)", lineHeight: 1.1, marginBottom: "0.25rem" }}>
@@ -810,20 +807,16 @@ export default function LandingPage() {
           </h2>
 
           <div className="card p-7 md:p-12 reveal-scale">
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.92rem", color: "var(--tan)", textDecoration: "line-through", marginBottom: "0.25rem" }}>
-              de {PRECO_DE}
-            </p>
-
             <div className="flex items-end justify-center gap-1.5 mb-1">
               <span style={{ fontFamily: "var(--font-sans)", fontSize: "1.1rem", fontWeight: 700, color: "var(--brown-deep)", alignSelf: "flex-start", paddingTop: "0.8rem" }}>R$</span>
-              <span style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(3.8rem, 11vw, 5.5rem)", fontWeight: 800, lineHeight: 1, color: "var(--brown-warm)" }}>397</span>
+              <span style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(3.8rem, 11vw, 5.5rem)", fontWeight: 800, lineHeight: 1, color: "var(--brown-warm)" }}>497</span>
             </div>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.88rem", color: "var(--muted)", marginBottom: "0.5rem" }}>à vista</p>
 
             <div className="gold-divider my-4" />
 
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.98rem", color: "var(--brown-deep)", marginBottom: "0.2rem" }}>
-              ou <strong>{PARCELAMENTO}</strong> no cartão
+              ou <strong>12x de R$ 51,40</strong> no cartão
             </p>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "var(--muted)", marginBottom: "1.75rem" }}>
               Também aceita Pix e boleto
@@ -1061,9 +1054,8 @@ export default function LandingPage() {
           </p>
 
           <div className="inline-flex flex-col items-center mb-6 px-8 py-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(201,168,76,0.2)" }}>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", textDecoration: "line-through", marginBottom: "2px" }}>de {PRECO_DE}</p>
-            <p style={{ fontFamily: "var(--font-serif)", fontSize: "2.4rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-light)" }}>{PRECO_POR}</p>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "rgba(255,255,255,0.5)", marginTop: "4px" }}>ou {PARCELAMENTO}</p>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: "2.4rem", fontWeight: 800, lineHeight: 1, color: "var(--gold-light)" }}>R$ 497</p>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.78rem", color: "rgba(255,255,255,0.5)", marginTop: "4px" }}>ou 12x de R$ 51,40</p>
           </div>
 
           <a href={HOTMART_URL} onClick={handleCheckoutClick} target="_blank" rel="noopener noreferrer" className="btn-gold animate-glow justify-center" style={{ fontSize: "0.95rem", padding: "1.1rem 2.8rem" }}>
